@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/04 10:29:32 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/09/06 12:07:50 by rmakinen         ###   ########.fr       */
+/*   Created: 2023/09/06 11:18:33 by rmakinen          #+#    #+#             */
+/*   Updated: 2023/09/06 12:15:49 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/includes/libft.h"
-#include "./libft/includes/ft_printf.h"
 #include "./includes/minirt.h"
+#include "./includes/vectors.h"
 
-int	main(int argc, char **argv)
+void	normalize_coordinates(t_window *img, t_camera *cam)
 {
-	t_window	img;
-	if (argc == 1)
+	float	x;
+	float	y;
+
+	y = 0;
+	x = 0;
+	while(x < img->width)
 	{
-		ft_printf("%s\n", argv[0]);
-		ft_printf("this is the start\n");
-		handle_window(&img);
-		draw_img(&img);
-		mlx_loop(img.mlx);
+		y = 0;
+		while(y < img->height)
+		{
+			//normalize the coordinates for the image
+			cam->x = 0;
+			y++;
+		}
+		x++;
 	}
-	return(0);
 }
