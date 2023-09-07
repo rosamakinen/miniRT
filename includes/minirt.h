@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/09/06 12:12:25 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:41:55 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <mlx.h>
 #include <stdlib.h>
+#include "vectors.h"
 
 typedef struct	s_window
 {
@@ -26,9 +27,10 @@ typedef struct	s_window
 
 typedef struct	s_camera
 {
-	float	x;
-	float	y;
-	float	z;
+	int	normal_x;
+	int	normal_y;
+	t_vec3	ray_direction;
+	t_vec3	cam_position; // ray_origin
 }			t_camera;
 
 //window
@@ -36,11 +38,11 @@ int	handle_window(t_window *img);
 int	exit_button(t_window *img);
 
 //drawing
-int	draw_circle(t_window *img);
 int	draw_img(t_window *img);
-int	draw_sphere(t_window *img, int x, int y);
+int	draw_sphere(t_camera *cam, t_window *img, int x, int y);
+
+t_vec3	vec_sub(t_vec3 vector1, t_vec3 vector2);
 
 //camera
-void	normalize_coordinates(t_window *img, t_camera *cam);
-
+void	get_ray_direction(t_camera *cam, t_window *img, int x, int y);
 #endif
