@@ -6,7 +6,7 @@
 #    By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/31 15:09:16 by rmakinen          #+#    #+#              #
-#    Updated: 2023/04/21 10:35:57 by rmakinen         ###   ########.fr        #
+#    Updated: 2023/09/13 12:01:08 by rmakinen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ PRINT = ft_printf print_percentage print_pointer print_putchar print_puthexhi \
 		print_puthexlow print_putnum print_putstring print_unsigned
 
 GNL_DIR = gnl/
-GNL = get_next_line get_next_line_utils get_next_line_bonus get_next_line_utils_bonus
+GNL = get_next_line get_next_line_utils
 
 SRC_FILE+=$(addprefix $(CONVERT_DIR), $(CONVERT))
 SRC_FILE+=$(addprefix $(CHECK_DIR), $(CHECK))

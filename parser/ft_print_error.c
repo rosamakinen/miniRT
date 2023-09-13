@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*   ft_print_error.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/26 14:35:56 by rmakinen          #+#    #+#             */
-/*   Updated: 2022/11/26 14:59:48 by rmakinen         ###   ########.fr       */
+/*   Created: 2023/09/09 10:15:38 by mkaratzi          #+#    #+#             */
+/*   Updated: 2023/09/13 11:48:30 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_BONUS_H
-# define GET_NEXT_LINE_BONUS_H
+#include "../includes/parser.h"
 
-# include	<stdlib.h>
-# include	<unistd.h>
+int	ft_print_error(const char *str)
+{
+	int	i;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
-# endif
+	i = -1;
+	if (str)
+	{
+		while (str[++i])
+			write(STDERR_FILENO, &str[i], 1);
+	}
+	return (i);
+}
 
-char	*get_next_line(int fd);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strchr(const char *s, int c);
-size_t	ft_strlen(const char *s);
-void	*ft_calloc(size_t count, size_t size);
-void	ft_bzero(void *s, size_t n);
-
-#endif
+int	return_parser_error(short error)
+{
+	if (error == OPEN_FAIL)
+		ft_print_error("Failed to open given file!\n");
+	if (error == INVALID_INPUT)
+		ft_print_error("Detected invalid input in the given file!\n");
+	return (1);
+}

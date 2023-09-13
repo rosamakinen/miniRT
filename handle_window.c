@@ -6,13 +6,13 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 09:32:59 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/09/06 11:30:57 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:46:16 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/minirt.h"
 
-int	key_event(int keycode, t_window *img)
+int	key_event(int keycode, t_scene *img)
 {
 	if (keycode == 53)
 	{
@@ -25,7 +25,7 @@ int	key_event(int keycode, t_window *img)
 	return (0);
 }
 
-int	exit_button(t_window *img)
+int	exit_button(t_scene *img)
 {
 	//img not allocated yet
 	//free(img);
@@ -34,7 +34,7 @@ int	exit_button(t_window *img)
 	return (0);
 }
 
-int	handle_window(t_window *img)
+int	handle_window(t_scene *img)
 {
 	img->width = 640;
 	img->height = 640;
