@@ -6,7 +6,7 @@
 /*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 11:57:12 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/09/09 13:08:04 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/09/13 15:29:11 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,3 @@ short	get_object_identifier(const char *str)
 		return (VALID_OBJECT);
 	return (INVALID_OBJECTS);
 }
-
