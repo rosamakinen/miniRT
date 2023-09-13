@@ -20,6 +20,8 @@ SRC = main.c \
 		parser/ft_print_error.c \
 		parser/get_ambient_light.c \
 		parser/get_new_object.c \
+		parser/get_camera.c \
+		parser/get_light_source.c \
 		parser/get_object_identifier.c \
 		parser/parser_utils.c \
 		parser/parser.c \
@@ -31,6 +33,8 @@ OBJ = main.o \
 		camera.o \
 		ft_atox.o \
 		ft_print_error.o \
+		get_camera.o \
+		get_light_source.o \
 		get_ambient_light.o \
 		get_new_object.o \
 		get_object_identifier.o \
