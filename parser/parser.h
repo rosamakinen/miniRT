@@ -6,7 +6,7 @@
 /*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 09:19:26 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/09/13 14:55:38 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/09/13 15:33:32 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,11 +155,11 @@ typedef struct s_ambient_light
 
 typedef struct s_scene
 {
-	t_light_source	light_sources; //The reason why this is not pointer is that it must exist always
-	t_ambient_light	ambient_light; // ^
-	t_camera		camera; //        ^^
+	t_light_source	light_sources;
+	t_ambient_light	ambient_light;
+	t_camera		camera;
 	t_object		*objects;
-	t_check_once	check_once; //this is to check if we only got one light, camera and ambient light
+	t_check_once	check_once;
 	short			error_catcher;
 }	t_scene;
 //FINISH
@@ -204,6 +204,6 @@ short		get_camera(t_scene *scene, const char *str);
 
 //get_new_object.c
 short		get_new_object(t_object *scene_object, const char *str);
-void		free_all_objects(t_object  *head);
+void		free_all_objects(t_object *head);
 
 #endif
