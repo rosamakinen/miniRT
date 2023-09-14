@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 09:19:21 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/09/13 14:57:03 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/09/14 06:31:29 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ t_scene	scene_constractor(const char *file)
 	while (!main_scene.error_catcher)
 	{
 		new_line = get_next_line(fd);
-		if (ft_strlen(new_line) <= 0)
+		if (ft_strlen_int(new_line) <= 0)
 			break ;
-		if (ft_strlen(new_line) == 1)
+		if (ft_strlen_int(new_line) == 1)
 			continue ;
 		main_scene.error_catcher = get_object_identifier(new_line);
 		if (main_scene.error_catcher == LIGHT_SOURCE)

@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:29:32 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/09/13 12:47:01 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/09/14 06:25:53 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,12 @@ int	main(void)
 	t_cylinder	*temp_cylinder;
 
 	main_scene = scene_constractor("file.test");
+	printf("we got back from scene_const\n");
 	if (main_scene.error_catcher)
+	{
+		printf("we got back from\n");
 		return (return_parser_error(main_scene.error_catcher));
+	}
 	printf("We got light: %f, %f, %f and ratio %f\n", main_scene.light_sources.pos.x, main_scene.light_sources.pos.y, main_scene.light_sources.pos.z, main_scene.light_sources.ratio);
 	printf("We got ambient light ratio: %f,and color %x\n", main_scene.ambient_light.ratio, main_scene.ambient_light.color);
 	printf("We got camera pos: %f, %f, %f,and degrees %d\n", main_scene.camera.pos.x, main_scene.camera.pos.y, main_scene.camera.pos.z, main_scene.camera.fov);

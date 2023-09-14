@@ -6,7 +6,7 @@
 #    By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/31 15:09:16 by rmakinen          #+#    #+#              #
-#    Updated: 2023/09/13 12:01:08 by rmakinen         ###   ########.fr        #
+#    Updated: 2023/09/14 06:30:33 by rmakinen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ PUT = ft_putchar ft_putstr ft_putnbr ft_putchar_fd ft_putstr_fd ft_putnbr_fd ft_
 STR_DIR = string/
 STRING = ft_strmapi ft_striteri ft_strchr ft_strlen ft_strlcpy ft_strncmp \
 		ft_strrchr ft_substr ft_strjoin ft_strtrim ft_strchr ft_split \
-		ft_strnstr ft_strlcat ft_strdup ft_strcmp
+		ft_strnstr ft_strlcat ft_strdup ft_strcmp ft_strlen_int \
 
 PRINT_DIR = print/
 PRINT = ft_printf print_percentage print_pointer print_putchar print_puthexhi \

@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 10:01:24 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/09/13 12:42:48 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/09/14 06:58:22 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,23 @@ int	draw_sphere(t_camera *cam, t_scene *img, int x, int y)
 	float	b;
 	float	c;
 	float	hit;
+	t_object	*temp;
+	t_sphere	*sphere;
 	t_3D_vector	oc;
 	rad = 0.5;
 
 	// camera.x = ray_o.x - ray_d.x;
 	// camera.y = ray_o.y - ray_d.y;
 	// camera.z = ray_o.z - ray_d.z;
+	temp = img->objects;
+	if (temp->type == OBJECT_SPHERE)
+		sphere = (t_sphere *)temp->data;
+	else
+		return (0);
 
-	oc.x = cam->pos.x - 0; // to calculate vector from the camera position(ray origin) and the position of the object.
-	oc.y = cam->pos.y - 0;
-	oc.z = cam->pos.z - 0;
+	oc.x = cam->pos.x - sphere->pos.x; // to calculate vector from the camera position(ray origin) and the position of the object.
+	oc.y = cam->pos.y - sphere->pos.y;
+	oc.z = cam->pos.z - sphere->pos.z;
 
 	//a = x_c * x_c + y_c * y_c + z_c * z_c; // vec
 
@@ -52,9 +59,9 @@ int	draw_sphere(t_camera *cam, t_scene *img, int x, int y)
 	//** quadratic formula is b^2 - 4ac **
 	a = dot_vector3(cam->norm_vector, cam->norm_vector);
 	b = 2.0f * dot_vector3(oc, cam->norm_vector);
-	c = dot_vector3(oc, oc) - rad * rad;
+	c = dot_vector3(oc, oc) - sphere->diameter / 2 * sphere->diameter / 2;
 	hit = b * b - 4.0*a*c;
-	printf("hit = %f\n", hit);
+	//printf("hit = %f\n", hit);
 	if (hit >= 0.0)
 	{
 		mlx_pixel_put(img->mlx, img->win, x, y, 0xFFC301); //yellow for hit
