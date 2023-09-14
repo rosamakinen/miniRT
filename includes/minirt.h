@@ -6,35 +6,26 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/09/14 07:39:50 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:08:59 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINI_RT
 # define MINI_RT
 
-#include <mlx.h>
-#include <stdlib.h>
-#include "vectors.h"
-#include "parser.h"
+# include <fcntl.h>
+# include <unistd.h>
+# include <math.h>
+# include <stdio.h>
+# include <stdint.h>
+# include <mlx.h>
+# include <stdlib.h>
+# include "parser.h"
+#include "../libft/includes/libft.h"
 
 typedef struct s_vec3 t_vec3;
-
-// typedef struct	s_window
-// {
-// 	int		width;
-// 	int		height;
-// 	void	*mlx;
-// 	void	*win;
-// }			t_window;
-
-// typedef struct	s_camera
-// {
-// 	int	normal_x;
-// 	int	normal_y;
-// 	t_vec3	ray_direction;
-// 	t_vec3	cam_position; // ray_origin
-// }			t_camera;
+typedef struct s_scene t_scene;
+typedef struct s_camera t_camera;
 
 //window
 int	handle_window(t_scene *img);

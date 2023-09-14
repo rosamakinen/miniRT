@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 12:34:18 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/09/13 12:24:12 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/09/14 10:59:02 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	is_digit_mod(int a, short allow_neg, short allow_plus)
 	return (0);
 }
 
-// This can be used to read any float to a float dest from an str
 float	ft_atof(const char *str, int *index)
 {
 	float	result;
@@ -71,7 +70,7 @@ uint8_t	ft_atouint8(const char *str, int *index)
 	return ((uint8_t)(result));
 }
 
-int	ft_atoi_mod(const char *str, int *index) //does check for overflow unlike normal atoi does
+int	ft_atoi_mod(const char *str, int *index)
 {
 	int	result;
 	int	sign;
@@ -93,7 +92,7 @@ int	ft_atoi_mod(const char *str, int *index) //does check for overflow unlike no
 		if (prev > result)
 		{
 			(*index)--;
-			return (sign *result);
+			return (sign * result);
 		}
 		prev = result;
 	}

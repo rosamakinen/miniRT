@@ -1,94 +1,121 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_new_object.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/13 15:08:48 by mkaratzi          #+#    #+#             */
+/*   Updated: 2023/09/14 10:59:02 by rmakinen         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/parser.h"
 
-static int get_new_sphere(t_object *scene_object, const char *str)
+void	free_all_objects(t_object *head)
 {
-    t_sphere    *new_sphere;
-    int         i;
-
-    i = 2;
-    if(!scene_object)
-        return (MALLOC_FAILED);
-    scene_object->data = malloc(sizeof(t_sphere));
-    if (!scene_object->data)
-        return (MALLOC_FAILED);
-    scene_object->type = OBJECT_SPHERE;
-    new_sphere = (t_sphere *)scene_object->data;
-    if (get_3d_coordindate(&new_sphere->pos, str, &i))
-        return (INVALID_INPUT);
-    if (get_float(&new_sphere->diameter, str, &i))
-         return (INVALID_INPUT);
-    if (get_color(&new_sphere->color, str, &i))
-        return (INVALID_INPUT);
-    scene_object->next = (t_object *)malloc(sizeof(t_object));
-    if (!scene_object->next)
-        return (MALLOC_FAILED);
-    return (EXIT_SUCCESS);
+	if (head->next != NULL)
+		free_all_objects(head->next);
+	free(head);
+	return ;
 }
 
-static int get_new_plane(t_object *scene_object, const char *str)
+static int	get_new_sphere(t_object *scene_object, const char *str, int *i)
 {
-    t_plane     *new_plane;
-    int         i;
+	t_sphere	*new_sphere;
 
-    i = 2;
-    if(!scene_object)
-        return (MALLOC_FAILED);
-    scene_object->data = malloc(sizeof(t_plane));
-    if (!scene_object->data)
-        return (MALLOC_FAILED);
-    scene_object->type = OBJECT_PLANE;
-    new_plane = (t_plane *)scene_object->data;
-    if (get_3d_coordindate(&new_plane->point, str, &i))
-        return (INVALID_INPUT);
-    if (get_3d_normal_vector(&new_plane->normal_vector, str, &i))
-         return (INVALID_INPUT);
-    if (get_color(&new_plane->color, str, &i))
-        return (INVALID_INPUT);
-    scene_object->next = (t_object *)malloc(sizeof(t_object));
-    if (!scene_object->next)
-        return (MALLOC_FAILED);
-    return (EXIT_SUCCESS);
+	if (!scene_object)
+		return (MALLOC_FAILED);
+	scene_object->data = malloc(sizeof(t_sphere));
+	if (!scene_object->data)
+		return (MALLOC_FAILED);
+	scene_object->type = OBJECT_SPHERE;
+	new_sphere = (t_sphere *)scene_object->data;
+	if (get_vec3(&new_sphere->pos, str, i))
+		return (INVALID_INPUT);
+	if (get_float(&new_sphere->diameter, str, i))
+		return (INVALID_INPUT);
+	if (get_color(&new_sphere->color, str, i))
+		return (INVALID_INPUT);
+	scene_object->next = (t_object *)malloc(sizeof(t_object));
+	if (!scene_object->next)
+		return (MALLOC_FAILED);
+	scene_object->next->next = NULL;
+	return (EXIT_SUCCESS);
 }
 
-static int  get_new_cylinder(t_object *scene_object, const char *str)
+static int	get_new_plane(t_object *scene_object, const char *str, int *i)
 {
-    t_cylinder  *new_cylinder;
-    int         i;
+	t_plane	*new_plane;
 
-    i = 2;
-    if(!scene_object)
-        return (MALLOC_FAILED);
-    scene_object->data = malloc(sizeof(t_cylinder));
-    if (!scene_object->data)
-        return (MALLOC_FAILED);
-    scene_object->type = OBJECT_CYLINDER;
-    new_cylinder = (t_cylinder *)scene_object->data;
-    if (get_3d_coordindate(&new_cylinder->pos, str, &i))
-        return (INVALID_INPUT);
-    if (get_3d_normal_vector(&new_cylinder->axis_vector, str, &i))
-        return (INVALID_INPUT);
-    if (get_float(&new_cylinder->diameter, str, &i))
-        return (INVALID_INPUT);
-    if (get_float(&new_cylinder->height, str, &i))
-        return (INVALID_INPUT);
-    if (get_color(&new_cylinder->color, str, &i))
-        return (INVALID_INPUT);
-    scene_object->next = (t_object *)malloc(sizeof(t_object));
-    if (!scene_object->next)
-        return (MALLOC_FAILED);
-    return (EXIT_SUCCESS);
+	if (!scene_object)
+		return (MALLOC_FAILED);
+	scene_object->data = malloc(sizeof(t_plane));
+	if (!scene_object->data)
+		return (MALLOC_FAILED);
+	scene_object->type = OBJECT_PLANE;
+	new_plane = (t_plane *)scene_object->data;
+	if (get_vec3(&new_plane->point, str, i))
+		return (INVALID_INPUT);
+	if (get_3d_normal_vector(&new_plane->normal_vector, str, i))
+		return (INVALID_INPUT);
+	if (get_color(&new_plane->color, str, i))
+		return (INVALID_INPUT);
+	scene_object->next = (t_object *)malloc(sizeof(t_object));
+	if (!scene_object->next)
+		return (MALLOC_FAILED);
+	scene_object->next->next = NULL;
+	return (EXIT_SUCCESS);
+}
+
+static int	get_new_cylinder(t_object *scene_object, const char *str, int *i)
+{
+	t_cylinder	*new_cylinder;
+
+	if (!scene_object)
+		return (MALLOC_FAILED);
+	scene_object->data = malloc(sizeof(t_cylinder));
+	if (!scene_object->data)
+		return (MALLOC_FAILED);
+	scene_object->type = OBJECT_CYLINDER;
+	new_cylinder = (t_cylinder *)scene_object->data;
+	if (get_vec3(&new_cylinder->pos, str, i))
+		return (INVALID_INPUT);
+	if (get_3d_normal_vector(&new_cylinder->axis_vector, str, i))
+		return (INVALID_INPUT);
+	if (get_float(&new_cylinder->diameter, str, i))
+		return (INVALID_INPUT);
+	if (get_float(&new_cylinder->height, str, i))
+		return (INVALID_INPUT);
+	if (get_color(&new_cylinder->color, str, i))
+		return (INVALID_INPUT);
+	scene_object->next = (t_object *)malloc(sizeof(t_object));
+	if (!scene_object->next)
+		return (MALLOC_FAILED);
+	scene_object->next->next = NULL;
+	return (EXIT_SUCCESS);
 }
 
 short	get_new_object(t_object *scene_object, const char *str)
 {
-    if (str && str[0] == 's' && str[1] == 'p')
-        return(get_new_sphere(scene_object, str));
-    else if (str && str[0] == 'p' && str[1] == 'l')
-        return(get_new_plane(scene_object, str));
-    else if (str && str[0] == 'c' && str[1] == 'y')
-        return(get_new_cylinder(scene_object, str));
+	int	i;
+	int	checker;
+
+	checker = 0;
+	i = 2;
+	if (!scene_object)
+		return (MALLOC_FAILED);
+	while (scene_object->next)
+		scene_object = scene_object->next;
+	if (str && str[0] == 's' && str[1] == 'p')
+		checker = get_new_sphere(scene_object, str, &i);
+	else if (str && str[0] == 'p' && str[1] == 'l')
+		checker = get_new_plane(scene_object, str, &i);
+	else if (str && str[0] == 'c' && str[1] == 'y')
+		checker = get_new_cylinder(scene_object, str, &i);
 	else
 		return (INVALID_INPUT);
-    //ATTENTION: TODO: make sure these get freed at some point!
+	if (str[i] && str[i] != '\n')
+		return (INVALID_INPUT);
 	return (EXIT_SUCCESS);
 }

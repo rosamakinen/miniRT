@@ -6,13 +6,11 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 11:18:33 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/09/14 08:10:14 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:03:42 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/minirt.h"
-#include "./includes/vectors.h"
-#include <math.h>
 
 t_vec3	vec_sub(t_vec3 vector1, t_vec3 vector2)
 {
@@ -24,20 +22,21 @@ t_vec3	vec_sub(t_vec3 vector1, t_vec3 vector2)
 	return (result);
 }
 
-//use floats instead of ints
-void	get_ray_direction(t_camera *cam, t_scene *img, int x, int y)
+void	get_ray_direction(t_camera *cam, t_scene *img, int img_x, int img_y)
 {
 	float normal_x;
 	float normal_y;
-	static int	i = 0;
 
-	normal_x = (((2.0f * (double)x) / img->width - 1.0f) * tan(M_PI/4));
-	normal_y = (1.0f - (2.0f * (double)y) / img->height) * tan(M_PI/4);
+	if (img_x < img->width / 2)
+		normal_x = img->width / 2 - img_x;
+	else
+		normal_x = img_x - img->width / 2;
 
-	if (i++ == 0)
-		printf("%f, %f, %f\n", cam->pos.x, cam->pos.y, cam->pos.z);
-	cam->pos.x = 0;
-	cam->pos.y = 0;
-	cam->pos.z = 2000;
-	cam->norm_coord = vec_sub((t_vec3){normal_x, normal_y, -1}, cam->pos); //vec3 from the normalized x & y
+	if (img_y > img->height / 2)
+		normal_y = img->height / 2 - img_y;
+	else
+		normal_y = img_y - img->height / 2;
+
+	cam->norm_coord.x = normal_x;
+	cam->norm_coord.y = normal_y;
 }

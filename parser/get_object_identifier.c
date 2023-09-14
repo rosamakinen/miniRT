@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 11:57:12 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/09/13 12:56:10 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/09/14 10:59:02 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,3 @@ short	get_object_identifier(const char *str)
 		return (VALID_OBJECT);
 	return (INVALID_OBJECTS);
 }
-
