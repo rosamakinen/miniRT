@@ -5,98 +5,70 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 08:17:08 by rmakinen          #+#    #+#             */
-/*   Updated: 2022/11/26 14:40:00 by rmakinen         ###   ########.fr       */
+/*   Created: 2022/11/22 23:16:57 by mkaratzi          #+#    #+#             */
+/*   Updated: 2023/09/13 11:59:44 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"get_next_line.h"
+#include "../includes/get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+int		ft_strlenmod(char *string, int instruction);
+int		join(char **dest, char *src, char *src2, int check);
+int		ft_checklast(char *string);
+
+int	join(char **dest, char *src, char *src2, int check)
 {
-	size_t	counter;
+	long long	a;
+	long long	c;
+	long long	b;
+	char		*final;
 
-	counter = 0;
-	while (s[counter] != '\0')
+	final = NULL;
+	a = ft_strlenmod(src, check);
+	c = -1;
+	b = ft_strlenmod(src2, 0);
+	if (a + b > 0)
 	{
-		counter++;
+		final = (char *)malloc(sizeof(char) * (a + b + 1));
 	}
-	return (counter);
+	while (final != NULL && ++c < a + b)
+	{
+		if (src != NULL && c < a)
+			final[c] = src[c];
+		else if (src2 != NULL && c < a + b)
+			final[c] = src2[c - a];
+		final[a + b] = '\0';
+	}
+	if (dest[0] != NULL)
+		free(dest[0]);
+	dest[0] = final;
+	return (a + b);
 }
 
-char	*ft_strchr(const char *s, int c)
+int	ft_strlenmod(char *string, int instruction)
 {
-	if (!s)
-		return (0);
-	while (*s != '\0')
+	int	length;
+
+	length = 0;
+	if (string == NULL)
+		return (length);
+	while (string[length] != '\0')
 	{
-		if (*s == (char)c)
-		{
-			return ((char *)s);
-		}
-		s++;
+		if (string[length++] == '\n' && instruction == -1)
+			break ;
 	}
-	if (c == '\0')
-		return ((char *)s);
+	return (length);
+}
+
+int	ft_checklast(char *string)
+{
+	int	length;
+
+	length = 0;
+	if (string == NULL)
+		return (length);
+	while (string[length] != '\0')
+		if (string[length++] == '\n')
+			return (1);
 	return (0);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	char	*new;
-	int		i;
-	int		j;
-	size_t	n_size;
-
-	if (s1 == 0 || s2 == 0)
-		return (0);
-	n_size = ft_strlen(s1) + ft_strlen(s2);
-	new = malloc(n_size + 1 * sizeof(char));
-	if (new == NULL)
-		return (NULL);
-	i = 0;
-	while (s1[i])
-	{
-		new[i] = s1[i];
-		i++;
-	}
-	j = 0;
-	while (s2[j])
-		new[i++] = s2[j++];
-	new[i] = '\0';
-	return (new);
-}
-
-void	ft_bzero(void *s, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	if (n == 0)
-		return ;
-	while (i < n)
-	{
-		((char *)s)[i] = '\0';
-			i++;
-	}
-}
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	char	*p;
-
-	if (count == 0 || size == 0)
-	{
-		p = malloc(1);
-		if (p == 0)
-			return (0);
-		return (p);
-	}
-	if (count * size / size != count)
-		return (0);
-	p = malloc(count * size);
-	if (p == 0)
-		return (0);
-	ft_bzero (p, count * size);
-	return (p);
 }

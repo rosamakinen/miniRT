@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vectors.h                                          :+:      :+:    :+:   */
+/*   ft_strlen_int.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 07:43:31 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/09/06 09:18:25 by rmakinen         ###   ########.fr       */
+/*   Created: 2023/09/14 06:29:53 by rmakinen          #+#    #+#             */
+/*   Updated: 2023/09/14 06:32:41 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VECTOR
-# define VECTOR
-
-typedef struct	s_vec3
+int	ft_strlen_int(const char *str)
 {
-	float	x;
-	float	y;
-	float	z;
-}			t_vec3;
+	int	i;
 
-#endif
+	i = -1;
+	if (str)
+	{
+		while (str[++i])
+			;
+	}
+	return (i);
+}

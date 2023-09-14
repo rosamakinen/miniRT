@@ -6,15 +6,42 @@
 #    By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:30:50 by rmakinen          #+#    #+#              #
-#    Updated: 2023/09/06 11:20:06 by rmakinen         ###   ########.fr        #
+#    Updated: 2023/09/14 06:26:54 by rmakinen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = miniRT
-FILES = main handle_window circle camera
-SRC = $(addsuffix .c, $(FILES))
-OBJ = $(addsuffix .o, $(FILES))
-FLAGS = -Wall -Wextra -Werror
+SRC = main.c \
+		handle_window.c \
+		sphere.c \
+		scene.c \
+		camera.c \
+		parser/ft_atox.c \
+		parser/ft_print_error.c \
+		parser/get_ambient_light.c \
+		parser/get_new_object.c \
+		parser/get_camera.c \
+		parser/get_light_source.c \
+		parser/get_object_identifier.c \
+		parser/parser_utils.c \
+		parser/parser.c \
+
+OBJ = main.o \
+		handle_window.o \
+		sphere.o \
+		scene.o \
+		camera.o \
+		ft_atox.o \
+		ft_print_error.o \
+		get_camera.o \
+		get_light_source.o \
+		get_ambient_light.o \
+		get_new_object.o \
+		get_object_identifier.o \
+		parser_utils.o \
+		parser.o \
+
+FLAGS = -Wall -Wextra -Werror -g -fsanitize=address,undefined
 
 all: $(NAME)
 
