@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/09/13 12:51:44 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/09/14 07:39:50 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "vectors.h"
 #include "parser.h"
 
-typedef struct s_3D_vector t_3D_vector;
+typedef struct s_vec3 t_vec3;
 
 // typedef struct	s_window
 // {
@@ -44,7 +44,7 @@ int	exit_button(t_scene *img);
 int	draw_img(t_scene *img);
 int	draw_sphere(t_camera *cam, t_scene *img, int x, int y);
 
-t_3D_vector	vec_sub(t_vec3 vector1, t_3D_coordinate vector2);
+t_vec3	vec_sub(t_vec3 vector1, t_vec3 vector2);
 
 //camera
 void	get_ray_direction(t_camera *cam, t_scene *img, int x, int y);

@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 09:19:26 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/09/13 12:57:23 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/09/14 07:56:55 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,19 +89,12 @@ typedef struct s_check_once
 	int				ambient_light;
 }	t_check_once;
 
-typedef struct s_3D_coordinate
+typedef struct s_vec3
 {
 	float			x;
 	float			y;
 	float			z;
-}	t_3D_coordinate;
-
-typedef struct s_3D_vector
-{
-	float			x;
-	float			y;
-	float			z;
-}	t_3D_vector;
+}	t_vec3;
 
 typedef struct s_object
 {
@@ -112,8 +105,8 @@ typedef struct s_object
 
 typedef struct s_cylinder
 {
-	t_3D_coordinate	pos;
-	t_3D_vector		axis_vector;
+	t_vec3			pos;
+	t_vec3			axis_vector;
 	float			diameter;
 	float			height;
 	t_color			color;
@@ -121,22 +114,22 @@ typedef struct s_cylinder
 
 typedef struct s_plane
 {
-	t_3D_coordinate	point;
-	t_3D_vector		normal_vector;
-	t_color			color;
+	t_vec3		point;
+	t_vec3		normal_vector;
+	t_color		color;
 }	t_plane;
 
 typedef struct s_sphere
 {
-	t_3D_coordinate		pos;
-	float				diameter;
-	t_color				color;
+	t_vec3		pos;
+	float		diameter;
+	t_color		color;
 }	t_sphere;
 
 typedef struct s_light_source
 {
-	t_3D_coordinate		pos;
-	float				ratio;
+	t_vec3		pos;
+	float		ratio;
 	//WARNING: only add next two if we do bonus
 	//START
 	//t_color				color;
@@ -146,8 +139,9 @@ typedef struct s_light_source
 
 typedef struct s_camera
 {
-	t_3D_coordinate		pos;
-	t_3D_vector			norm_vector;
+	t_vec3			pos;
+	t_vec3			norm_vector;
+	t_vec3			norm_coord;
 	t_degrees			fov;
 }	t_camera;
 
@@ -193,12 +187,12 @@ int			ft_atoi_mod(const char *str, int *index);
 
 //parser_utils.c
 int			get_float(float *dst, const char *str, int *index);
-int			get_3d_coordindate(t_3D_coordinate *coordinate,
+int			get_3d_coordindate(t_vec3 *coordinate,
 				const char *str, int *index);
 int			skip_chars(const char *skippable, int index, const char *str);
 int			get_color(t_color *color, const char *str, int *index);
 int			get_degrees(t_degrees *dst, const char *str, int *index);
-int			get_3d_normal_vector(t_3D_vector *coordinate, const char *str,
+int			get_3d_normal_vector(t_vec3 *coordinate, const char *str,
 				int *index);
 
 //get_light_source.c

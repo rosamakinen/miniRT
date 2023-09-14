@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:13:57 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/09/13 12:24:12 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/09/14 07:42:40 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 //	if (is_digit_mod(str[*index], 1, 1))
 //		return (EXIT_FAILURE);
 // ^ these checks are to prevent the input from being for example +-10.0,3,4
-int	get_3d_coordindate(t_3D_coordinate *coordinate, const char *str, int *index)
+int	get_3d_coordindate(t_vec3 *coordinate, const char *str, int *index)
 {
 	*index = skip_chars(" ", *index, str);
 	if (!str[*index] || str[*index] == '\n' || !is_digit_mod(str[*index], 1, 1))
@@ -128,7 +128,7 @@ int	get_degrees(t_degrees *dst, const char *str, int *index)
 
 
 
-int	get_3d_normal_vector(t_3D_vector *coordinate, const char *str, int *index)
+int	get_3d_normal_vector(t_vec3 *coordinate, const char *str, int *index)
 {
 	*index = skip_chars(" ", *index, str);
 	if (!str[*index] || str[*index] == '\n' || !is_digit_mod(str[*index], 1, 1))

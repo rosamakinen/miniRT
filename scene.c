@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:44:07 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/09/13 12:42:54 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/09/14 08:12:00 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	draw_img(t_scene *img)
 
 	x = 0;
 	y = 0;
+	cam = img->camera;
 	while(y < img->height)
 	{
 		x = 0;
