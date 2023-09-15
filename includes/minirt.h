@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/09/14 13:38:29 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/09/15 06:42:42 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 typedef struct s_vec3 t_vec3;
 typedef struct s_scene t_scene;
 typedef struct s_camera t_camera;
+typedef struct s_hit t_hit;
 
 //window
 int	handle_window(t_scene *img);
@@ -36,6 +37,7 @@ int	exit_button(t_scene *img);
 int	draw_img(t_scene *img);
 int	draw_sphere(t_camera *cam, t_scene *img, int x, int y);
 
+//vector and coordinate manipulation
 t_vec3	vec_sub(t_vec3 vector1, t_vec3 vector2);
 float	distance(t_vec3 vector1);
 float	dot_vector3(t_vec3 vector1, t_vec3 vector2);
@@ -43,4 +45,9 @@ t_vec3	sub_coord(t_vec3 coord1, t_vec3 coord2);
 
 //camera
 void	get_ray_direction(t_camera *cam, t_scene *img, int x, int y);
+
+//scene
+int		get_closest_hit(t_camera *cam, t_scene *img, t_hit *hit, int x, int y);
+void	get_distance(t_scene *img, t_camera *cam, t_hit *hit);
+
 #endif

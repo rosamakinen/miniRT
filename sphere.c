@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 10:01:24 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/09/14 11:08:25 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/09/15 07:58:19 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ float	distance(t_vec3 vector1)
 {
 	float ret;
 
-	ret = vector1.x * vector1.x + vector1.y * vector1.y + vector1.z * vector1.z;
+	ret = dot_vector3(vector1, vector1);
 	return (sqrtf(ret));
 }
 
