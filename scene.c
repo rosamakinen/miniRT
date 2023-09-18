@@ -22,7 +22,7 @@
 //find the shortest distance and for that object fetch the information
 //for now, just if it is a hit and the distance is the smallest, draw a colour on screen
 
-void	get_distance(t_scene *img, t_camera *cam, t_hit *hit)
+void	get_distance(t_scene *img, t_camera *cam, t_hit *hit, int id)
 {
 	//distance is:
 	//d(P1,P2) = (x2-x1)2 + (y2-y1)2 + (z2-z1)2.
@@ -32,7 +32,10 @@ void	get_distance(t_scene *img, t_camera *cam, t_hit *hit)
 	subtracted = vec_sub(cam->norm_coord, (*hit).pos);
 	new_distance = distance(subtracted);
 	if (new_distance < img->hit_data.distance)
+	{
+		img->hit_data.closest_id = id;
 		img->hit_data.distance = new_distance;
+	}
 	printf("%f\n", new_distance);
 }
 
@@ -52,7 +55,7 @@ int	get_closest_hit(t_camera *cam, t_scene *img, t_hit *hit, int x, int y)
 			//hit = get_hit(cam, temp->objects, x, y);
 			printf("type is %hd, hit is %i\n", temp->objects->type, hit->hit);
 			if ((*hit).hit == 1)
-				get_distance(img, cam, hit);
+				get_distance(img, cam, hit, temp->objects->id);
 			temp->objects = temp->objects->next;
 		}
 	}
@@ -75,12 +78,11 @@ int	per_pixel(t_camera *cam, t_scene *img, int x, int y)
 	img->hit_data.distance = FLT_MAX;
 	get_ray_direction(cam, img, x, y);
 	get_closest_hit(cam, img, &hit, x, y);
-	// func for normal
+	get_normal(img, &hit);
+	//get_brightness(); // calculated from normal and light origin
 	// func for color
 	// func for light
 	// etc
-
-
 	return (0);
 }
 
