@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+         #
+#    By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:30:50 by rmakinen          #+#    #+#              #
-#    Updated: 2023/09/20 10:27:50 by rmakinen         ###   ########.fr        #
+#    Updated: 2023/09/20 13:10:57 by rmakinen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRC = main.c \
 		camera.c \
 		vectors.c \
 		normals.c \
+		light.c \
 		parser/ft_atox.c \
 		parser/ft_print_error.c \
 		parser/get_ambient_light.c \
@@ -36,6 +37,7 @@ OBJ = main.o \
 		camera.o \
 		vectors.o \
 		normals.o \
+		light.o \
 		ft_atox.o \
 		ft_print_error.o \
 		get_camera.o \

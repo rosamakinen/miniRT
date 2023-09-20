@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/09/20 10:27:12 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/09/20 13:11:48 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int		draw_sphere(t_camera *cam, t_scene *img, int x, int y);
 t_vec3	vec3_sub(t_vec3 vector1, t_vec3 vector2);
 float	distance(t_vec3 vector1);
 float	dot_vector3(t_vec3 vector1, t_vec3 vector2);
+t_vec3	vec3_normalize(t_vec3 vector);
 
 //camera
 void	get_ray_direction(t_camera *cam, t_scene *img, int x, int y);
@@ -55,6 +56,7 @@ void	get_ray_direction(t_camera *cam, t_scene *img, int x, int y);
 int		get_closest_hit(t_camera *cam, t_scene *img, t_hit *hit, int x, int y);
 void	get_distance(t_scene *img, t_camera *cam, t_hit *hit, int id);
 void	get_normal(t_scene *img, t_hit *hit);
+float	get_brightness(t_scene *img, t_hit *hit);
 
 //ray_hit
 t_hit	get_hit(t_camera *cam, t_object *objects, float x, float y);
