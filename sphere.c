@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 10:01:24 by rmakinen          #+#    #+#             */
 /*   Updated: 2023/09/20 10:31:11 by rmakinen         ###   ########.fr       */
@@ -42,6 +42,17 @@ int	draw_sphere(t_camera *cam, t_scene *img, int x, int y)
 	//a = ray origin // "camera"
 	//b = ray direction
 	//r = radius
+	float x_holder = x;
+	float y_holder = y;
+	if (x > 1080 / 2 )
+		 x -= 1080 /2;
+	else
+		x = (1080 / 2 - x) * (-1);
+	if (y > 1080 / 2 )
+		y = (1080 / 2 - y) * (-1); 
+	else
+		 y -= 1080 /2;
+	y *= (-1);
 
 	//** quadratic formula is b^2 - 4ac **
 	cam->norm_coord.z = 0;
@@ -49,9 +60,15 @@ int	draw_sphere(t_camera *cam, t_scene *img, int x, int y)
 	b = 2.0f * dot_vector3(cam_ray, cam->norm_coord);
 	c = dot_vector3(cam_ray, cam_ray) - radius * radius;
 	hit = b * b - 4.0 * a * c;
-	if (hit >= 0.0)
+	t_vec3 test1;
+	t_vec3 test2;
+	t_vec3 test_dir= {0, 0, -1};
+	t_vec3 test_cam = {x, y, 5100};
+
+	hit = sphere_hit(sphere, &test_cam, &test_dir, &test1, &test2);
+	if (hit > 0.0)
 	{
-		mlx_pixel_put(img->mlx, img->win, x, y, 0xFFC301); //yellow for hit
+		mlx_pixel_put(img->mlx, img->win, x_holder, y_holder, 0xFFC301); //yellow for hit
 		return (1);
 	}
 	return (0);
