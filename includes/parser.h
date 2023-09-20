@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 09:19:26 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/09/14 13:35:46 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/09/19 06:41:42 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_vec3
 
 typedef struct s_object
 {
+	int				id;
 	void			*data;
 	struct s_object	*next;
 	t_object_type	type;
@@ -107,6 +108,7 @@ typedef struct s_hit
 
 typedef struct s_hit_data
 {
+	int		closest_id;
 	float	distance;
 	t_vec3	normal;
 	t_vec3	color;
