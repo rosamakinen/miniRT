@@ -51,6 +51,7 @@ typedef struct s_vec3
 
 typedef struct s_object
 {
+	int				id;
 	void			*data;
 	struct s_object	*next;
 	t_object_type	type;
@@ -100,6 +101,21 @@ typedef struct s_ambient_light
 	t_color			color;
 }	t_ambient_light;
 
+typedef struct s_hit
+{
+	int		hit;
+	t_vec3	pos;
+}	t_hit;
+
+typedef struct s_hit_data
+{
+	int		closest_id;
+	float	distance;
+	t_vec3	normal;
+	t_vec3	color;
+
+}	t_hit_data;
+
 typedef struct s_scene
 {
 	void			*mlx;
@@ -110,6 +126,7 @@ typedef struct s_scene
 	t_ambient_light	ambient_light;
 	t_camera		camera;
 	t_object		*objects;
+	t_hit_data		hit_data;
 	t_check_once	check_once;
 	short			error_catcher;
 }	t_scene;

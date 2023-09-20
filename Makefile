@@ -6,7 +6,7 @@
 #    By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:30:50 by rmakinen          #+#    #+#              #
-#    Updated: 2023/09/19 20:00:40 by mkaratzi         ###   ########.fr        #
+#    Updated: 2023/09/20 10:27:50 by rmakinen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@ SRC = main.c \
 		sphere.c \
 		scene.c \
 		camera.c \
+		vectors.c \
+		normals.c \
 		parser/ft_atox.c \
 		parser/ft_print_error.c \
 		parser/get_ambient_light.c \
@@ -25,13 +27,15 @@ SRC = main.c \
 		parser/get_object_identifier.c \
 		parser/parser_utils.c \
 		parser/parser.c \
-		find_hit.c \
+		ray_hit.c \
 
 OBJ = main.o \
 		handle_window.o \
 		sphere.o \
 		scene.o \
 		camera.o \
+		vectors.o \
+		normals.o \
 		ft_atox.o \
 		ft_print_error.o \
 		get_camera.o \
@@ -41,7 +45,7 @@ OBJ = main.o \
 		get_object_identifier.o \
 		parser_utils.o \
 		parser.o \
-		find_hit.o \
+		ray_hit.o \
 
 FLAGS = -Wall -Wextra -Werror -g -fsanitize=address,undefined
 

@@ -1,33 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   camera.c                                           :+:      :+:    :+:   */
+/*   vectors.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 11:18:33 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/09/19 06:41:45 by rmakinen         ###   ########.fr       */
+/*   Created: 2023/09/19 06:34:26 by rmakinen          #+#    #+#             */
+/*   Updated: 2023/09/20 10:20:20 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/minirt.h"
 
-void	get_ray_direction(t_camera *cam, t_scene *img, int img_x, int img_y)
+float	distance(t_vec3 vector1)
 {
-	float normal_x;
-	float normal_y;
+	float ret;
 
-	if (img_x < img->width / 2)
-		normal_x = img->width / 2 - img_x;
-	else
-		normal_x = img_x - img->width / 2;
-
-	if (img_y > img->height / 2)
-		normal_y = img->height / 2 - img_y;
-	else
-		normal_y = img_y - img->height / 2;
-
-	cam->norm_coord.x = normal_x;
-	cam->norm_coord.y = normal_y;
-	cam->norm_coord.z = -1;
+	ret = dot_vector3(vector1, vector1);
+	return (sqrtf(ret));
 }
+
+t_vec3	vec3_sub(t_vec3 vector1, t_vec3 vector2)
+{
+	t_vec3	result;
+
+	result.x = vector1.x - vector2.x;
+	result.y = vector1.y - vector2.y;
+	result.z = vector1.z - vector2.z;
+	return (result);
+}
+
+float	dot_vector3(t_vec3 vector1, t_vec3 vector2)
+{
+	return(vector1.x * vector2.x + vector1.y * vector2.y + vector1.z * vector2.z);
+}
+
+
+
+
+

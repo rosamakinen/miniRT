@@ -16,6 +16,80 @@
 #include <math.h>
 #include <stdio.h>
 
+//first get ray_direction, store it in camera->norm_coord;
+//loop through the objects, for each object send to check hit, and object id
+//find the shortest distance and for that object fetch the information
+//for now, just if it is a hit and the distance is the smallest, draw a colour on screen
+
+
+
+void	get_distance(t_scene *img, t_camera *cam, t_hit *hit, int id)
+{
+	//distance is:
+	//d(P1,P2) = (x2-x1)2 + (y2-y1)2 + (z2-z1)2.
+
+	t_vec3	subtracted;
+	float	new_distance;
+	subtracted = vec3_sub(cam->norm_coord, (*hit).pos);
+	new_distance = distance(subtracted);
+	if (new_distance < img->hit_data.distance)
+	{
+		img->hit_data.closest_id = id;
+		img->hit_data.distance = new_distance;
+	}
+	printf("%f\n", new_distance);
+}
+
+int	get_closest_hit(t_camera *cam, t_scene *img, t_hit *hit, int x, int y)
+{
+	//loop through the objects && get hit
+	//if hit, save the object and
+
+	t_scene		*temp;
+
+	temp = img;
+	img->hit_data.distance = FLT_MAX;
+	img->hit_data.closest_id = 0;
+	if (temp)
+	{
+			//keep track of which object is which (maybe initialize the ids elsewhere)
+			(*hit) = get_hit(cam, temp->objects, x, y);
+			// printf("type is %hd, hit is %i\n", temp->objects->type, hit->hit);
+			if ((*hit).hit == 1)
+			{
+				mlx_pixel_put(img->mlx, img->win, x, y, 0xFFC301); //yellow
+				get_distance(img, cam, hit, temp->objects->id);
+			}
+			else
+				mlx_pixel_put(img->mlx, img->win, x, y, 0x581847); // purple
+
+	}
+	// if (img->hit_data.distance != FLT_MAX)
+	// {
+	// 	ft_printf("hit distance: %i\n", (int)img->hit_data.distance);
+	// 	return (1);
+	// }
+	// else
+	// 	mlx_pixel_put(img->mlx, img->win, x, y, 0x581847); // purple
+	return (0);
+}
+
+int	per_pixel(t_camera *cam, t_scene *img, int x, int y)
+{
+	t_hit	hit;
+	hit.hit = 1;
+
+	img->hit_data.distance = FLT_MAX;
+	// get_ray_direction(cam, img, x, y);
+	get_closest_hit(cam, img, &hit, x, y);
+	// get_normal(img, &hit);
+	//get_brightness(); // calculated from normal and light origin
+	// func for color
+	// func for light
+	// etc
+	return (0);
+}
+
 int	draw_img(t_scene *img)
 {
 	t_camera	cam;
@@ -30,9 +104,7 @@ int	draw_img(t_scene *img)
 		x = 0;
 		while (x < img->width)
 		{
-			get_ray_direction(&cam, img, x, y); /// coordinate systems x & y
-			if (!draw_sphere(&cam, img, x, y))
-				mlx_pixel_put(img->mlx, img->win, x, y, 0x581847); // dark for background
+			per_pixel(&cam, img, x , y);
 			x++;
 		}
 		y++;
