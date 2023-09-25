@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:44:07 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/09/20 13:10:22 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/09/25 11:14:25 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,34 +64,53 @@ int	get_closest_hit(t_camera *cam, t_scene *img, t_hit *hit, int x, int y)
 	return (0);
 }
 
+t_object *set_id(t_scene *img)
+{
+	t_object *temp;
+	t_object *head;
+	int		i;
+
+	i = 0;
+	temp = img->objects;
+	head = temp;
+	while (temp->next != NULL)
+	{
+		temp->id = i;
+		temp = temp->next;
+		i++;
+	}
+	return (head);
+}
+
 int	per_pixel(t_camera *cam, t_scene *img, int x, int y)
 {
 	t_hit	hit;
+	t_vec4	color;
+
 	hit.hit = 1;
 
 	img->hit_data.distance = FLT_MAX;
-	// get_ray_direction(cam, img, x, y);
+	// img->objects = set_id(img);
+	get_ray_direction(cam, img, x, y);
 	get_closest_hit(cam, img, &hit, x, y);
 	get_normal(img, &hit);
-	img->hit_data.brightness = get_brightness(img, &hit); // calculated from normal and light direction
-	if (img->hit_data.distance != FLT_MAX)
-	{
-		mlx_pixel_put(img->mlx, img->win, x, y, 0xFFC301 * img->hit_data.brightness); //yellow
-		//ft_printf("hit distance: %i\n", (int)img->hit_data.distance);
-		return (1);
-	}
-	else
-		mlx_pixel_put(img->mlx, img->win, x, y, 0x581847); // purple
-
-	// func for color
+	color = get_pixel_color(img, &hit);
+	printf("r %f, g %f, b %f\n", img->hit_data.color.r, img->hit_data.color.g, img->hit_data.color.b);
+	//if (hit.hit == 1)
+	//{
+		//return (0xFFC301 * img->hit_data.brightness); //yellow
+	//}
+	//else
+		//return (0x581847); // purple
 	// func for light
 	// etc
-	return (0);
+	return (normalized_vec4_to_int(color));
 }
 
 int	draw_img(t_scene *img)
 {
 	t_camera	cam;
+	int			color;
 	int			x;
 	int			y;
 
@@ -103,7 +122,8 @@ int	draw_img(t_scene *img)
 		x = 0;
 		while (x < img->width)
 		{
-			per_pixel(&cam, img, x , y);
+			color = per_pixel(&cam, img, x , y);
+			mlx_pixel_put(img->mlx, img->win, x, y, color);
 			x++;
 		}
 		y++;

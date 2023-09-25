@@ -6,7 +6,7 @@
 #    By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:30:50 by rmakinen          #+#    #+#              #
-#    Updated: 2023/09/20 13:10:57 by rmakinen         ###   ########.fr        #
+#    Updated: 2023/09/25 10:35:26 by rmakinen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,8 @@ SRC = main.c \
 		parser/parser_utils.c \
 		parser/parser.c \
 		ray_hit.c \
+		colors.c \
+		color_math.c \
 
 OBJ = main.o \
 		handle_window.o \
@@ -48,8 +50,10 @@ OBJ = main.o \
 		parser_utils.o \
 		parser.o \
 		ray_hit.o \
+		colors.o \
+		color_math.o \
 
-FLAGS = -Wall -Wextra -Werror -g -fsanitize=address,undefined
+FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 09:19:26 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/09/20 13:09:12 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/09/25 09:34:45 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,14 @@ typedef struct s_vec3
 	float			y;
 	float			z;
 }	t_vec3;
+
+typedef struct s_vec4
+{
+	float			alpha;
+	float			r;
+	float			g;
+	float			b;
+}	t_vec4;
 
 typedef struct s_object
 {
@@ -114,7 +122,7 @@ typedef struct s_hit_data
 	float	brightness;
 	t_vec3	norm_pos;
 	t_vec3	normal;
-	t_vec3	color;
+	t_vec4	color;
 
 }	t_hit_data;
 
