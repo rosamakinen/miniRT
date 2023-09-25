@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:44:07 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/09/25 11:14:25 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/09/25 11:50:17 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,6 @@
 #include "./libft/includes/ft_printf.h"
 #include <math.h>
 #include <stdio.h>
-
-//first get ray_direction, store it in camera->norm_coord;
-//loop through the objects, for each object send to check hit, and object id
-//find the shortest distance and for that object fetch the information
-//for now, just if it is a hit and the distance is the smallest, draw a colour on screen
-
-
 
 void	get_distance(t_scene *img, t_camera *cam, t_hit *hit, int id)
 {
@@ -42,9 +35,6 @@ void	get_distance(t_scene *img, t_camera *cam, t_hit *hit, int id)
 
 int	get_closest_hit(t_camera *cam, t_scene *img, t_hit *hit, int x, int y)
 {
-	//loop through the objects && get hit
-	//if hit, save the object and
-
 	t_scene		*temp;
 
 	temp = img;
@@ -54,7 +44,6 @@ int	get_closest_hit(t_camera *cam, t_scene *img, t_hit *hit, int x, int y)
 	{
 			//keep track of which object is which (maybe initialize the ids elsewhere)
 			(*hit) = get_hit(cam, temp->objects, x, y);
-			// printf("type is %hd, hit is %i\n", temp->objects->type, hit->hit);
 			if ((*hit).hit == 1)
 			{
 				get_distance(img, cam, hit, temp->objects->id);
@@ -96,15 +85,13 @@ int	per_pixel(t_camera *cam, t_scene *img, int x, int y)
 	get_normal(img, &hit);
 	color = get_pixel_color(img, &hit);
 	printf("r %f, g %f, b %f\n", img->hit_data.color.r, img->hit_data.color.g, img->hit_data.color.b);
-	//if (hit.hit == 1)
-	//{
-		//return (0xFFC301 * img->hit_data.brightness); //yellow
-	//}
-	//else
-		//return (0x581847); // purple
+	if (hit.hit == 1)
+		return (normalized_vec4_to_int(color)); //hit_color
+	else
+		return (0x581847); // purple for background
 	// func for light
 	// etc
-	return (normalized_vec4_to_int(color));
+	return (0);
 }
 
 int	draw_img(t_scene *img)
