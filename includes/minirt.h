@@ -19,10 +19,11 @@
 # include <math.h>
 # include <stdio.h>
 # include <stdint.h>
-# include <mlx.h>
+//# include <mlx.h>
 # include <stdlib.h>
 # include "parser.h"
 # include "../libft/includes/libft.h"
+# include "../mlx/mlx.h"
 
 typedef struct s_vec3 t_vec3;
 typedef struct s_vec4 t_vec4;
@@ -38,7 +39,7 @@ typedef struct s_sphere	t_sphere;
 
 //window
 int			handle_window(t_scene *img);
-int			exit_button(t_scene *img);
+int			exit_button();
 
 //drawing
 int			draw_img(t_scene *img);
@@ -77,6 +78,7 @@ void		get_sphere_color(t_object *data, t_scene *img);
 void		get_cylinder_color(t_object *data, t_scene *img);
 void		get_plane_color(t_object *data, t_scene *img);
 t_vec4		multiply_vec4_value(t_vec4 color, float value);
+float		clamp_color(float vec_color);
 
 //testing_hit_funcs.c
 int			infinite_cylinder_hit(const t_vec3 *ray_origin, const t_vec3 *ray_direction, const t_cylinder *cylinder, t_vec3 *intersection1, t_vec3 *intersection2);
