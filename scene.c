@@ -77,16 +77,17 @@ int	per_pixel(t_camera *cam, t_scene *img, int x, int y)
 	t_vec4	color;
 
 	hit.hit = 1;
-
 	img->hit_data.distance = FLT_MAX;
 	// img->objects = set_id(img);
 	get_ray_direction(cam, img, x, y);
 	get_closest_hit(cam, img, &hit, x, y);
-	get_normal(img, &hit);
-	color = get_pixel_color(img, &hit);
-	printf("r %f, g %f, b %f\n", img->hit_data.color.r, img->hit_data.color.g, img->hit_data.color.b);
+	//printf("x %f, y %f, z %f\n", img->hit_data.norm_pos.x, img->hit_data.norm_pos.y, img->hit_data.norm_pos.z);
 	if (hit.hit == 1)
+	{
+		get_normal(img, &hit);
+		color = get_pixel_color(img, &hit);
 		return (normalized_vec4_to_int(color)); //hit_color
+	}
 	else
 		return (0x581847); // purple for background
 	// func for light

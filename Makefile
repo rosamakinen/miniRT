@@ -53,14 +53,15 @@ OBJ = main.o \
 		colors.o \
 		color_math.o \
 
-FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -g -fsanitize=address,undefined
 
 all: $(NAME)
 
 $(NAME): $(SRC)
 	@cd libft && $(MAKE)
 	@cc $(FLAGS) -c $(SRC)
-	@cc $(FLAGS) $(OBJ) libft/libft.a -L /usr/local/include -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	#@cc $(FLAGS) $(OBJ) libft/libft.a -L /usr/local/include -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	@cc $(FLAGS) $(OBJ) libft/libft.a mlx/libmlx.a -framework OpenGL -framework AppKit -o $(NAME)
 
 clean:
 	@cd libft && make clean

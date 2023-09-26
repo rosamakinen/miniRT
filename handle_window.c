@@ -12,24 +12,18 @@
 
 #include "./includes/minirt.h"
 
-int	key_event(int keycode, t_scene *img)
+int	key_event(int keycode)
 {
 	if (keycode == 53)
 	{
-		//img not allocated yet
-		//free(img);
-		img = NULL;
 		exit (0);
 	}
 
 	return (0);
 }
 
-int	exit_button(t_scene *img)
+int	exit_button()
 {
-	//img not allocated yet
-	//free(img);
-	img = NULL;
 	exit (0);
 	return (0);
 }
