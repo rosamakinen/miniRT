@@ -33,6 +33,8 @@ void	get_normal(t_scene *img, t_hit *hit)
 	t_object	*temp_objects;
 
 	temp_objects = img->objects;
+	//printf("closest in normal %i\n",img->hit_data.closest_id);
+	//printf("id in normal %i\n",temp_objects->id);
 	if(img->hit_data.closest_id)
 	{
 		while (temp_objects->id && temp_objects->id != img->hit_data.closest_id)

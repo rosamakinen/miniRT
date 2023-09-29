@@ -24,12 +24,12 @@ t_vec3	negative_vector(t_vec3 light_direction)
 
 float	get_brightness(t_scene *img, t_hit *hit)
 {
-	float	brightness;
+	float	result;
 	t_vec3	light_direction;
 
 	light_direction = vec3_sub(img->light_sources.pos, hit->pos);// subtracting light pos, hit pos
 	light_direction = vec3_normalize(light_direction);
 	light_direction = negative_vector(light_direction);
-	brightness = dot_vector3(img->hit_data.normal, light_direction);
-	return (brightness);
+	result = dot_vector3(img->hit_data.normal, light_direction);
+	return (result);
 }

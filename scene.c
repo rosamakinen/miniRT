@@ -39,7 +39,7 @@ int	get_closest_hit(t_camera *cam, t_scene *img, t_hit *hit, int x, int y)
 
 	temp = img;
 	img->hit_data.distance = FLT_MAX;
-	img->hit_data.closest_id = 0;
+	img->hit_data.closest_id = INT_MAX;
 	if (temp)
 	{
 			//keep track of which object is which (maybe initialize the ids elsewhere)
@@ -53,32 +53,31 @@ int	get_closest_hit(t_camera *cam, t_scene *img, t_hit *hit, int x, int y)
 	return (0);
 }
 
-t_object *set_id(t_scene *img)
+void	set_id(t_scene *img)
 {
 	t_object *temp;
-	t_object *head;
 	int		i;
 
-	i = 0;
+	i = 1;
 	temp = img->objects;
-	head = temp;
-	while (temp->next != NULL)
+	while (temp)
 	{
+		//printf("i; %i, temp->i %i\n", i, temp->id);
 		temp->id = i;
 		temp = temp->next;
 		i++;
 	}
-	return (head);
 }
 
 int	per_pixel(t_camera *cam, t_scene *img, int x, int y)
 {
 	t_hit	hit;
 	t_vec4	color;
+	int		int_col;
 
 	hit.hit = 1;
 	img->hit_data.distance = FLT_MAX;
-	// img->objects = set_id(img);
+	int_col = 0;
 	get_ray_direction(cam, img, x, y);
 	get_closest_hit(cam, img, &hit, x, y);
 	//printf("x %f, y %f, z %f\n", img->hit_data.norm_pos.x, img->hit_data.norm_pos.y, img->hit_data.norm_pos.z);
@@ -86,10 +85,12 @@ int	per_pixel(t_camera *cam, t_scene *img, int x, int y)
 	{
 		get_normal(img, &hit);
 		color = get_pixel_color(img, &hit);
-		return (normalized_vec4_to_int(color)); //hit_color
+		int_col = normalized_vec4_to_int(color);
+		printf("%x\n", int_col);
+		return (int_col); //hit_color
 	}
 	else
-		return (0x581847); // purple for background
+		return (0x000000); // black for background
 	// func for light
 	// etc
 	return (0);
@@ -105,6 +106,7 @@ int	draw_img(t_scene *img)
 	x = 0;
 	y = 0;
 	cam = img->camera;
+	set_id(img);
 	while(y < img->height)
 	{
 		x = 0;
