@@ -28,7 +28,7 @@ int	normalized_vec4_to_int(t_vec4 color)
 	return ((alpha << 24) | (red << 16) | (green << 8) | blue);
 }
 
-void	normalize_argb(t_vec4 *color)
+void	normalize_color_vec4(t_vec4 *color)
 {
 	color->alpha = 1;
 	color->r = color->r / 255.0;
@@ -46,14 +46,14 @@ float	clamp_color(float vec_color)
 		return (vec_color);	
 }
 
-t_vec4	uint_to_normalized_vec4(unsigned int color)
+t_vec4	int_to_vec4(int color)
 {
 	t_vec4	vec_color;
 
 	vec_color.alpha = 1.0;
-	vec_color.r = (float)((color >> 16) & 0xFF) / 255.0f;
-	vec_color.g = (float)((color >> 8) & 0xFF) / 255.0f;
-	vec_color.b = (float)(color & 0xFF) / 255.0f;
+	vec_color.r = (float)((color >> 16) & 0xFF);
+	vec_color.g = (float)((color >> 8) & 0xFF);
+	vec_color.b = (float)(color & 0xFF);
 	printf("alpha %f, red %f, green %f, blue %f\n", vec_color.alpha, vec_color.r, vec_color.g, vec_color.b);
 	return (vec_color);
 }

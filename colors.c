@@ -18,7 +18,7 @@ void	get_plane_color(t_object *data, t_scene *img)
 	t_vec4		temp_color;
 	plane = (t_plane *)data;
 
-	temp_color = uint_to_normalized_vec4(plane->color);
+	temp_color = int_to_vec4(plane->color);
 	img->hit_data.color = temp_color;
 }
 
@@ -28,7 +28,7 @@ void	get_cylinder_color(t_object *data, t_scene *img)
 	t_vec4		temp_color;
 	cylinder = (t_cylinder *)data;
 
-	temp_color = uint_to_normalized_vec4(cylinder->color);
+	temp_color = int_to_vec4(cylinder->color);
 	img->hit_data.color = temp_color;
 }
 
@@ -39,7 +39,8 @@ void	get_sphere_color(t_object *data, t_scene *img)
 	sphere = (t_sphere *)data;
 
 	//printf("sphere->color = %i\n", sphere->color);
-	temp_color = uint_to_normalized_vec4(sphere->color);
+	temp_color = int_to_vec4(sphere->color);
+	normalize_color_vec4(&temp_color);
 	printf("temp r %f, g %f, b %f\n", temp_color.r, temp_color.g, temp_color.b);
 	img->hit_data.color = temp_color;
 }

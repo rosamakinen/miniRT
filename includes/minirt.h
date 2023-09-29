@@ -21,6 +21,7 @@
 # include <stdint.h>
 //# include <mlx.h>
 # include <stdlib.h>
+# include <limits.h>
 # include "parser.h"
 # include "../libft/includes/libft.h"
 # include "../mlx/mlx.h"
@@ -58,7 +59,7 @@ void		get_ray_direction(t_camera *cam, t_scene *img, int x, int y);
 int			get_closest_hit(t_camera *cam, t_scene *img, t_hit *hit, int x, int y);
 void		get_distance(t_scene *img, t_camera *cam, t_hit *hit, int id);
 float		get_brightness(t_scene *img, t_hit *hit);
-t_object	*set_id(t_scene *img);
+void		set_id(t_scene *img);
 
 //normals.c
 void		get_normal(t_scene *img, t_hit *hit);
@@ -70,8 +71,8 @@ t_hit		get_hit(t_camera *cam, t_object *objects, float x, float y);
 
 //colors.c & color_math.c
 int			normalized_vec4_to_int(t_vec4 color);
-void		normalize_argb(t_vec4 *color);
-t_vec4		int_to_normalized_vec4(int color);
+void		normalize_color_vec4(t_vec4 *color);
+t_vec4		int_to_vec4(int color);
 t_vec4		get_pixel_color(t_scene *img, t_hit *hit);
 void		get_object_basecolor(t_scene *img);
 void		get_sphere_color(t_object *data, t_scene *img);
