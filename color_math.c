@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 10:23:39 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/02 12:10:47 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/03 07:59:19 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_vec4	int_to_vec4(int color)
 	vec_color.r = (float)((color >> 16) & 0xFF);
 	vec_color.g = (float)((color >> 8) & 0xFF);
 	vec_color.b = (float)(color & 0xFF);
-	printf("alpha %f, red %f, green %f, blue %f\n", vec_color.alpha, vec_color.r, vec_color.g, vec_color.b);
+	//printf("alpha %f, red %f, green %f, blue %f\n", vec_color.alpha, vec_color.r, vec_color.g, vec_color.b);
 	return (vec_color);
 }
 
@@ -67,9 +67,7 @@ t_vec4	multiply_vec4_float(t_vec4 color, float value)
 	temp_color.g = color.g * value;
 	temp_color.b = color.b * value;
 
-	temp_color.r = clamp_color(temp_color.r);
-	temp_color.g = clamp_color(temp_color.g);
-	temp_color.b = clamp_color(temp_color.b);
+	temp_color = clamp_vec4(temp_color);
 	return (temp_color);
 }
 
@@ -82,9 +80,7 @@ t_vec4	multiply_vec4(t_vec4 color, t_vec4 multiplier)
 	temp_color.g = color.g * multiplier.g;
 	temp_color.b = color.b * multiplier.b;
 
-	temp_color.r = clamp_color(temp_color.r);
-	temp_color.g = clamp_color(temp_color.g);
-	temp_color.b = clamp_color(temp_color.b);
+	temp_color = clamp_vec4(temp_color);
 	return (temp_color);
 }
 
@@ -97,9 +93,7 @@ t_vec4	add_vec4(t_vec4 color, t_vec4 added)
 	temp_color.g = color.g + added.g;
 	temp_color.b = color.b + added.b;
 
-	temp_color.r = clamp_color(temp_color.r);
-	temp_color.g = clamp_color(temp_color.g);
-	temp_color.b = clamp_color(temp_color.b);
+	temp_color = clamp_vec4(temp_color);
 	return (temp_color);
 }
 
@@ -112,8 +106,18 @@ t_vec4	add_vec4_float(t_vec4 color, float value)
 	temp_color.g = color.g + value;
 	temp_color.b = color.b + value;
 
-	temp_color.r = clamp_color(temp_color.r);
-	temp_color.g = clamp_color(temp_color.g);
-	temp_color.b = clamp_color(temp_color.b);
+	temp_color = clamp_vec4(temp_color);
+	return (temp_color);
+}
+
+t_vec4	clamp_vec4(t_vec4 color)
+{
+	t_vec4	temp_color;
+
+	temp_color.alpha = 1;
+	temp_color.r = clamp_color(color.r);
+	temp_color.g = clamp_color(color.g);
+	temp_color.b = clamp_color(color.b);
+
 	return (temp_color);
 }

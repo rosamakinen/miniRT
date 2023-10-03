@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/02 12:10:10 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/03 07:57:34 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ t_vec4		add_vec4_float(t_vec4 color, float value);
 t_vec4		multiply_vec4(t_vec4 color, t_vec4 multiplier);
 t_vec4		add_ambient_value(t_scene *img);
 t_vec4		add_vec4(t_vec4 color, t_vec4 added);
+t_vec4		clamp_vec4(t_vec4 color);
 float		clamp_color(float vec_color);
 
 //testing_hit_funcs.c

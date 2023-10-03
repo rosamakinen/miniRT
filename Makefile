@@ -6,7 +6,7 @@
 #    By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:30:50 by rmakinen          #+#    #+#              #
-#    Updated: 2023/10/03 06:15:15 by rmakinen         ###   ########.fr        #
+#    Updated: 2023/10/03 06:32:14 by rmakinen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ SRC = main.c \
 		ray_hit.c \
 		colors.c \
 		color_math.c \
-		get_object_color.c \
+		object_colors.c \
 
 OBJ = main.o \
 		handle_window.o \
@@ -53,7 +53,7 @@ OBJ = main.o \
 		ray_hit.o \
 		colors.o \
 		color_math.o \
-		get_object_color.o \
+		object_colors.o \
 
 FLAGS = -Wall -Wextra -Werror -g -fsanitize=address,undefined
 
