@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/03 09:14:39 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/03 09:21:05 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,20 +69,25 @@ void		get_sphere_normal(t_object *data, t_scene *img, t_hit *hit);
 //ray_hit.c
 t_hit		get_hit(t_camera *cam, t_object *objects, float x, float y);
 
-//colors.c &
+//light.c
+t_vec4		add_ambient_value(t_scene *img);
+
+
+//colors.c
 t_vec4		get_pixel_color(t_scene *img, t_hit *hit);
 
 //color_math.c
 t_vec4		int_to_vec4(int color);
 t_vec4		multiply_vec4_float(t_vec4 color, float value);
-t_vec4		add_vec4_float(t_vec4 color, float value);
 t_vec4		multiply_vec4(t_vec4 color, t_vec4 multiplier);
-t_vec4		add_ambient_value(t_scene *img);
+t_vec4		add_vec4_float(t_vec4 color, float value);
 t_vec4		add_vec4(t_vec4 color, t_vec4 added);
-t_vec4		clamp_vec4(t_vec4 color);
-float		clamp_color(float vec_color);
+
+//color_math2.c
 int			normalized_vec4_to_int(t_vec4 color);
 void		normalize_color_vec4(t_vec4 *color);
+t_vec4		clamp_vec4(t_vec4 color);
+float		clamp_color(float vec_color);
 
 //object_color.c
 void		get_object_basecolor(t_scene *img);
