@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/03 07:57:34 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/03 09:14:39 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ int			draw_img(t_scene *img);
 int			draw_sphere(t_camera *cam, t_scene *img, int x, int y);
 
 //vectors.c
-t_vec3		vec3_sub(t_vec3 vector1, t_vec3 vector2);
 float		distance(t_vec3 vector1);
 float		dot_vector3(t_vec3 vector1, t_vec3 vector2);
+t_vec3		vec3_sub(t_vec3 vector1, t_vec3 vector2);
 t_vec3		vec3_normalize(t_vec3 vector);
 
 //camera.c
@@ -57,8 +57,8 @@ void		get_ray_direction(t_camera *cam, t_scene *img, int x, int y);
 
 //scene.c
 int			get_closest_hit(t_camera *cam, t_scene *img, t_hit *hit, int x, int y);
-void		get_distance(t_scene *img, t_camera *cam, t_hit *hit, int id);
 float		get_brightness(t_scene *img, t_hit *hit);
+void		get_distance(t_scene *img, t_camera *cam, t_hit *hit, int id);
 void		set_id(t_scene *img);
 
 //normals.c
@@ -69,15 +69,11 @@ void		get_sphere_normal(t_object *data, t_scene *img, t_hit *hit);
 //ray_hit.c
 t_hit		get_hit(t_camera *cam, t_object *objects, float x, float y);
 
-//colors.c & color_math.c
-int			normalized_vec4_to_int(t_vec4 color);
-void		normalize_color_vec4(t_vec4 *color);
-t_vec4		int_to_vec4(int color);
+//colors.c &
 t_vec4		get_pixel_color(t_scene *img, t_hit *hit);
-void		get_object_basecolor(t_scene *img);
-void		get_sphere_color(t_object *data, t_scene *img);
-void		get_cylinder_color(t_object *data, t_scene *img);
-void		get_plane_color(t_object *data, t_scene *img);
+
+//color_math.c
+t_vec4		int_to_vec4(int color);
 t_vec4		multiply_vec4_float(t_vec4 color, float value);
 t_vec4		add_vec4_float(t_vec4 color, float value);
 t_vec4		multiply_vec4(t_vec4 color, t_vec4 multiplier);
@@ -85,6 +81,14 @@ t_vec4		add_ambient_value(t_scene *img);
 t_vec4		add_vec4(t_vec4 color, t_vec4 added);
 t_vec4		clamp_vec4(t_vec4 color);
 float		clamp_color(float vec_color);
+int			normalized_vec4_to_int(t_vec4 color);
+void		normalize_color_vec4(t_vec4 *color);
+
+//object_color.c
+void		get_object_basecolor(t_scene *img);
+void		get_sphere_color(t_object *data, t_scene *img);
+void		get_cylinder_color(t_object *data, t_scene *img);
+void		get_plane_color(t_object *data, t_scene *img);
 
 //testing_hit_funcs.c
 int			infinite_cylinder_hit(const t_vec3 *ray_origin, const t_vec3 *ray_direction, const t_cylinder *cylinder, t_vec3 *intersection1, t_vec3 *intersection2);
