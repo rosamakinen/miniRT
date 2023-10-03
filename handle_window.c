@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 09:32:59 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/09/14 10:43:22 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/03 11:51:44 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,11 @@
 int	key_event(int keycode)
 {
 	if (keycode == 53)
-	{
 		exit (0);
-	}
-
 	return (0);
 }
 
-int	exit_button()
+int	exit_button(void)
 {
 	exit (0);
 	return (0);

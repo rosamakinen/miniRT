@@ -6,11 +6,11 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 07:25:47 by rmakinen          #+#    #+#             */
-/*   Updated: 2022/11/15 09:08:30 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/03 11:10:58 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"libft.h"
+#include "libft.h"
 
 static int	n_len(int n)
 {

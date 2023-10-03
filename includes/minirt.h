@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/03 09:21:05 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/03 11:49:09 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 # include <math.h>
 # include <stdio.h>
 # include <stdint.h>
-//# include <mlx.h>
+# include <mlx.h>
 # include <stdlib.h>
 # include <limits.h>
 # include "parser.h"
 # include "../libft/includes/libft.h"
-# include "../mlx/mlx.h"
+//# include "../mlx/mlx.h"
 
 typedef struct s_vec3 t_vec3;
 typedef struct s_vec4 t_vec4;

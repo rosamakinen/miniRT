@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:26:03 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/03 07:36:16 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/03 11:51:34 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,11 @@ float	get_brightness(t_scene *img, t_hit *hit)
 	float	result;
 	t_vec3	light_direction;
 
-	light_direction = vec3_sub(img->light_sources.pos, hit->pos); // subtracting light pos, hit pos
+	light_direction = vec3_sub(img->light_sources.pos, hit->pos);
 	light_direction = vec3_normalize(light_direction);
-	//light_direction = negative_vector(light_direction); // not needed after all?
-	result = (dot_vector3(img->hit_data.normal, light_direction) * img->light_sources.ratio);
+	result = (dot_vector3(img->hit_data.normal, light_direction) \
+	* img->light_sources.ratio);
 	if (result < 0)
-	{
 		result = 0.0;
-	}
 	return (result);
 }

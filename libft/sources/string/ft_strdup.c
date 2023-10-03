@@ -6,11 +6,11 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 08:13:41 by rmakinen          #+#    #+#             */
-/*   Updated: 2022/11/17 08:12:53 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/03 11:06:47 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"libft.h"
+#include "libft.h"
 
 char	*ft_strdup(const char *s1)
 {

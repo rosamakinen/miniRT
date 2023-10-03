@@ -6,9 +6,11 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 17:04:37 by rmakinen          #+#    #+#             */
-/*   Updated: 2022/11/17 08:14:47 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/03 11:07:32 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {

@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 09:19:26 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/03 06:26:45 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/03 11:11:56 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,13 @@ typedef struct s_object
 	t_object_type	type;
 }	t_object;
 
-
 typedef struct s_cylinder
 {
-	t_vec3	pos;
+	t_vec3		pos;
 	t_vec3		axis_vector;
-	float			diameter;
-	float			height;
-	t_color			color;
+	float		diameter;
+	float		height;
+	t_color		color;
 }	t_cylinder;
 
 typedef struct s_plane
