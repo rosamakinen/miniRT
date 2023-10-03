@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/09/25 11:10:34 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/02 12:10:10 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,11 @@ void		get_object_basecolor(t_scene *img);
 void		get_sphere_color(t_object *data, t_scene *img);
 void		get_cylinder_color(t_object *data, t_scene *img);
 void		get_plane_color(t_object *data, t_scene *img);
-t_vec4		multiply_vec4_value(t_vec4 color, float value);
+t_vec4		multiply_vec4_float(t_vec4 color, float value);
+t_vec4		add_vec4_float(t_vec4 color, float value);
+t_vec4		multiply_vec4(t_vec4 color, t_vec4 multiplier);
+t_vec4		add_ambient_value(t_scene *img);
+t_vec4		add_vec4(t_vec4 color, t_vec4 added);
 float		clamp_color(float vec_color);
 
 //testing_hit_funcs.c

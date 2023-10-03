@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 09:19:26 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/09/25 09:34:45 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/03 06:26:45 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,22 +77,23 @@ typedef struct s_cylinder
 
 typedef struct s_plane
 {
-	t_vec3	point;
+	t_vec3		point;
 	t_vec3		normal_vector;
-	t_color			color;
+	t_color		color;
 }	t_plane;
 
 typedef struct s_sphere
 {
 	t_vec3		pos;
-	float				diameter;
-	t_color				color;
+	float		diameter;
+	t_color		color;
 }	t_sphere;
 
 typedef struct s_light_source
 {
-	t_vec3		pos;
-	float				ratio;
+	t_vec3			pos;
+	float			ratio;
+	t_color			color;
 }	t_light_source;
 
 typedef struct s_camera

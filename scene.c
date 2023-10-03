@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:44:07 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/09/25 11:50:17 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/02 11:29:19 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,11 @@ int	per_pixel(t_camera *cam, t_scene *img, int x, int y)
 	int_col = 0;
 	get_ray_direction(cam, img, x, y);
 	get_closest_hit(cam, img, &hit, x, y);
-	//printf("x %f, y %f, z %f\n", img->hit_data.norm_pos.x, img->hit_data.norm_pos.y, img->hit_data.norm_pos.z);
 	if (hit.hit == 1)
 	{
 		get_normal(img, &hit);
 		color = get_pixel_color(img, &hit);
 		int_col = normalized_vec4_to_int(color);
-		printf("%x\n", int_col);
 		return (int_col); //hit_color
 	}
 	else

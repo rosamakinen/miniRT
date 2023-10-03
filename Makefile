@@ -6,7 +6,7 @@
 #    By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:30:50 by rmakinen          #+#    #+#              #
-#    Updated: 2023/09/25 10:35:26 by rmakinen         ###   ########.fr        #
+#    Updated: 2023/10/03 06:15:15 by rmakinen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRC = main.c \
 		ray_hit.c \
 		colors.c \
 		color_math.c \
+		get_object_color.c \
 
 OBJ = main.o \
 		handle_window.o \
@@ -52,6 +53,7 @@ OBJ = main.o \
 		ray_hit.o \
 		colors.o \
 		color_math.o \
+		get_object_color.o \
 
 FLAGS = -Wall -Wextra -Werror -g -fsanitize=address,undefined
 
@@ -60,8 +62,8 @@ all: $(NAME)
 $(NAME): $(SRC)
 	@cd libft && $(MAKE)
 	@cc $(FLAGS) -c $(SRC)
-	#@cc $(FLAGS) $(OBJ) libft/libft.a -L /usr/local/include -lmlx -framework OpenGL -framework AppKit -o $(NAME)
-	@cc $(FLAGS) $(OBJ) libft/libft.a mlx/libmlx.a -framework OpenGL -framework AppKit -o $(NAME)
+	@cc $(FLAGS) $(OBJ) libft/libft.a -L /usr/local/include -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	#@cc $(FLAGS) $(OBJ) libft/libft.a mlx/libmlx.a -framework OpenGL -framework AppKit -o $(NAME)
 
 clean:
 	@cd libft && make clean
