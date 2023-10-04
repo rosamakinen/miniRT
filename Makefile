@@ -6,7 +6,7 @@
 #    By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:30:50 by rmakinen          #+#    #+#              #
-#    Updated: 2023/10/03 09:21:40 by rmakinen         ###   ########.fr        #
+#    Updated: 2023/10/04 07:44:19 by rmakinen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ OBJ = main.o \
 		color_math2.o \
 		object_colors.o \
 
-FLAGS = -Wall -Wextra -Werror -g -fsanitize=address,undefined
+FLAGS = -Wall -Wextra -Werror -g #-fsanitize=address,undefined
 
 all: $(NAME)
 

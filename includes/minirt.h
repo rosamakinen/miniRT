@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/04 06:50:51 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/04 07:37:15 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void		get_ray_direction(t_camera *cam, t_scene *img, int x, int y);
 
 //scene.c
 int			get_closest_hit(t_camera *cam, t_scene *img, t_hit *hit, int x, int y);
-float		get_brightness(t_scene *img, t_hit *hit);
 void		get_distance(t_scene *img, t_camera *cam, t_hit *hit, int id);
 void		set_id(t_scene *img);
 
@@ -71,7 +70,8 @@ t_hit		get_hit(t_camera *cam, t_object *objects, float x, float y);
 
 //light.c
 t_vec4		add_ambient_value(t_scene *img);
-
+t_vec4		get_white_light(void);
+float		get_brightness(t_scene *img, t_hit *hit);
 
 //colors.c
 t_vec4		get_pixel_color(t_scene *img, t_hit *hit);

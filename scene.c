@@ -6,18 +6,14 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:44:07 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/03 11:21:33 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/04 07:47:00 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/minirt.h"
-#include "./libft/includes/libft.h"
-#include "./libft/includes/ft_printf.h"
-#include <math.h>
-#include <stdio.h>
 
-	//distance is:
-	//d(P1,P2) = (x2-x1)2 + (y2-y1)2 + (z2-z1)2.
+//distance is:
+//d(P1,P2) = (x2-x1)2 + (y2-y1)2 + (z2-z1)2.
 void	get_distance(t_scene *img, t_camera *cam, t_hit *hit, int id)
 {
 	t_vec3	subtracted;

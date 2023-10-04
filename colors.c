@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 06:24:44 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/03 11:39:27 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/04 07:34:35 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_vec4	get_pixel_color(t_scene *img, t_hit *hit)
 	t_vec4	light_color;
 
 	get_object_basecolor(img);
-	light_color = int_to_vec4(img->light_sources.color);
+	light_color = get_white_light();
 	normalize_color_vec4(&light_color);
 	printf("hit col at start r %f, g %f, b %f\n", img->hit_data.color.r, img->hit_data.color.g, img->hit_data.color.b);
 	// img->hit_data.color = transfer_pos_to_color(hit);

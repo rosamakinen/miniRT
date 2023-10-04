@@ -6,14 +6,11 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:29:32 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/09/14 06:25:53 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/04 07:47:29 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/includes/libft.h"
-#include "./libft/includes/ft_printf.h"
 #include "./includes/minirt.h"
-#include "./includes/parser.h"
 
 // int	main(int argc, char **argv)
 // {

@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:26:03 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/03 11:51:34 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/04 07:36:19 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,15 @@ t_vec4	add_ambient_value(t_scene *img)
 	return (ambient);
 }
 
-t_vec3	negative_vector(t_vec3 light_direction)
+t_vec4	get_white_light(void)
 {
-	t_vec3	temp;
+	t_vec4	white;
 
-	temp.x = -light_direction.x;
-	temp.y = -light_direction.y;
-	temp.z = -light_direction.z;
-	return (temp);
+	white.alpha = 1;
+	white.r = 255;
+	white.g = 255;
+	white.b = 255;
+	return (white);
 }
 
 float	get_brightness(t_scene *img, t_hit *hit)
