@@ -6,11 +6,11 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 07:20:47 by rmakinen          #+#    #+#             */
-/*   Updated: 2022/11/16 11:58:54 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/03 11:06:15 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"libft.h"
+#include "libft.h"
 
 void	ft_putendl_fd(char *s, int fd)
 {

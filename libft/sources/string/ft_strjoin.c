@@ -6,11 +6,11 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 07:23:03 by rmakinen          #+#    #+#             */
-/*   Updated: 2022/11/17 08:13:26 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/03 11:06:53 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"libft.h"
+#include "libft.h"
 
 static void	ft_addstring(char *new, char const *s1, char const *s2)
 {

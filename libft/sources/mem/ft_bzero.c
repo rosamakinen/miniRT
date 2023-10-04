@@ -6,11 +6,11 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 11:27:18 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/01/12 12:35:50 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/03 11:10:38 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"libft.h"
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {
@@ -22,6 +22,6 @@ void	ft_bzero(void *s, size_t n)
 	while (i < n)
 	{
 		((char *)s)[i] = '\0';
-			i++;
+		i++;
 	}
 }

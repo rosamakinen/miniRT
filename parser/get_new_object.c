@@ -99,20 +99,18 @@ static int	get_new_cylinder(t_object *scene_object, const char *str, int *i)
 short	get_new_object(t_object *scene_object, const char *str)
 {
 	int	i;
-	int	checker;
 
-	checker = 0;
 	i = 2;
 	if (!scene_object)
 		return (MALLOC_FAILED);
 	while (scene_object->next)
 		scene_object = scene_object->next;
 	if (str && str[0] == 's' && str[1] == 'p')
-		checker = get_new_sphere(scene_object, str, &i);
+		get_new_sphere(scene_object, str, &i);
 	else if (str && str[0] == 'p' && str[1] == 'l')
-		checker = get_new_plane(scene_object, str, &i);
+		get_new_plane(scene_object, str, &i);
 	else if (str && str[0] == 'c' && str[1] == 'y')
-		checker = get_new_cylinder(scene_object, str, &i);
+		get_new_cylinder(scene_object, str, &i);
 	else
 		return (INVALID_INPUT);
 	if (str[i] && str[i] != '\n')

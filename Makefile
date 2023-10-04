@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+         #
+#    By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:30:50 by rmakinen          #+#    #+#              #
-#    Updated: 2023/09/20 10:27:50 by rmakinen         ###   ########.fr        #
+#    Updated: 2023/10/03 09:21:40 by rmakinen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRC = main.c \
 		camera.c \
 		vectors.c \
 		normals.c \
+		light.c \
 		parser/ft_atox.c \
 		parser/ft_print_error.c \
 		parser/get_ambient_light.c \
@@ -28,6 +29,10 @@ SRC = main.c \
 		parser/parser_utils.c \
 		parser/parser.c \
 		ray_hit.c \
+		colors.c \
+		color_math.c \
+		color_math2.c \
+		object_colors.c \
 
 OBJ = main.o \
 		handle_window.o \
@@ -36,6 +41,7 @@ OBJ = main.o \
 		camera.o \
 		vectors.o \
 		normals.o \
+		light.o \
 		ft_atox.o \
 		ft_print_error.o \
 		get_camera.o \
@@ -46,6 +52,10 @@ OBJ = main.o \
 		parser_utils.o \
 		parser.o \
 		ray_hit.o \
+		colors.o \
+		color_math.o \
+		color_math2.o \
+		object_colors.o \
 
 FLAGS = -Wall -Wextra -Werror -g -fsanitize=address,undefined
 
@@ -55,6 +65,7 @@ $(NAME): $(SRC)
 	@cd libft && $(MAKE)
 	@cc $(FLAGS) -c $(SRC)
 	@cc $(FLAGS) $(OBJ) libft/libft.a -L /usr/local/include -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	#@cc $(FLAGS) $(OBJ) libft/libft.a mlx/libmlx.a -framework OpenGL -framework AppKit -o $(NAME)
 
 clean:
 	@cd libft && make clean

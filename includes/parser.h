@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 09:19:26 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/09/19 20:00:05 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/10/03 11:11:56 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,14 @@ typedef struct s_vec3
 	float			z;
 }	t_vec3;
 
+typedef struct s_vec4
+{
+	float			alpha;
+	float			r;
+	float			g;
+	float			b;
+}	t_vec4;
+
 typedef struct s_object
 {
 	int				id;
@@ -57,42 +65,42 @@ typedef struct s_object
 	t_object_type	type;
 }	t_object;
 
-
 typedef struct s_cylinder
 {
-	t_vec3	pos;
+	t_vec3		pos;
 	t_vec3		axis_vector;
-	float			diameter;
-	float			height;
-	t_color			color;
+	float		diameter;
+	float		height;
+	t_color		color;
 }	t_cylinder;
 
 typedef struct s_plane
 {
-	t_vec3	point;
+	t_vec3		point;
 	t_vec3		normal_vector;
-	t_color			color;
+	t_color		color;
 }	t_plane;
 
 typedef struct s_sphere
 {
 	t_vec3		pos;
-	float				diameter;
-	t_color				color;
+	float		diameter;
+	t_color		color;
 }	t_sphere;
 
 typedef struct s_light_source
 {
-	t_vec3		pos;
-	float				ratio;
+	t_vec3			pos;
+	float			ratio;
+	t_color			color;
 }	t_light_source;
 
 typedef struct s_camera
 {
 	t_vec3		pos;
-	t_vec3			norm_vector;
-	t_vec3			norm_coord;
-	t_degrees			fov;
+	t_vec3		norm_vector;
+	t_vec3		norm_coord;
+	t_degrees	fov;
 }	t_camera;
 
 typedef struct s_ambient_light
@@ -111,8 +119,10 @@ typedef struct s_hit_data
 {
 	int		closest_id;
 	float	distance;
+	float	brightness;
+	t_vec3	norm_pos;
 	t_vec3	normal;
-	t_vec3	color;
+	t_vec4	color;
 
 }	t_hit_data;
 

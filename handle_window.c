@@ -6,30 +6,21 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 09:32:59 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/09/14 10:43:22 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/03 11:51:44 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/minirt.h"
 
-int	key_event(int keycode, t_scene *img)
+int	key_event(int keycode)
 {
 	if (keycode == 53)
-	{
-		//img not allocated yet
-		//free(img);
-		img = NULL;
 		exit (0);
-	}
-
 	return (0);
 }
 
-int	exit_button(t_scene *img)
+int	exit_button(void)
 {
-	//img not allocated yet
-	//free(img);
-	img = NULL;
 	exit (0);
 	return (0);
 }
