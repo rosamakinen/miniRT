@@ -19,12 +19,12 @@
 # include <math.h>
 # include <stdio.h>
 # include <stdint.h>
-# include <mlx.h>
+//# include <mlx.h>
 # include <stdlib.h>
 # include <limits.h>
 # include "parser.h"
 # include "../libft/includes/libft.h"
-//# include "../mlx/mlx.h"
+# include "../mlx/mlx.h"
 
 typedef struct s_vec3 t_vec3;
 typedef struct s_vec4 t_vec4;

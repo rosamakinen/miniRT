@@ -73,19 +73,49 @@ static int	check_required(t_scene *scene)
 	return (EXIT_SUCCESS);
 }
 
+int	count_lights(const char *file, t_scene *main_scene)
+{
+	char		*new_line;
+	int			light_count;
+	int			fd;
+
+	light_count = 0;
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		main_scene->error_catcher = OPEN_FAIL;
+	new_line = get_next_line(fd);
+	while (new_line)
+	{
+		if (ft_strlen_int(new_line) <= 0)
+			break ;
+		if (new_line[0] == 'L' && new_line[1] == ' ')
+			light_count++;
+		free(new_line);
+		new_line = get_next_line(fd);
+	}
+	if (new_line)
+		free(new_line);
+	main_scene->light_sources = (t_light_source *)malloc(sizeof(t_light_source) * light_count);
+	if (!main_scene->light_sources)
+		main_scene->error_catcher = MALLOC_FAILED;
+	close(fd);
+	return (light_count);
+}
+
 t_scene	scene_constractor(const char *file)
 {
 	static t_scene	main_scene = {0};
 	int				fd;
 	static char		*new_line = NULL;
 
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
-		main_scene.error_catcher = OPEN_FAIL;
 	main_scene.objects = (t_object *)malloc(sizeof(t_object));
 	if (!main_scene.objects)
 		main_scene.error_catcher = MALLOC_FAILED;
 	main_scene.objects->next = NULL;
+	main_scene.light_count = count_lights(file, &main_scene);
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		main_scene.error_catcher = OPEN_FAIL;
 	while (!main_scene.error_catcher)
 	{
 		new_line = get_next_line(fd);
@@ -94,6 +124,7 @@ t_scene	scene_constractor(const char *file)
 		main_scene.error_catcher = constractor_loop(&main_scene, new_line);
 		free(new_line);
 	}
+	close(fd);
 	if (main_scene.error_catcher || check_required(&main_scene))
 		free_all_objects(main_scene.objects);
 	return (main_scene);

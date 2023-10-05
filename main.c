@@ -43,7 +43,7 @@ int	main(void)
 		printf("we got back from\n");
 		return (return_parser_error(main_scene.error_catcher));
 	}
-	printf("We got light: %f, %f, %f and ratio %f\n", main_scene.light_sources.pos.x, main_scene.light_sources.pos.y, main_scene.light_sources.pos.z, main_scene.light_sources.ratio);
+	printf("We got light: %f, %f, %f and ratio %f\n", main_scene.light_sources->pos.x, main_scene.light_sources->pos.y, main_scene.light_sources->pos.z, main_scene.light_sources->ratio);
 	printf("We got ambient light ratio: %f,and color %x\n", main_scene.ambient_light.ratio, main_scene.ambient_light.color);
 	printf("We got camera pos: %f, %f, %f,and degrees %d\n", main_scene.camera.pos.x, main_scene.camera.pos.y, main_scene.camera.pos.z, main_scene.camera.fov);
 	temp = main_scene.objects;

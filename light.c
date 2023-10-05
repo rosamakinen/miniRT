@@ -41,10 +41,10 @@ float	get_brightness(t_scene *img, t_hit *hit)
 	float	result;
 	t_vec3	light_direction;
 
-	light_direction = vec3_sub(img->light_sources.pos, hit->pos);
+	light_direction = vec3_sub(img->light_sources->pos, hit->pos);
 	light_direction = vec3_normalize(light_direction);
 	result = (dot_vector3(img->hit_data.normal, light_direction) \
-	* img->light_sources.ratio);
+	* img->light_sources->ratio);
 	if (result < 0)
 		result = 0.0;
 	return (result);

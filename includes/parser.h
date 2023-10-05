@@ -132,7 +132,8 @@ typedef struct s_scene
 	void			*win;
 	int				width;
 	int				height;
-	t_light_source	light_sources;
+	int				light_count;
+	t_light_source	*light_sources;
 	t_ambient_light	ambient_light;
 	t_camera		camera;
 	t_object		*objects;

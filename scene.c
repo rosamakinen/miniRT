@@ -107,5 +107,6 @@ int	draw_img(t_scene *img)
 		}
 		y++;
 	}
+	printf("count_light %i\n", img->light_count);
 	return (0);
 }
