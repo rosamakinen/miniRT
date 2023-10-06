@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 09:19:26 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/03 11:11:56 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/06 08:54:25 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ typedef struct s_hit_data
 	t_vec3	norm_pos;
 	t_vec3	normal;
 	t_vec4	color;
+	t_vec4	light_color;
 
 }	t_hit_data;
 

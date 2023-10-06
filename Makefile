@@ -6,7 +6,7 @@
 #    By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:30:50 by rmakinen          #+#    #+#              #
-#    Updated: 2023/10/04 07:44:19 by rmakinen         ###   ########.fr        #
+#    Updated: 2023/10/06 08:41:30 by rmakinen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,8 +64,8 @@ all: $(NAME)
 $(NAME): $(SRC)
 	@cd libft && $(MAKE)
 	@cc $(FLAGS) -c $(SRC)
-	#@cc $(FLAGS) $(OBJ) libft/libft.a -L /usr/local/include -lmlx -framework OpenGL -framework AppKit -o $(NAME)
-	@cc $(FLAGS) $(OBJ) libft/libft.a mlx/libmlx.a -framework OpenGL -framework AppKit -o $(NAME)
+	@cc $(FLAGS) $(OBJ) libft/libft.a -L /usr/local/include -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	#@cc $(FLAGS) $(OBJ) libft/libft.a mlx/libmlx.a -framework OpenGL -framework AppKit -o $(NAME)
 
 clean:
 	@cd libft && make clean

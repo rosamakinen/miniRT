@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/04 07:37:15 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/06 09:33:12 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,19 @@
 # include <math.h>
 # include <stdio.h>
 # include <stdint.h>
-//# include <mlx.h>
+# include <mlx.h>
 # include <stdlib.h>
 # include <limits.h>
 # include "parser.h"
 # include "../libft/includes/libft.h"
-# include "../mlx/mlx.h"
+//# include "../mlx/mlx.h"
 
 typedef struct s_vec3 t_vec3;
 typedef struct s_vec4 t_vec4;
 typedef struct s_scene t_scene;
 typedef struct s_camera t_camera;
 typedef struct s_hit t_hit;
+typedef struct s_light_source t_light_source;
 
 typedef struct s_object	t_object;
 typedef struct s_cylinder t_cylinder;
@@ -71,7 +72,7 @@ t_hit		get_hit(t_camera *cam, t_object *objects, float x, float y);
 //light.c
 t_vec4		add_ambient_value(t_scene *img);
 t_vec4		get_white_light(void);
-float		get_brightness(t_scene *img, t_hit *hit);
+float		get_brightness(t_scene *img, t_light_source light_source, t_hit *hit);
 
 //colors.c
 t_vec4		get_pixel_color(t_scene *img, t_hit *hit);

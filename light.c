@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:26:03 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/04 07:36:19 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/06 09:05:29 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ t_vec4	get_white_light(void)
 	return (white);
 }
 
-float	get_brightness(t_scene *img, t_hit *hit)
+float	get_brightness(t_scene *img, t_light_source light_source, t_hit *hit)
 {
 	float	result;
 	t_vec3	light_direction;
 
-	light_direction = vec3_sub(img->light_sources->pos, hit->pos);
+	light_direction = vec3_sub(light_source.pos, hit->pos);
 	light_direction = vec3_normalize(light_direction);
 	result = (dot_vector3(img->hit_data.normal, light_direction) \
 	* img->light_sources->ratio);
