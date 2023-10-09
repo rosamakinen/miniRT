@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:26:03 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/06 09:05:29 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/09 10:46:46 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,18 @@ t_vec4	add_ambient_value(t_scene *img)
 	return (ambient);
 }
 
-t_vec4	get_white_light(void)
-{
-	t_vec4	white;
-
-	white.alpha = 1;
-	white.r = 255;
-	white.g = 255;
-	white.b = 255;
-	return (white);
-}
-
-float	get_brightness(t_scene *img, t_light_source light_source, t_hit *hit)
+float	get_brightness(t_scene *img, int i, t_hit *hit)
 {
 	float	result;
 	t_vec3	light_direction;
 
-	light_direction = vec3_sub(light_source.pos, hit->pos);
+	printf("light ratio is: %f\n", img->light_sources[i].ratio);
+	printf("light pos is: %f, %f, %f\n", img->light_sources[i].pos.x, img->light_sources[i].pos.y, img->light_sources[i].pos.z);
+	light_direction = vec3_sub(img->light_sources[i].pos, hit->pos);
 	light_direction = vec3_normalize(light_direction);
 	result = (dot_vector3(img->hit_data.normal, light_direction) \
-	* img->light_sources->ratio);
-	if (result < 0)
+	* img->light_sources[i].ratio);
+	if (result < 0.0)
 		result = 0.0;
 	return (result);
 }

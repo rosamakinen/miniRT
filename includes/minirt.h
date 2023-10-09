@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/06 09:33:12 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/09 09:58:01 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,19 +72,20 @@ t_hit		get_hit(t_camera *cam, t_object *objects, float x, float y);
 //light.c
 t_vec4		add_ambient_value(t_scene *img);
 t_vec4		get_white_light(void);
-float		get_brightness(t_scene *img, t_light_source light_source, t_hit *hit);
+float		get_brightness(t_scene *img, int i, t_hit *hit);
 
 //colors.c
 t_vec4		get_pixel_color(t_scene *img, t_hit *hit);
 
-//color_math.c
+//color_math2.c
 t_vec4		int_to_vec4(int color);
 t_vec4		multiply_vec4_float(t_vec4 color, float value);
 t_vec4		multiply_vec4(t_vec4 color, t_vec4 multiplier);
 t_vec4		add_vec4_float(t_vec4 color, float value);
 t_vec4		add_vec4(t_vec4 color, t_vec4 added);
+t_vec4		div_vec4(t_vec4 color, float value);
 
-//color_math2.c
+//color_math.c
 int			normalized_vec4_to_int(t_vec4 color);
 void		normalize_color_vec4(t_vec4 *color);
 t_vec4		clamp_vec4(t_vec4 color);

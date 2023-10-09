@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 09:16:08 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/03 11:34:44 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/09 08:01:56 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,16 @@ t_vec4	add_vec4_float(t_vec4 color, float value)
 	temp_color.b = color.b + value;
 	temp_color = clamp_vec4(temp_color);
 	return (temp_color);
+}
+
+t_vec4	div_vec4(t_vec4 color, float value)
+{
+	t_vec4	temp_color;
+
+	temp_color.alpha = 1;
+	temp_color.r = color.r / value;
+	temp_color.g = color.g / value;
+	temp_color.b = color.b / value;
+	temp_color = clamp_vec4(temp_color);
+	return (color);
 }
