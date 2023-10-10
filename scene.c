@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:44:07 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/04 07:47:00 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/10 13:00:26 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,14 @@ int	per_pixel(t_camera *cam, t_scene *img, int x, int y)
 	get_closest_hit(cam, img, &hit, x, y);
 	if (hit.hit == 1)
 	{
+		printf("x %i, y %i\n", x, y);
 		get_normal(img, &hit);
 		color = get_pixel_color(img, &hit);
 		int_col = normalized_vec4_to_int(color);
 		return (int_col);
 	}
 	else
-		return (0x000000);
+		return (BACKGROUND);
 	return (0);
 }
 
@@ -107,6 +108,5 @@ int	draw_img(t_scene *img)
 		}
 		y++;
 	}
-	printf("count_light %i\n", img->light_count);
 	return (0);
 }

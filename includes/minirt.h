@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/09 09:58:01 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:08:04 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 # include "parser.h"
 # include "../libft/includes/libft.h"
 //# include "../mlx/mlx.h"
+
+# define BACKGROUND 0x000000
+# define TINY_VALUE 0.0001
 
 typedef struct s_vec3 t_vec3;
 typedef struct s_vec4 t_vec4;
@@ -52,6 +55,7 @@ float		distance(t_vec3 vector1);
 float		dot_vector3(t_vec3 vector1, t_vec3 vector2);
 t_vec3		vec3_sub(t_vec3 vector1, t_vec3 vector2);
 t_vec3		vec3_normalize(t_vec3 vector);
+float		distance_for_two(t_vec3 vector1, t_vec3 vector2);
 
 //camera.c
 void		get_ray_direction(t_camera *cam, t_scene *img, int x, int y);

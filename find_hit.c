@@ -11,7 +11,7 @@ int sphere_hit(const t_sphere *sphere, const t_vec3 *ray_start, const t_vec3 *di
 
     // check if there are any interesectios. This is refering to the quadratic formula discriminant. If it is less than zero it means there are no intersections. No real solutions.
     float discriminant = b * b - 4 * a * c;
-    if (discriminant < 0) {
+    if (discriminant < TINY_VALUE) {
         return 0; // No intersection
     }
     // We all come to the following code if there are function zeros and we calculate the two possible intersect  values (2 because circle is of second degree)
@@ -62,7 +62,7 @@ int plane_hit(const t_vec3 *ray_origin, const t_vec3 *direction, const t_plane *
     return 1; // No intersection
 }
 
-int infinite_cylinder_hit(const t_vec3 *ray_origin, const t_vec3 *ray_direction, const t_cylinder *cylinder, t_vec3 *intersection1, t_vec3 *intersection2) 
+int infinite_cylinder_hit(const t_vec3 *ray_origin, const t_vec3 *ray_direction, const t_cylinder *cylinder, t_vec3 *intersection1, t_vec3 *intersection2)
 {
     t_vec3 cylinderToRayOrigin;
     cylinderToRayOrigin.x = ray_origin->x - cylinder->pos.x;
@@ -93,7 +93,7 @@ int infinite_cylinder_hit(const t_vec3 *ray_origin, const t_vec3 *ray_direction,
     // Quadratic discriminant
     double discriminant = b * b - 4.0 * a * c;
 
-    if (discriminant < 0) {
+    if (discriminant < TINY_VALUE) {
         return 0; // No intersection
     } else {
         double t1 = (-b + sqrt(discriminant)) / (2.0 * a);

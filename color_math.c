@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 10:23:39 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/03 11:40:19 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/10 13:27:50 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ int	normalized_vec4_to_int(t_vec4 color)
 	int32_t	alpha;
 
 	alpha = 1;
-	red = (color.r * 255);
-	green = (color.g * 255);
-	blue = (color.b * 255);
+	red = (int)(color.r * 255.0);
+	green = (int)(color.g * 255.0);
+	blue = (int)(color.b * 255.0);
 	return ((alpha << 24) | (red << 16) | (green << 8) | blue);
 }
 
@@ -60,7 +60,7 @@ float	clamp_color(float vec_color)
 {
 	if (vec_color > 1)
 		return (1.0);
-	else if (vec_color < 0)
+	else if (vec_color < TINY_VALUE)
 		return (0.0);
 	return (vec_color);
 }
