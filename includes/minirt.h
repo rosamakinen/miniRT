@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/10 15:08:04 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/11 10:21:15 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ float		dot_vector3(t_vec3 vector1, t_vec3 vector2);
 t_vec3		vec3_sub(t_vec3 vector1, t_vec3 vector2);
 t_vec3		vec3_normalize(t_vec3 vector);
 float		distance_for_two(t_vec3 vector1, t_vec3 vector2);
+t_vec3		vec3_add(t_vec3 vec1, t_vec3 vec2);
+t_vec3		vec3_negative(t_vec3 vector);
 
 //camera.c
 void		get_ray_direction(t_camera *cam, t_scene *img, int x, int y);
@@ -77,6 +79,7 @@ t_hit		get_hit(t_camera *cam, t_object *objects, float x, float y);
 t_vec4		add_ambient_value(t_scene *img);
 t_vec4		get_white_light(void);
 float		get_brightness(t_scene *img, int i, t_hit *hit);
+float		get_specular(t_scene *img, int i, t_hit *hit);
 
 //colors.c
 t_vec4		get_pixel_color(t_scene *img, t_hit *hit);

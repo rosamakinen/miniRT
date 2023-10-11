@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 09:19:26 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/06 08:54:25 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/11 10:12:40 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ typedef struct s_hit_data
 	int		closest_id;
 	float	distance;
 	float	brightness;
+	float	specular;
 	t_vec3	norm_pos;
 	t_vec3	normal;
 	t_vec4	color;

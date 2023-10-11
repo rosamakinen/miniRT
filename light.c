@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:26:03 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/10 14:59:58 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/11 10:26:47 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,26 @@ t_vec4	add_ambient_value(t_scene *img)
 // 	return (result);
 // }
 
+float	get_specular(t_scene *img, int i, t_hit *hit)
+{
+	t_vec3	light_direction;
+	t_vec3	half_direction;
+	// float l_distance;
+	float specular;
+	float	specular_angle;
 
+	light_direction = vec3_sub(img->light_sources[i].pos, hit->pos);
+	light_direction = vec3_normalize(light_direction);
+	// l_distance = distance(light_direction);
+	// l_distance = l_distance * l_distance;
+
+	// this is blinn phong
+	half_direction = vec3_add(light_direction, vec3_negative(img->camera.norm_vector));
+	half_direction = vec3_normalize(half_direction);
+	specular_angle = fmaxf(dot_vector3(half_direction, img->hit_data.normal), 0.0);
+	specular = powf(specular_angle, 40);
+	return (specular);
+}
 
 float	get_brightness(t_scene *img, int i, t_hit *hit)
 {

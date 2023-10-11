@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 06:34:26 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/10 14:06:50 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/11 10:07:12 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,24 @@ t_vec3	vec3_normalize(t_vec3 vector)
 		vector.z /= magnitude;
 	}
 	return (vector);
+}
+
+t_vec3	vec3_negative(t_vec3 vector)
+{
+	t_vec3	temp;
+
+	temp.x = - vector.x;
+	temp.y = - vector.y;
+	temp.z = - vector.z;
+	return(temp);
+}
+
+t_vec3 vec3_add(t_vec3 vec1, t_vec3 vec2)
+{
+	t_vec3	temp;
+
+	temp.x = vec1.x + vec2.x;
+	temp.y = vec1.y + vec2.y;
+	temp.z = vec1.z + vec2.z;
+	return (temp);
 }
