@@ -6,14 +6,13 @@
 #    By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:30:50 by rmakinen          #+#    #+#              #
-#    Updated: 2023/10/13 09:39:27 by rmakinen         ###   ########.fr        #
+#    Updated: 2023/10/13 12:30:13 by rmakinen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = miniRT
 SRC = main.c \
 		handle_window.c \
-		sphere.c \
 		scene.c \
 		vectors.c \
 		normals.c \
@@ -35,7 +34,6 @@ SRC = main.c \
 
 OBJ = main.o \
 		handle_window.o \
-		sphere.o \
 		scene.o \
 		vectors.o \
 		normals.o \

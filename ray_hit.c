@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 10:25:15 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/13 12:22:24 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/13 13:47:02 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,6 @@ t_vec3 vec3_scalar_multiplication(t_vec3 v, float s)
 t_vec3 vec3_scalar_division(t_vec3 v, float s)
 {
     return (t_vec3){v.x * s, v.y * s, v.z * s};
-}
-
-t_vec3	vec3_add(t_vec3 vector1, t_vec3 vector2)
-{
-	t_vec3	result;
-
-	result.x = vector1.x + vector2.x;
-	result.y = vector1.y + vector2.y;
-	result.z = vector1.z + vector2.z;
-	return (result);
 }
 
 //Honorable mention. The following function would not have been possible without the contributions
@@ -97,7 +87,6 @@ t_hit   find_sphere_hit(t_sphere *sphere, t_vec3 ray_direction, t_camera *camera
     t_vec3  point2;
 
     ft_bzero(&hit, sizeof(t_hit));
-
     if (sphere_hit(sphere, camera->pos, ray_direction, &point1, &point2))
 	{
 		if (distance(vec3_sub(camera->pos, point1)) < distance(vec3_sub(camera->pos, point2)))

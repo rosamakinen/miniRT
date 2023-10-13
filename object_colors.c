@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 06:14:17 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/13 12:22:51 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/13 13:38:45 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	get_sphere_color(t_object *data, t_scene *img)
 	sphere = (t_sphere *)data;
 	temp_color = int_to_vec4(sphere->color);
 	normalize_color_vec4(&temp_color);
-	//printf("temp r %f, g %f, b %f\n", temp_color.r, temp_color.g, temp_color.b);
 	img->hit_data.color = temp_color;
 }
 

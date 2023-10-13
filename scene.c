@@ -6,14 +6,12 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:44:07 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/13 12:20:23 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/13 14:56:28 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/minirt.h"
 
-//distance is:
-//d(P1,P2) = (x2-x1)2 + (y2-y1)2 + (z2-z1)2.
 void	get_distance(t_scene *img, t_camera *cam, t_hit *hit, t_hit new, int id)
 {
 	t_vec3	old_subtracted;
@@ -26,11 +24,9 @@ void	get_distance(t_scene *img, t_camera *cam, t_hit *hit, t_hit new, int id)
 	new_subtracted = vec3_sub(cam->forward_dir, new.pos);
 	new_distance = distance(new_subtracted);
 
-	//printf("distance old: %f distance_new: %f\n",old_distance, new_distance);
 	if (new_distance < old_distance || hit->hit == 0)
 	{
 		(*hit) = new;
-		//printf("prev id:  %i new id:  %i\n", img->hit_data.closest_id, id);
 		img->hit_data.closest_id = id;
 		img->hit_data.distance = new_distance;
 	}
@@ -46,7 +42,6 @@ int	get_closest_hit(t_camera *cam, t_scene *img, t_hit *hit, int x, int y)
 	img->hit_data.closest_id = INT_MAX;
 	while (temp->next != NULL)
 	{
-		//printf("do we ever get here??\n");
 		new = get_hit(cam, temp, x, y);
 		if (new.hit == 1)
 		{
@@ -54,7 +49,6 @@ int	get_closest_hit(t_camera *cam, t_scene *img, t_hit *hit, int x, int y)
 		}
 		temp = temp->next;
 	}
-	//printf("hit.id %i\n", img->hit_data.closest_id);
 	return (0);
 }
 
@@ -73,6 +67,50 @@ void	set_id(t_scene *img)
 	}
 }
 
+int	check_for_shadow(t_scene *img, t_hit *hit, t_object *object)
+{
+	t_vec3		shadow_direction;
+	t_vec3		point1;
+	t_vec3		point2;
+	t_sphere	*sphere;
+
+	shadow_direction = vec3_sub(img->light_sources.pos, hit->pos);
+	shadow_direction = vec3_normalize(shadow_direction);
+	shadow_direction.z = -1 * shadow_direction.z;
+	printf("hit_pos: %f, %f, %f\n", hit->pos.x, hit->pos.y, hit->pos.z);
+	printf("shadow dir: %f, %f, %f\n", shadow_direction.x, shadow_direction.y, shadow_direction.z);
+	if (object->type == OBJECT_SPHERE)
+	{
+		sphere = (t_sphere *)object->data;
+		if (sphere_hit(sphere, img->light_sources.pos, shadow_direction, &point1, &point2))
+		{
+			printf("shadow hit\n");
+			return (1);
+		}
+	}
+	return (0);
+}
+
+void	get_shadow(t_scene *img, t_hit *hit)
+{
+	t_object	*temp_objects;
+
+	temp_objects = img->objects;
+	while (temp_objects->next != NULL)
+	{
+		if (temp_objects->id != img->hit_data.closest_id)
+		{
+			if (check_for_shadow(img, hit, temp_objects))
+			{
+				img->hit_data.is_in_shadow = 1;
+				return ;
+			}
+		}
+		temp_objects = temp_objects->next;
+	}
+}
+
+
 int	per_pixel(t_camera *cam, t_scene *img, int x, int y)
 {
 	t_hit	hit;
@@ -80,21 +118,21 @@ int	per_pixel(t_camera *cam, t_scene *img, int x, int y)
 	int		int_col;
 
 	hit.hit = 0;
+	img->hit_data.is_in_shadow = 0;
 	img->hit_data.distance = FLT_MAX;
 	int_col = 0;
 	get_closest_hit(cam, img, &hit, x, y);
 	if (hit.hit == 1)
 	{
-		//printf("closest id = %i", img->hit_data.closest_id);
+		get_shadow(img, &hit);
+		// printf("is shadowed = %i\n", img->hit_data.is_in_shadow);
 		get_normal(img, &hit);
 		color = get_pixel_color(img, &hit);
 		int_col = normalized_vec4_to_int(color);
-		//printf("are we even calculating color\n");
 		return (int_col);
 	}
 	else
 		return (0x000000);
-	//printf("shit gets fucked\n");
 	return (0);
 }
 
@@ -116,7 +154,6 @@ int	draw_img(t_scene *img)
 		{
 			color = per_pixel(&cam, img, x, y);
 			mlx_pixel_put(img->mlx, img->win, x, y, color);
-			//printf("x is x-ing\n");
 			x++;
 		}
 		y++;
