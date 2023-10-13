@@ -6,7 +6,7 @@
 #    By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:30:50 by rmakinen          #+#    #+#              #
-#    Updated: 2023/10/04 07:44:19 by rmakinen         ###   ########.fr        #
+#    Updated: 2023/10/13 09:39:27 by rmakinen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ SRC = main.c \
 		handle_window.c \
 		sphere.c \
 		scene.c \
-		camera.c \
 		vectors.c \
 		normals.c \
 		light.c \
@@ -38,7 +37,6 @@ OBJ = main.o \
 		handle_window.o \
 		sphere.o \
 		scene.o \
-		camera.o \
 		vectors.o \
 		normals.o \
 		light.o \
@@ -57,7 +55,7 @@ OBJ = main.o \
 		color_math2.o \
 		object_colors.o \
 
-FLAGS = -Wall -Wextra -Werror -g #-fsanitize=address,undefined
+FLAGS = -Wall -Wextra -Werror -g -fsanitize=address,undefined
 
 all: $(NAME)
 

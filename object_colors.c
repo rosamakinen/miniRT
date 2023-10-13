@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 06:14:17 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/03 11:23:52 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/13 12:22:51 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	get_sphere_color(t_object *data, t_scene *img)
 	sphere = (t_sphere *)data;
 	temp_color = int_to_vec4(sphere->color);
 	normalize_color_vec4(&temp_color);
-	// printf("temp r %f, g %f, b %f\n", temp_color.r, temp_color.g, temp_color.b);
+	//printf("temp r %f, g %f, b %f\n", temp_color.r, temp_color.g, temp_color.b);
 	img->hit_data.color = temp_color;
 }
 
@@ -51,7 +51,7 @@ void	get_object_basecolor(t_scene *img)
 	temp_objects = img->objects;
 	if (img->hit_data.closest_id)
 	{
-		while (temp_objects->id && temp_objects->id != img->hit_data.closest_id)
+		while (temp_objects->next != NULL && temp_objects->id != img->hit_data.closest_id)
 		{
 			temp_objects = temp_objects->next;
 		}

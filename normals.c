@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 06:34:36 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/03 11:50:14 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/13 10:00:11 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	get_normal(t_scene *img, t_hit *hit)
 	temp_objects = img->objects;
 	if (img->hit_data.closest_id)
 	{
-		while (temp_objects->id && temp_objects->id != img->hit_data.closest_id)
+		while (temp_objects->next && temp_objects->id != img->hit_data.closest_id)
 			temp_objects = temp_objects->next;
 		if (temp_objects->type == OBJECT_SPHERE)
 			get_sphere_normal(temp_objects->data, img, hit);

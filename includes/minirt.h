@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/13 08:46:00 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/13 11:09:06 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void		get_ray_direction(t_camera *cam, t_scene *img, int x, int y);
 
 //scene.c
 int			get_closest_hit(t_camera *cam, t_scene *img, t_hit *hit, int x, int y);
-void		get_distance(t_scene *img, t_camera *cam, t_hit *hit, int id);
+void		get_distance(t_scene *img, t_camera *cam, t_hit *hit, t_hit new, int id);
 void		set_id(t_scene *img);
 
 //normals.c

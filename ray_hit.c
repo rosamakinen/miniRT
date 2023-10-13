@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 10:25:15 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/13 09:07:38 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/13 12:22:24 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ int plane_hit(t_vec3 origin, t_vec3 direction, t_plane plane, t_vec3 *point)
     float   dist;
     t_vec3  plane_to_cam;
 
+    direction.z = -1 * direction.z;
     angle = dot_vector3(plane.normal_vector, direction);
     if(fabsf(angle) < 0.0001)
          return (0);
@@ -124,7 +125,6 @@ int plane_hit(t_vec3 origin, t_vec3 direction, t_plane plane, t_vec3 *point)
          return (0);
     *point = (t_vec3){origin.x + dist * direction.x, origin.y \
         + dist * direction.y, origin.z + dist * direction.z};
-    printf("here");
     return (1);
 }
 
@@ -159,9 +159,11 @@ t_hit	get_hit(t_camera *cam, t_object *objects, float x, float y)
     //     printf("right %f, %f, %f\n", cam->right_dir.x, cam->right_dir.y, cam->right_dir.z);
     // }
     if (objects->type == OBJECT_SPHERE)
+    {
         hit = find_sphere_hit((t_sphere *)objects->data, test_dir, cam);
+       // printf("do we detect sphere %i?\n", hit.hit);
+    }
     if (objects->type == OBJECT_PLANE)
-        hit = find_plane_hit((t_plane *)objects->data, test_dir, cam);
-
+         hit = find_plane_hit((t_plane *)objects->data, test_dir, cam);
 	return (hit);
 }
