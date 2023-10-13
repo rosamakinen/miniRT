@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:44:07 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/13 14:56:28 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/13 16:18:46 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,17 +74,18 @@ int	check_for_shadow(t_scene *img, t_hit *hit, t_object *object)
 	t_vec3		point2;
 	t_sphere	*sphere;
 
-	shadow_direction = vec3_sub(img->light_sources.pos, hit->pos);
+	shadow_direction = vec3_sub(hit->pos, img->light_sources.pos);
 	shadow_direction = vec3_normalize(shadow_direction);
-	shadow_direction.z = -1 * shadow_direction.z;
-	printf("hit_pos: %f, %f, %f\n", hit->pos.x, hit->pos.y, hit->pos.z);
-	printf("shadow dir: %f, %f, %f\n", shadow_direction.x, shadow_direction.y, shadow_direction.z);
+		// shadow_direction.x = -1 * shadow_direction.x;
+	// shadow_direction.y = -1 * shadow_direction.y;
+	// printf("hit_pos: %f, %f, %f\n", hit->pos.x, hit->pos.y, hit->pos.z);
+	//printf("shadow dir: %f, %f, %f\n", shadow_direction.x, shadow_direction.y, shadow_direction.z);
 	if (object->type == OBJECT_SPHERE)
 	{
 		sphere = (t_sphere *)object->data;
-		if (sphere_hit(sphere, img->light_sources.pos, shadow_direction, &point1, &point2))
+		if (sphere_hit(sphere, hit->pos, shadow_direction, &point1, &point2))
 		{
-			printf("shadow hit\n");
+			//printf("shadow hit\n");
 			return (1);
 		}
 	}

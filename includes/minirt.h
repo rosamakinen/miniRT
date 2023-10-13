@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/13 13:46:37 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/13 15:54:11 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 # include "../libft/includes/libft.h"
 //# include "../mlx/mlx.h"
 
-# define WINDOW_WIDTH 500
-# define WINDOW_HEIGHT 500
+# define WINDOW_WIDTH 1080
+# define WINDOW_HEIGHT 1080
 
 typedef struct s_vec3 t_vec3;
 typedef struct s_vec4 t_vec4;

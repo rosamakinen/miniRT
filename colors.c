@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 06:24:44 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/13 15:05:30 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/13 16:21:47 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ t_vec4	get_pixel_color(t_scene *img, t_hit *hit)
 	init_color(&color);
 	if (img->hit_data.is_in_shadow == 1)
 	{
-		printf("do we ever draw this?");
+		//printf("do we ever draw this?");
 		color = add_ambient_value(img);
 		return (color);
 	}
