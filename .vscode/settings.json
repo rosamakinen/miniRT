@@ -23,6 +23,7 @@
 		"type_traits": "c",
 		"vector": "c",
 		"libft.h": "c",
-		"mlx.h": "c"
+		"mlx.h": "c",
+		"complex": "c"
 	}
 }

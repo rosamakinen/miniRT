@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 09:19:26 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/03 11:11:56 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/13 08:11:10 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,11 @@ typedef struct s_light_source
 typedef struct s_camera
 {
 	t_vec3		pos;
+	t_vec3		forward_dir;
+	t_vec3		up_dir;
+	t_vec3		right_dir;
 	t_vec3		norm_vector;
-	t_vec3		norm_coord;
+	// t_vec3		norm_coord;
 	t_degrees	fov;
 }	t_camera;
 

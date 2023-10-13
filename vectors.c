@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 06:34:26 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/03 11:15:09 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/13 08:11:43 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,14 @@ t_vec3	vec3_normalize(t_vec3 vector)
 		vector.z /= magnitude;
 	}
 	return (vector);
+}
+
+t_vec3    cross_product(t_vec3 vector1, t_vec3 vector2)
+{
+    t_vec3 result;
+
+    result.x = vector1.y * vector2.z - vector1.z * vector2.y;
+    result.y = vector1.z * vector2.x - vector1.x * vector2.z;
+    result.z = vector1.x * vector2.y - vector1.y * vector2.x;
+    return (result);
 }

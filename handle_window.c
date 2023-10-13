@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 09:32:59 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/04 07:44:13 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/13 08:46:22 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	exit_button(void)
 
 int	handle_window(t_scene *img)
 {
-	img->width = 1080;
-	img->height = 1080;
+	img->width = WINDOW_WIDTH;
+	img->height = WINDOW_HEIGHT;
 	img->mlx = mlx_init();
 	img->win = mlx_new_window(img->mlx, img->width, img->height, \
 	"miniRT");

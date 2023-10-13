@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:44:07 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/04 07:47:00 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/13 08:15:04 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	get_distance(t_scene *img, t_camera *cam, t_hit *hit, int id)
 	t_vec3	subtracted;
 	float	new_distance;
 
-	subtracted = vec3_sub(cam->norm_coord, (*hit).pos);
+	subtracted = vec3_sub(cam->forward_dir, (*hit).pos);
 	new_distance = distance(subtracted);
 	if (new_distance < img->hit_data.distance)
 	{
@@ -71,7 +71,7 @@ int	per_pixel(t_camera *cam, t_scene *img, int x, int y)
 	hit.hit = 1;
 	img->hit_data.distance = FLT_MAX;
 	int_col = 0;
-	get_ray_direction(cam, img, x, y);
+	//get_ray_direction(cam, img, x, y);
 	get_closest_hit(cam, img, &hit, x, y);
 	if (hit.hit == 1)
 	{

@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/04 07:37:15 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/13 08:46:00 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 # include "parser.h"
 # include "../libft/includes/libft.h"
 //# include "../mlx/mlx.h"
+
+# define WINDOW_WIDTH 500
+# define WINDOW_HEIGHT 500
 
 typedef struct s_vec3 t_vec3;
 typedef struct s_vec4 t_vec4;
@@ -51,6 +54,7 @@ float		distance(t_vec3 vector1);
 float		dot_vector3(t_vec3 vector1, t_vec3 vector2);
 t_vec3		vec3_sub(t_vec3 vector1, t_vec3 vector2);
 t_vec3		vec3_normalize(t_vec3 vector);
+t_vec3		cross_product(t_vec3 vector1, t_vec3 vector2);
 
 //camera.c
 void		get_ray_direction(t_camera *cam, t_scene *img, int x, int y);
@@ -96,8 +100,6 @@ void		get_cylinder_color(t_object *data, t_scene *img);
 void		get_plane_color(t_object *data, t_scene *img);
 
 //testing_hit_funcs.c
-int			infinite_cylinder_hit(const t_vec3 *ray_origin, const t_vec3 *ray_direction, const t_cylinder *cylinder, t_vec3 *intersection1, t_vec3 *intersection2);
-int			sphere_hit(const t_sphere *sphere, const t_vec3 *ray_start, const t_vec3 *direction, t_vec3 *intersection1, t_vec3 *intersection2);
-int			plane_hit(const t_vec3 *ray_origin, const t_vec3 *direction, const t_plane *plane, t_vec3 *intersectionPoint);
+
 
 #endif

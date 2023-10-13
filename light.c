@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:26:03 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/04 07:36:19 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/13 08:53:45 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_vec4	add_ambient_value(t_scene *img)
 	normalize_color_vec4(&ambient_color);
 	ambient = multiply_vec4_float(ambient_color, img->ambient_light.ratio);
 	// ambient = multiply_vec4(img->hit_data.color, ambient);
-	printf("after ambient r: %f, g: %f, b: %f\n", ambient.r, ambient.g, ambient.b);
+	//printf("after ambient r: %f, g: %f, b: %f\n", ambient.r, ambient.g, ambient.b);
 	return (ambient);
 }
 
@@ -41,6 +41,8 @@ float	get_brightness(t_scene *img, t_hit *hit)
 	float	result;
 	t_vec3	light_direction;
 
+	//printf("light pos x %f, y %f, z %f\n", img->light_sources.pos.x, img->light_sources.pos.y, img->light_sources.pos.z);
+	//printf("hit->pos x %f, y %f, z %f\n", hit->pos.x, hit->pos.y, hit->pos.z);
 	light_direction = vec3_sub(img->light_sources.pos, hit->pos);
 	light_direction = vec3_normalize(light_direction);
 	result = (dot_vector3(img->hit_data.normal, light_direction) \
