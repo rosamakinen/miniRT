@@ -24,6 +24,7 @@
 		"vector": "c",
 		"libft.h": "c",
 		"mlx.h": "c",
-		"complex": "c"
+		"complex": "c",
+		"tests": "c"
 	}
 }

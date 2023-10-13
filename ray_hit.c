@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_hit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 10:25:15 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/13 15:54:06 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/13 17:50:40 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,16 +104,15 @@ int plane_hit(t_vec3 origin, t_vec3 direction, t_plane plane, t_vec3 *point)
     float   dist;
     t_vec3  plane_to_cam;
 
-    direction.z = -1 * direction.z;
     angle = dot_vector3(plane.normal_vector, direction);
     if(fabsf(angle) < 0.0001)
-         return (0);
-    plane_to_cam = vec3_sub(plane.point, origin);
+         return (0); 
+    plane_to_cam = vec3_sub(origin, plane.point);
     dist = dot_vector3(plane_to_cam, plane.normal_vector) / angle;
-    if (dist < 0.0001)
+    if (dist < 0.0000001)
          return (0);
-    *point = (t_vec3){origin.x + dist * direction.x, origin.y \
-        + dist * direction.y, origin.z + dist * direction.z};
+    *point = (t_vec3){origin.x + dist * direction.x * -1, origin.y \
+        + dist * direction.y * -1, origin.z + dist * direction.z * -1};
     return (1);
 }
 
