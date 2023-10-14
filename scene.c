@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:44:07 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/13 16:18:46 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/14 12:35:10 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	get_distance(t_scene *img, t_camera *cam, t_hit *hit, t_hit new, int id)
 {
-	t_vec3	old_subtracted;
-	t_vec3	new_subtracted;
 	float	old_distance;
+	t_vec3	old_subtracted;
 	float	new_distance;
+	t_vec3	new_subtracted;
 
 	old_subtracted = vec3_sub(cam->forward_dir, (*hit).pos);
 	old_distance = distance(old_subtracted);
@@ -34,8 +34,8 @@ void	get_distance(t_scene *img, t_camera *cam, t_hit *hit, t_hit new, int id)
 
 int	get_closest_hit(t_camera *cam, t_scene *img, t_hit *hit, int x, int y)
 {
-	t_object		*temp;
-	t_hit			new = {0};
+	t_object	*temp;
+	t_hit		new = {0};
 
 	temp = img->objects;
 	img->hit_data.distance = FLT_MAX - 0.0001;
@@ -67,51 +67,6 @@ void	set_id(t_scene *img)
 	}
 }
 
-int	check_for_shadow(t_scene *img, t_hit *hit, t_object *object)
-{
-	t_vec3		shadow_direction;
-	t_vec3		point1;
-	t_vec3		point2;
-	t_sphere	*sphere;
-
-	shadow_direction = vec3_sub(hit->pos, img->light_sources.pos);
-	shadow_direction = vec3_normalize(shadow_direction);
-		// shadow_direction.x = -1 * shadow_direction.x;
-	// shadow_direction.y = -1 * shadow_direction.y;
-	// printf("hit_pos: %f, %f, %f\n", hit->pos.x, hit->pos.y, hit->pos.z);
-	//printf("shadow dir: %f, %f, %f\n", shadow_direction.x, shadow_direction.y, shadow_direction.z);
-	if (object->type == OBJECT_SPHERE)
-	{
-		sphere = (t_sphere *)object->data;
-		if (sphere_hit(sphere, hit->pos, shadow_direction, &point1, &point2))
-		{
-			//printf("shadow hit\n");
-			return (1);
-		}
-	}
-	return (0);
-}
-
-void	get_shadow(t_scene *img, t_hit *hit)
-{
-	t_object	*temp_objects;
-
-	temp_objects = img->objects;
-	while (temp_objects->next != NULL)
-	{
-		if (temp_objects->id != img->hit_data.closest_id)
-		{
-			if (check_for_shadow(img, hit, temp_objects))
-			{
-				img->hit_data.is_in_shadow = 1;
-				return ;
-			}
-		}
-		temp_objects = temp_objects->next;
-	}
-}
-
-
 int	per_pixel(t_camera *cam, t_scene *img, int x, int y)
 {
 	t_hit	hit;
@@ -126,7 +81,6 @@ int	per_pixel(t_camera *cam, t_scene *img, int x, int y)
 	if (hit.hit == 1)
 	{
 		get_shadow(img, &hit);
-		// printf("is shadowed = %i\n", img->hit_data.is_in_shadow);
 		get_normal(img, &hit);
 		color = get_pixel_color(img, &hit);
 		int_col = normalized_vec4_to_int(color);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vectors.c                                          :+:      :+:    :+:   */
+/*   vector_math.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 06:34:26 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/13 16:22:20 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/14 12:36:55 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,6 @@ float	dot_vector3(t_vec3 vector1, t_vec3 vector2)
 	+ (vector1.z * vector2.z));
 }
 
-t_vec3	vec3_normalize(t_vec3 vector)
-{
-	float	magnitude;
-
-	magnitude = distance(vector);
-	if (magnitude > 0)
-	{
-		vector.x /= magnitude;
-		vector.y /= magnitude;
-		vector.z /= magnitude;
-	}
-	return (vector);
-}
-
 t_vec3    cross_product(t_vec3 vector1, t_vec3 vector2)
 {
     t_vec3 result;
@@ -68,14 +54,4 @@ t_vec3 vec3_add(t_vec3 vec1, t_vec3 vec2)
 	temp.y = vec1.y + vec2.y;
 	temp.z = vec1.z + vec2.z;
 	return (temp);
-}
-
-t_vec3	vec3_negative(t_vec3 vector)
-{
-	t_vec3	temp;
-
-	temp.x = - vector.x;
-	temp.y = - vector.y;
-	temp.z = - vector.z;
-	return(temp);
 }

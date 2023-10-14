@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/13 15:54:11 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/14 12:31:37 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,6 @@ t_vec3		cross_product(t_vec3 vector1, t_vec3 vector2);
 t_vec3		vec3_add(t_vec3 vec1, t_vec3 vec2);
 t_vec3		vec3_negative(t_vec3 vector);
 
-//camera.c
-void		get_ray_direction(t_camera *cam, t_scene *img, int x, int y);
-
 //scene.c
 int			get_closest_hit(t_camera *cam, t_scene *img, t_hit *hit, int x, int y);
 void		get_distance(t_scene *img, t_camera *cam, t_hit *hit, t_hit new, int id);
@@ -76,16 +73,20 @@ t_hit		get_hit(t_camera *cam, t_object *objects, float x, float y);
 int			plane_hit(t_vec3 origin, t_vec3 direction, t_plane plane, t_vec3 *point);
 int			sphere_hit(const t_sphere *sphere, const t_vec3 ray_start, const t_vec3 direction, t_vec3 *intersection1, t_vec3 *intersection2);
 
-
 //light.c
 t_vec4		add_ambient_value(t_scene *img);
 t_vec4		get_white_light(void);
 float		get_brightness(t_scene *img, t_hit *hit);
 float		get_specular(t_scene *img, t_hit *hit);
 
+//shadows.c
+void	get_shadow(t_scene *img, t_hit *hit);
+int	check_for_shadow(t_scene *img, t_hit *hit, t_object *object);
+int	check_sphere_shadow(t_hit *hit, t_object *object, t_vec3 shadow_direction);
+int	check_plane_shadow(t_hit *hit, t_object *object, t_vec3 shadow_direction);
+
 //colors.c
 t_vec4		get_pixel_color(t_scene *img, t_hit *hit);
-
 
 //color_math.c
 t_vec4		int_to_vec4(int color);
@@ -107,6 +108,5 @@ void		get_cylinder_color(t_object *data, t_scene *img);
 void		get_plane_color(t_object *data, t_scene *img);
 
 //testing_hit_funcs.c
-
 
 #endif

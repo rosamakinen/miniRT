@@ -6,7 +6,7 @@
 #    By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:30:50 by rmakinen          #+#    #+#              #
-#    Updated: 2023/10/13 12:30:13 by rmakinen         ###   ########.fr        #
+#    Updated: 2023/10/14 12:38:00 by rmakinen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,11 @@ NAME = miniRT
 SRC = main.c \
 		handle_window.c \
 		scene.c \
-		vectors.c \
+		vector_math.c \
+		vector_math2.c \
 		normals.c \
 		light.c \
+		shadows.c \
 		parser/ft_atox.c \
 		parser/ft_print_error.c \
 		parser/get_ambient_light.c \
@@ -35,9 +37,11 @@ SRC = main.c \
 OBJ = main.o \
 		handle_window.o \
 		scene.o \
-		vectors.o \
+		vector_math.o \
+		vector_math2.o \
 		normals.o \
 		light.o \
+		shadows.o \
 		ft_atox.o \
 		ft_print_error.o \
 		get_camera.o \
