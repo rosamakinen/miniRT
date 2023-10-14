@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/14 12:31:37 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:57:14 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,15 @@ int			draw_sphere(t_camera *cam, t_scene *img, int x, int y);
 
 //vectors.c
 float		distance(t_vec3 vector1);
+float		distance_2vecs(t_vec3 vector1, t_vec3 vector2);
 float		dot_vector3(t_vec3 vector1, t_vec3 vector2);
 t_vec3		vec3_sub(t_vec3 vector1, t_vec3 vector2);
 t_vec3		vec3_normalize(t_vec3 vector);
 t_vec3		cross_product(t_vec3 vector1, t_vec3 vector2);
 t_vec3		vec3_add(t_vec3 vec1, t_vec3 vec2);
 t_vec3		vec3_negative(t_vec3 vector);
+t_vec3		vec3_scalar_division(t_vec3 v, float s);
+t_vec3		vec3_scalar_multiplication(t_vec3 v, float s);
 
 //scene.c
 int			get_closest_hit(t_camera *cam, t_scene *img, t_hit *hit, int x, int y);

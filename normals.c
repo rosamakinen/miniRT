@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 06:34:36 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/13 10:00:11 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/14 14:27:42 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	get_plane_normal(t_object *data, t_scene *img)
 	t_plane	*plane;
 
 	plane = (t_plane *)data;
-	img->hit_data.normal = plane->normal_vector;
+	img->hit_data.normal = vec3_normalize(plane->normal_vector);
 }
 
 void	get_normal(t_scene *img, t_hit *hit)

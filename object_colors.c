@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 06:14:17 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/13 13:38:45 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/14 15:05:44 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	get_plane_color(t_object *data, t_scene *img)
 
 	plane = (t_plane *)data;
 	temp_color = int_to_vec4(plane->color);
+	normalize_color_vec4(&temp_color);
 	img->hit_data.color = temp_color;
 }
 
@@ -29,6 +30,7 @@ void	get_cylinder_color(t_object *data, t_scene *img)
 
 	cylinder = (t_cylinder *)data;
 	temp_color = int_to_vec4(cylinder->color);
+	normalize_color_vec4(&temp_color);
 	img->hit_data.color = temp_color;
 }
 

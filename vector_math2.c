@@ -6,11 +6,21 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:36:10 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/14 12:37:25 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:57:18 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/minirt.h"
+
+t_vec3	vec3_scalar_multiplication(t_vec3 v, float s)
+{
+	return (t_vec3){v.x * s, v.y * s, v.z * s};
+}
+
+t_vec3	vec3_scalar_division(t_vec3 v, float s)
+{
+	return (t_vec3){v.x * s, v.y * s, v.z * s};
+}
 
 t_vec3	vec3_normalize(t_vec3 vector)
 {

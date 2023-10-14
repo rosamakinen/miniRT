@@ -6,16 +6,24 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:13:11 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/14 12:33:02 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:30:47 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/minirt.h"
 
-// int	check_cylinder_shadow()
+// int	check_cylinder_shadow(t_hit *hit, t_object *object, t_vec3 shadow_direction)
 // {
+		// t_plane	*cylinder;
+		// t_vec3	point1;
+		// t_vec3	point2;
 
+		// cylinder = (t_cylinder *)object->data;
+		// if (cylinder_hit(hit->pos, shadow_direction, *cylinder, &point) == 1)
+		// 	return (1);
+		// return (0);
 // }
+
 
 int	check_plane_shadow(t_hit *hit, t_object *object, t_vec3 shadow_direction)
 {
