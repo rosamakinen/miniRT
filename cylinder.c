@@ -6,40 +6,46 @@
 /*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:39:31 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/16 15:38:34 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/10/16 17:08:35 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/parser.h"
 
-int	check_hit(t_cylinder *cylinder, t_vec3 hitpoint)
-{
-	t_vec3	top_cap;
-	t_vec3	bottom_cap;
-
-	top_cap = vec3_add(cylinder->pos, vec3_scalar_multiplication(cylinder->axis_vector,
-				cylinder->height / 2));
-	bottom_cap = vec3_sub(cylinder->pos, vec3_scalar_multiplication(cylinder->axis_vector,
-				cylinder->height / 2));
-	if (dot_vector3(cylinder->axis_vector, vec3_sub(hitpoint, bottom_cap)) > 0.0001)
-		return (1);
-	if (dot_vector3(cylinder->axis_vector, vec3_sub(hitpoint, top_cap)) > 0.0001)
-		return (1);
-	return (0);
-}
-
-t_vec3 closest_point_to_line(t_vec3 start, t_vec3 end, t_vec3 point) {
+t_vec3 closest_point_to_line(t_vec3 start, t_vec3 end, t_vec3 point, t_cylinder *cylinder) {
 	t_vec3	line_ve;
 	t_vec3	point_to_point;
 	float	dist;
 	float	dot;
 
-	line_ve = (t_vec3){start.x - end.x, start.y - end.y, start.z - end.z};
-    point_to_point = (t_vec3){point.x - start.x, point.y - start.y, point.z - start.z};
-    dist = distance(vec3_sub(line_ve, line_ve));
-	dot = dot_vector3(point_to_point, line_ve) / (dist * dist);
-    end = (t_vec3){start.x + dot * line_ve.x,  start.y + dot * line_ve.y, start.z + dot * line_ve.z};
-    return (end);
+	line_ve = vec3_sub(end, start);
+	line_ve = vec3_normalize(line_ve);
+	point_to_point = vec3_sub(point, start);
+	dot =  dot_vector3(line_ve, line_ve);
+	if (dot < 0.0001)
+		return ((t_vec3){FLT_MAX, FLT_MAX, FLT_MAX});
+	dist = dot_vector3(point_to_point, line_ve) / dot;
+	start = (t_vec3){start.x + dist * line_ve.x,  start.y + dist * line_ve.y, start.z + dist * line_ve.z};
+	if (distance(vec3_sub(start, cylinder->pos)) > cylinder->height / 2)
+		return ((t_vec3){FLT_MAX, FLT_MAX, FLT_MAX});
+    return (start);
+}
+
+int	check_hit(t_cylinder *cylinder, t_vec3 hitpoint)
+{
+	t_vec3	top_cap;
+	t_vec3	bottom_cap;
+	t_vec3	inverse;
+
+	inverse = vec3_negative(cylinder->axis_vector);
+	top_cap = vec3_add(cylinder->pos, vec3_scalar_multiplication(cylinder->axis_vector,
+				cylinder->height / 2));
+	bottom_cap = vec3_add(cylinder->pos, vec3_scalar_multiplication(inverse,
+				cylinder->height / 2));
+	top_cap = closest_point_to_line(top_cap, bottom_cap, hitpoint, cylinder);
+	if(top_cap.x == FLT_MAX || top_cap.y == FLT_MAX || top_cap.z == FLT_MAX)
+		return (0);
+	return (1);
 }
 
 t_vec3	dist_compare(t_vec3 start, t_vec3 one, t_vec3 two)
@@ -109,7 +115,7 @@ int find_min(float *dists, int size)
 	return (answer);
 }
 
-t_vec3 cylinder_normal(t_vec3 center, t_vec3 axis_rot, t_vec3 hit_pos, float d)
+t_vec3 cylinder_normal(t_vec3 center, t_vec3 axis_rot, t_vec3 hit_pos, float d, t_cylinder *cylinder)
 {
 	t_vec3	start;
 	t_vec3	end;
@@ -117,7 +123,7 @@ t_vec3 cylinder_normal(t_vec3 center, t_vec3 axis_rot, t_vec3 hit_pos, float d)
 
 	end = (t_vec3){center.x + axis_rot.x * d, center.y + axis_rot.y * d, center.z + axis_rot.z * d};
 	start = (t_vec3){center.x + axis_rot.x * d * -1, center.y + axis_rot.y * d * -1, center.z + axis_rot.z * d * -1};
-	closest = closest_point_to_line(start, end, hit_pos);
+	closest = closest_point_to_line(start, end, hit_pos, cylinder);
 	start = vec3_sub(hit_pos, closest);
 	start = vec3_normalize(start);
 	return (start);
@@ -157,6 +163,7 @@ t_hit	find_cylinder_hit(t_cylinder *cylinder, t_vec3 ray_direction, t_vec3 start
 	dist[2] = FLT_MAX;
 	if (check[2] && check_hit(cylinder, hit_pos[2]))
 		dist[2] = distance(vec3_sub(start_pos, hit_pos[2]));
+		
 	// if (dist[0] < 5.0)
 	// 	printf("%f, %f, %f\n", dist[0], dist[1], dist[2]);
 	hit.hit = find_min(&dist[0], 3);
@@ -168,7 +175,7 @@ t_hit	find_cylinder_hit(t_cylinder *cylinder, t_vec3 ray_direction, t_vec3 start
 	}
 	else if (hit.hit == 2)
 	{
-		cylinder->my_hit.my_normal = cylinder_normal(cylinder->pos, cylinder->axis_vector, hit_pos[2], cylinder->height / 2);
+		cylinder->my_hit.my_normal = cylinder_normal(cylinder->pos, cylinder->axis_vector, hit_pos[2], cylinder->height / 2, cylinder);
 		hit.hit = 1;
 		hit.pos = hit_pos[2];
 	}
