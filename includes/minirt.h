@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/13 08:46:00 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:57:14 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 # include "../libft/includes/libft.h"
 //# include "../mlx/mlx.h"
 
-# define WINDOW_WIDTH 500
-# define WINDOW_HEIGHT 500
+# define WINDOW_WIDTH 1080
+# define WINDOW_HEIGHT 1080
 
 typedef struct s_vec3 t_vec3;
 typedef struct s_vec4 t_vec4;
@@ -51,17 +51,19 @@ int			draw_sphere(t_camera *cam, t_scene *img, int x, int y);
 
 //vectors.c
 float		distance(t_vec3 vector1);
+float		distance_2vecs(t_vec3 vector1, t_vec3 vector2);
 float		dot_vector3(t_vec3 vector1, t_vec3 vector2);
 t_vec3		vec3_sub(t_vec3 vector1, t_vec3 vector2);
 t_vec3		vec3_normalize(t_vec3 vector);
 t_vec3		cross_product(t_vec3 vector1, t_vec3 vector2);
-
-//camera.c
-void		get_ray_direction(t_camera *cam, t_scene *img, int x, int y);
+t_vec3		vec3_add(t_vec3 vec1, t_vec3 vec2);
+t_vec3		vec3_negative(t_vec3 vector);
+t_vec3		vec3_scalar_division(t_vec3 v, float s);
+t_vec3		vec3_scalar_multiplication(t_vec3 v, float s);
 
 //scene.c
 int			get_closest_hit(t_camera *cam, t_scene *img, t_hit *hit, int x, int y);
-void		get_distance(t_scene *img, t_camera *cam, t_hit *hit, int id);
+void		get_distance(t_scene *img, t_camera *cam, t_hit *hit, t_hit new, int id);
 void		set_id(t_scene *img);
 
 //normals.c
@@ -71,11 +73,20 @@ void		get_sphere_normal(t_object *data, t_scene *img, t_hit *hit);
 
 //ray_hit.c
 t_hit		get_hit(t_camera *cam, t_object *objects, float x, float y);
+int			plane_hit(t_vec3 origin, t_vec3 direction, t_plane plane, t_vec3 *point);
+int			sphere_hit(const t_sphere *sphere, const t_vec3 ray_start, const t_vec3 direction, t_vec3 *intersection1, t_vec3 *intersection2);
 
 //light.c
 t_vec4		add_ambient_value(t_scene *img);
 t_vec4		get_white_light(void);
 float		get_brightness(t_scene *img, t_hit *hit);
+float		get_specular(t_scene *img, t_hit *hit);
+
+//shadows.c
+void	get_shadow(t_scene *img, t_hit *hit);
+int	check_for_shadow(t_scene *img, t_hit *hit, t_object *object);
+int	check_sphere_shadow(t_hit *hit, t_object *object, t_vec3 shadow_direction);
+int	check_plane_shadow(t_hit *hit, t_object *object, t_vec3 shadow_direction);
 
 //colors.c
 t_vec4		get_pixel_color(t_scene *img, t_hit *hit);
@@ -100,6 +111,5 @@ void		get_cylinder_color(t_object *data, t_scene *img);
 void		get_plane_color(t_object *data, t_scene *img);
 
 //testing_hit_funcs.c
-
 
 #endif
