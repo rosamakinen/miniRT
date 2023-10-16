@@ -1,0 +1,11 @@
+we got right_dir 3.000000, -0.000000, 0.000000
+ and up_dir 0.000000,3.000000, 0.000000
+ and forward_dir 0.000000, 0.000000, -3.000000
+we got back from scene_const
+We got light: -0.000000, 200.000000, -100.000000 and ratio 1.000000
+We got ambient light ratio: 0.100000,and color ffffff
+We got camera pos: -0.000000, 0.000000, 20.000000,and degrees 120
+we got a plane with 0.000000,0.000000,-790.000000 point and 0.000000, 0.000000, 1.000000 normal and beff0000 color
+We got sphere with -250.000000, 100.000000, -350.000000 pos, 150.000000 diameter and beff00ff color
+We got sphere with 0.000000, 0.000000, -300.000000 pos, 70.000000 diameter and be00ffff color
+We got sphere with 100.000000, -13.000000, -550.000000 pos, 350.000000 diameter and beffff00 color

@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 10:25:15 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/14 16:59:44 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/16 09:44:43 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ t_hit	get_hit(t_camera *cam, t_object *objects, float x, float y)
 	float	fake_x = x;
 	float	fake_y = y;
 	translate_t_vec3s(&fake_x, &fake_y, aspect_ratio, cam->fov);
-	t_vec3 test_dir= find_ray_dir(cam, fake_x, fake_y);
+	t_vec3 test_dir = find_ray_dir(cam, fake_x, fake_y);
 	if (objects->type == OBJECT_SPHERE)
 		hit = find_sphere_hit((t_sphere *)objects->data, test_dir, cam);
 	if (objects->type == OBJECT_PLANE)

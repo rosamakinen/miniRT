@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 14:50:20 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/13 09:03:46 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/16 10:28:25 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ static void find_up_and_right_vecs(t_camera *camera)
         initialUp = (t_vec3){0.0, 1.0, 0.0};
     }
 	camera->forward_dir = camera->norm_vector;
-	camera->right_dir = cross_product(initialUp, camera->forward_dir);
+	camera->right_dir = cross_product(camera->forward_dir, initialUp);
     camera->right_dir = vec3_normalize(camera->right_dir);
 	camera->up_dir = cross_product(camera->right_dir, camera->forward_dir);
 	camera->up_dir = vec3_normalize(camera->up_dir);
-	printf("we got right_dir %f, %f, %f\n and up_dir %f,%f, %f\n and forward_dir %f, %f, %f\n", camera->right_dir.x, camera->right_dir.y, camera->right_dir.z, camera->up_dir.x, camera->up_dir.y, camera->up_dir.z,camera->forward_dir.x, camera->forward_dir.y,camera->forward_dir.z);
+	printf("we got right_dir %f, %f, %f\n and up_dir %f,%f, %f\n and forward_dir %f, %f, %f\n", camera->right_dir.x * 3, camera->right_dir.y * 3, camera->right_dir.z * 3, camera->up_dir.x * 3, camera->up_dir.y * 3, camera->up_dir.z * 3,camera->forward_dir.x * 3, camera->forward_dir.y * 3,camera->forward_dir.z * 3);
 }
 
 short	get_camera(t_scene *scene, const char *str)
