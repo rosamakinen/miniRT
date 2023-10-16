@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:44:07 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/16 09:51:11 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/16 12:14:07 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	per_pixel(t_camera *cam, t_scene *img, int x, int y)
 	get_closest_hit(cam, img, &hit, x, y);
 	if (hit.hit == 1)
 	{
-		get_shadow(img, &hit);
+		//get_shadow(img, &hit);
 		get_normal(img, &hit);
 		color = get_pixel_color(img, &hit);
 		int_col = normalized_vec4_to_int(color);

@@ -6,23 +6,20 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:13:11 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/16 10:24:04 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/16 11:57:24 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/minirt.h"
 
-// int	check_cylinder_shadow(t_hit *hit, t_object *object, t_vec3 shadow_direction)
-// {
-		// t_plane	*cylinder;
-		// t_vec3	point1;
-		// t_vec3	point2;
+int	check_cylinder_shadow(t_hit *hit, t_object *object, t_vec3 shadow_direction)
+{
+		t_cylinder	*cylinder;
 
-		// cylinder = (t_cylinder *)object->data;
-		// if (cylinder_hit(hit->pos, shadow_direction, *cylinder, &point) == 1)
-		// 	return (1);
-		// return (0);
-// }
+		cylinder = (t_cylinder *)object->data;
+		*hit = find_cylinder_hit(cylinder, shadow_direction, hit->pos);
+		return (hit->hit);
+}
 
 
 int	check_plane_shadow(t_hit *hit, t_object *object, t_vec3 shadow_direction, t_float_vec3 data)
@@ -75,10 +72,10 @@ int	check_for_shadow(t_scene *img, t_hit *hit, t_object *object)
 	{
 		return (check_plane_shadow(hit, object, shadow_direction, data));
 	}
-	// if (object->type == OBJECT_CYLINDER)
-	// {
-	// 	return (check_cylinder_shadow(hit, object, shadow_direction));
-	// }
+	if (object->type == OBJECT_CYLINDER)
+	{
+		return (check_cylinder_shadow(hit, object, shadow_direction));
+	}
 	return (0);
 }
 

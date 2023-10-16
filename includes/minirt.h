@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/16 11:09:50 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/16 11:49:37 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,10 @@ int			check_plane_shadow(t_hit *hit, t_object *object, t_vec3 shadow_direction, 
 
 //colors.c
 t_vec4		get_pixel_color(t_scene *img, t_hit *hit);
+
+//cylinder.c
+t_hit		find_cylinder_hit(t_cylinder *cylinder, t_vec3 ray_direction, t_vec3 start_pos);
+
 
 //object_color.c
 void		get_object_basecolor(t_scene *img);

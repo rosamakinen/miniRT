@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 09:19:26 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/16 10:16:57 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/16 11:39:17 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,12 @@ typedef struct s_object
 	t_object_type	type;
 }	t_object;
 
+typedef struct s_cyl_hit
+{
+	t_vec3		pos;
+	t_vec3		my_normal;
+}	t_cyl_hit;
+
 typedef struct s_cylinder
 {
 	t_vec3		pos;
@@ -72,6 +78,7 @@ typedef struct s_cylinder
 	float		diameter;
 	float		height;
 	t_color		color;
+	t_cyl_hit	my_hit;
 }	t_cylinder;
 
 typedef struct s_plane

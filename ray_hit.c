@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 10:25:15 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/16 11:13:58 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/16 11:57:38 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,7 @@ t_hit	get_hit(t_camera *cam, t_object *objects, float x, float y)
 		hit = find_sphere_hit((t_sphere *)objects->data, test_dir, cam);
 	if (objects->type == OBJECT_PLANE)
 		 hit = find_plane_hit((t_plane *)objects->data, test_dir, cam);
+	if (objects->type == OBJECT_CYLINDER)
+		 hit = find_cylinder_hit((t_cylinder *)objects->data, test_dir, cam->pos);
 	return (hit);
 }

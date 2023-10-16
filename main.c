@@ -6,25 +6,35 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:29:32 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/16 10:28:35 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/16 11:34:17 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/minirt.h"
 
+
+// int	validate_filename(char *filename)
+// {
+
+// }
+
 // int	main(int argc, char **argv)
 // {
-// 	t_window	img;
-// 	t_scene		scene;
+// 	t_scene	scene;
+// 	char	*filename;
 
-// 	if (argc == 1)
+// 	if (argc == 2)
 // 	{
-// 		ft_printf("%s\n", argv[0]);
-// 		ft_printf("this is the start\n");
-// 		handle_window(&img);
-// 		draw_img(&img);
-// 		mlx_loop(img.mlx);
+// 		if (validate_filename(argv[1]))
+// 		{
+// 			scene = scene_constractor(argv[1]);
+// 			handle_window(&scene);
+// 			draw_img(&scene); //name this like raytrace etc?
+// 			mlx_loop(scene.mlx);
+// 		}
 // 	}
+// 	else
+// 		ft_print_error("Error\n one map.rt expexted as argument\n");
 // 	return(0);
 // }
 
