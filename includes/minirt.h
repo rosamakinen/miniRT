@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/16 11:49:37 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/16 17:23:14 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void		get_shadow(t_scene *img, t_hit *hit);
 int			check_for_shadow(t_scene *img, t_hit *hit, t_object *object);
 int			check_sphere_shadow(t_hit *hit, t_object *object, t_vec3 shadow_direction, t_float_vec3 data);
 int			check_plane_shadow(t_hit *hit, t_object *object, t_vec3 shadow_direction, t_float_vec3 data);
+int			check_cylinder_shadow(t_hit *hit, t_object *object, t_vec3 shadow_direction, t_float_vec3 data);
 
 //colors.c
 t_vec4		get_pixel_color(t_scene *img, t_hit *hit);
