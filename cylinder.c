@@ -6,7 +6,7 @@
 /*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:39:31 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/16 15:11:07 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/10/16 15:38:34 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void cyl_cap_plane_initialize(t_plane *my_planes, t_cylinder *cylinder, int dir)
 {
 	my_planes->color = cylinder->color;
 	my_planes->normal_vector = (t_vec3){cylinder->axis_vector.x * dir, cylinder->axis_vector.y * dir, cylinder->axis_vector.z * dir};
-	my_planes->point = (t_vec3){my_planes->normal_vector.x * (cylinder->height / 2), my_planes->normal_vector.y * (cylinder->height / 2), my_planes->normal_vector.z * (cylinder->height / 2)};
+	my_planes->point = (t_vec3){cylinder->pos.x + my_planes->normal_vector.x * (cylinder->height / 2),cylinder->pos.y + my_planes->normal_vector.y * (cylinder->height / 2),cylinder->pos.z + my_planes->normal_vector.z * (cylinder->height / 2)};
 }
 
 int find_min(float *dists, int size)
@@ -96,12 +96,11 @@ int find_min(float *dists, int size)
 
 	i = 0;
 	answer = 235400;
-	holder = dists[0];
+	holder = FLT_MAX;
 	while (i < size)
 	{
 		if (dists[i] < holder)
 		{
-			printf("holder : %f, dist[%i] = %f\n", holder, i, dists[i]);
 			holder = dists[i];
 			answer = i;
 		}
@@ -142,7 +141,7 @@ t_hit	find_cylinder_hit(t_cylinder *cylinder, t_vec3 ray_direction, t_vec3 start
 		if ((cylinder->diameter / 2) < dist[0])
 			dist[0] = FLT_MAX;
 		else
-			printf("we are here\n");
+			dist[0] = distance(vec3_sub(start_pos, hit_pos[0]));
 	}	
 	check[1] = plane_hit(start_pos, ray_direction, my_planes[1], &hit_pos[1]);
 	dist[1] = FLT_MAX;
@@ -151,6 +150,8 @@ t_hit	find_cylinder_hit(t_cylinder *cylinder, t_vec3 ray_direction, t_vec3 start
 		dist[1] = distance(vec3_sub(my_planes[1].point, hit_pos[1]));
 		if ((cylinder->diameter / 2) < dist[1])
 			dist[1] = FLT_MAX;
+		else
+			dist[1] = distance(vec3_sub(start_pos, hit_pos[1]));
 	}
 	check[2] = infinite_cylinder_hit(start_pos, ray_direction, cylinder, &hit_pos[2], &hit_pos[3]);
 	dist[2] = FLT_MAX;
@@ -158,11 +159,10 @@ t_hit	find_cylinder_hit(t_cylinder *cylinder, t_vec3 ray_direction, t_vec3 start
 		dist[2] = distance(vec3_sub(start_pos, hit_pos[2]));
 	// if (dist[0] < 5.0)
 	// 	printf("%f, %f, %f\n", dist[0], dist[1], dist[2]);
-	hit.hit = find_min(&dist[0], 2);
+	hit.hit = find_min(&dist[0], 3);
 	if (hit.hit < 2)
 	{
 		cylinder->my_hit.my_normal = my_planes[hit.hit].normal_vector;
-		printf("we are 1312321 here\n");
 		hit.hit = 1;
 		hit.pos = hit_pos[hit.hit];
 	}
