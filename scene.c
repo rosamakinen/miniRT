@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:44:07 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/16 17:43:18 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/17 07:04:44 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	get_closest_hit(t_camera *cam, t_scene *img, t_hit *hit, int x, int y)
 	t_hit		new = {0};
 
 	temp = img->objects;
-	img->hit_data.distance = FLT_MAX - 0.0001;
+	img->hit_data.distance = FLT_MAX;
 	img->hit_data.closest_id = INT_MAX;
 	while (temp->next != NULL)
 	{
@@ -92,7 +92,7 @@ int	per_pixel(t_camera *cam, t_scene *img, int x, int y)
 	return (0);
 }
 
-int	draw_img(t_scene *img)
+int	raytrace(t_scene *img)
 {
 	t_camera	cam;
 	int			color;
@@ -102,6 +102,7 @@ int	draw_img(t_scene *img)
 	x = 0;
 	y = 0;
 	cam = img->camera;
+	handle_window(img);
 	set_id(img);
 	while (y < img->height)
 	{

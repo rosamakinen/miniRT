@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/16 17:23:14 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/17 07:03:32 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,9 @@ typedef struct s_sphere	t_sphere;
 int			handle_window(t_scene *img);
 int			exit_button();
 
-//drawing
-int			draw_img(t_scene *img);
 
 //scene.c
+int			raytrace(t_scene *img);
 int			get_closest_hit(t_camera *cam, t_scene *img, t_hit *hit, int x, int y);
 void		get_distance(t_scene *img, t_camera *cam, t_hit *hit, t_hit new, int id);
 void		set_id(t_scene *img);

@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:13:11 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/16 17:45:18 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/17 06:52:52 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int	check_sphere_shadow(t_hit *hit, t_object *object, t_vec3 shadow_direction, t
 	}
 	return (0);
 }
-
 
 int	check_for_shadow(t_scene *img, t_hit *hit, t_object *object)
 {

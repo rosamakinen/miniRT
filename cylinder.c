@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:39:31 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/16 17:08:35 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/10/17 07:00:33 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ t_hit	find_cylinder_hit(t_cylinder *cylinder, t_vec3 ray_direction, t_vec3 start
 			dist[0] = FLT_MAX;
 		else
 			dist[0] = distance(vec3_sub(start_pos, hit_pos[0]));
-	}	
+	}
 	check[1] = plane_hit(start_pos, ray_direction, my_planes[1], &hit_pos[1]);
 	dist[1] = FLT_MAX;
 	if (check[1])
@@ -163,7 +163,7 @@ t_hit	find_cylinder_hit(t_cylinder *cylinder, t_vec3 ray_direction, t_vec3 start
 	dist[2] = FLT_MAX;
 	if (check[2] && check_hit(cylinder, hit_pos[2]))
 		dist[2] = distance(vec3_sub(start_pos, hit_pos[2]));
-		
+
 	// if (dist[0] < 5.0)
 	// 	printf("%f, %f, %f\n", dist[0], dist[1], dist[2]);
 	hit.hit = find_min(&dist[0], 3);
@@ -180,6 +180,6 @@ t_hit	find_cylinder_hit(t_cylinder *cylinder, t_vec3 ray_direction, t_vec3 start
 		hit.pos = hit_pos[2];
 	}
 	else
-		hit.hit = 0;	
+		hit.hit = 0;
 	return (hit);
 }
