@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 14:50:20 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/17 10:29:12 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/17 13:08:32 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ short	get_camera(t_scene *scene, const char *str)
 	if (get_3d_normal_vector(&scene->camera.norm_vector, str, &i)
 		== EXIT_FAILURE)
 		return (INVALID_INPUT);
+	scene->camera.norm_vector = vec3_normalize(scene->camera.norm_vector);
 	find_up_and_right_vecs(&scene->camera);
 	if (get_degrees(&scene->camera.fov, str, &i) == EXIT_FAILURE)
 		return (INVALID_INPUT);
