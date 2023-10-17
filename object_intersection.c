@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:56:18 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/16 10:26:54 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/16 11:13:38 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	plane_hit(t_vec3 origin, t_vec3 direction, t_plane plane, t_vec3 *point)
 {
-	float   angle;
-	float   dist;
-	t_vec3  plane_to_cam;
+	float	angle;
+	float	dist;
+	t_vec3	plane_to_cam;
 
 	angle = dot_vector3(plane.normal_vector, direction);
 	if(fabsf(angle) < 0.0001)
@@ -32,11 +32,11 @@ int	plane_hit(t_vec3 origin, t_vec3 direction, t_plane plane, t_vec3 *point)
 
 int	sphere_hit(const t_sphere *sphere, const t_vec3 ray_start, const t_vec3 direction, t_vec3 *intersection1, t_vec3 *intersection2)
 {
-	float   a;
-	float   b;
-	float   c;
-	float   discriminant;
-	t_vec3  dist;
+	float	a;
+	float	b;
+	float	c;
+	float	discriminant;
+	t_vec3	dist;
 
 	dist = vec3_sub(ray_start, sphere->pos);
 	a = dot_vector3(direction, direction);

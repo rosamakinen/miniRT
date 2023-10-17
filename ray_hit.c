@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 10:25:15 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/16 09:44:43 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/16 11:57:38 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	translate_t_vec3s(float *x, float *y, float aspect_ratio, float fov)
 t_hit	find_sphere_hit(t_sphere *sphere, t_vec3 ray_direction, t_camera *camera)
 {
 	t_hit	hit;
-	t_vec3  point1;
-	t_vec3  point2;
+	t_vec3	point1;
+	t_vec3	point2;
 
 	ft_bzero(&hit, sizeof(t_hit));
 	if (sphere_hit(sphere, camera->pos, ray_direction, &point1, &point2))
@@ -63,7 +63,7 @@ t_hit	find_sphere_hit(t_sphere *sphere, t_vec3 ray_direction, t_camera *camera)
 t_hit	find_plane_hit(t_plane *plane, t_vec3 ray_direction, t_camera *camera)
 {
 	t_hit	hit;
-	t_vec3  point1;
+	t_vec3	point1;
 
 	ft_bzero(&hit, sizeof(t_hit));
 
@@ -87,5 +87,7 @@ t_hit	get_hit(t_camera *cam, t_object *objects, float x, float y)
 		hit = find_sphere_hit((t_sphere *)objects->data, test_dir, cam);
 	if (objects->type == OBJECT_PLANE)
 		 hit = find_plane_hit((t_plane *)objects->data, test_dir, cam);
+	if (objects->type == OBJECT_CYLINDER)
+		 hit = find_cylinder_hit((t_cylinder *)objects->data, test_dir, cam->pos);
 	return (hit);
 }

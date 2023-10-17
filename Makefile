@@ -6,7 +6,7 @@
 #    By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:30:50 by rmakinen          #+#    #+#              #
-#    Updated: 2023/10/14 17:00:21 by rmakinen         ###   ########.fr        #
+#    Updated: 2023/10/17 11:16:33 by rmakinen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRC = main.c \
 		color_math2.c \
 		object_colors.c \
 		object_intersection.c \
+		cylinder.c \
 
 OBJ = main.o \
 		handle_window.o \
@@ -58,8 +59,9 @@ OBJ = main.o \
 		color_math2.o \
 		object_colors.o \
 		object_intersection.o \
+		cylinder.o \
 
-FLAGS = -Wall -Wextra -Werror -g -fsanitize=address,undefined
+FLAGS = -Wall -Wextra -Werror -O2 #-g -fsanitize=address,undefined
 
 all: $(NAME)
 

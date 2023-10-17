@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:13:57 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/16 07:49:04 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/17 10:33:15 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	get_float(float *dst, const char *str, int *index)
 	*dst = ft_atof(str, index);
 	if (is_digit_mod(str[*index], 1, 1))
 		return (EXIT_FAILURE);
-	*index = skip_chars(" ,", *index, str);
+	*index = skip_chars(" ", *index, str);
 	return (EXIT_SUCCESS);
 }
 
@@ -109,7 +109,7 @@ int	get_3d_normal_vector(t_vec3 *coordinate, const char *str, int *index)
 	coordinate->z = ft_atof(str, index);
 	if (is_digit_mod(str[*index], 1, 1))
 		return (EXIT_FAILURE);
-	*index = skip_chars(" ,", *index, str);
+	*index = skip_chars(" ", *index, str);
 	if (fabs(coordinate->x) > 1 || fabs(coordinate->y) > 1
 		|| fabs(coordinate->z) > 1)
 		return (EXIT_FAILURE);
