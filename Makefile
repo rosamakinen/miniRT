@@ -6,7 +6,7 @@
 #    By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:30:50 by rmakinen          #+#    #+#              #
-#    Updated: 2023/10/16 11:44:15 by rmakinen         ###   ########.fr        #
+#    Updated: 2023/10/17 07:57:12 by rmakinen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,7 @@ OBJ = main.o \
 		object_intersection.o \
 		cylinder.o \
 
-FLAGS = -Wall -Wextra -Werror -g -fsanitize=address,undefined
+FLAGS = -Wall -Wextra -Werror -O3 #-g -fsanitize=address,undefined
 
 all: $(NAME)
 
