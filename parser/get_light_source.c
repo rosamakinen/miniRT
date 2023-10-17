@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:17:37 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/03 09:00:20 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/17 06:38:42 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ short	get_light_source(t_scene *scene, const char *str)
 		return (INVALID_INPUT);
 	if (str[i] && str[i] != '\n')
 		return (INVALID_INPUT);
+	scene->light_sources.pos.x = -1 * scene->light_sources.pos.x;
 	scene->check_once.light_source++;
 	if (scene->check_once.light_source > 1)
 		return (EXCESS_ELEMENTS);
