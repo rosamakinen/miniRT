@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_error.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 10:15:38 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/17 07:28:48 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/17 13:23:40 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_print_error(const char *str)
 	if (str)
 	{
 		while (str[++i])
-			write(STDERR_FILENO, &str[i], 2);
+			write(STDERR_FILENO, &str[i], 1);
 	}
 	return (i);
 }
