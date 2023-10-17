@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:39:31 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/17 07:00:33 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/17 12:46:06 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int infinite_cylinder_hit(t_vec3 ray_start, t_vec3 ray_direction, t_cylinder *cy
 	float	c;
 	float	discriminant;
 
+	cylinder->axis_vector = vec3_normalize(cylinder->axis_vector);
 	one = vec3_sub(ray_direction, vec3_scalar_multiplication(cylinder->axis_vector, dot_vector3(ray_direction, cylinder->axis_vector)));
 	two = vec3_sub(vec3_sub(ray_start, cylinder->pos), vec3_scalar_multiplication(cylinder->axis_vector, dot_vector3(vec3_sub(ray_start, cylinder->pos), cylinder->axis_vector)));
 	a = dot_vector3(one, one);
@@ -83,7 +84,8 @@ int infinite_cylinder_hit(t_vec3 ray_start, t_vec3 ray_direction, t_cylinder *cy
                 + c * ray_direction.y, ray_start.z + c * ray_direction.z };
     *intersection2 = (t_vec3){ray_start.x + a * ray_direction.x, ray_start.y
                 + a * ray_direction.y, ray_start.z + a * ray_direction.z};
-	*intersection1 = dist_compare(ray_start, *intersection1, *intersection2);
+	*intersection1 = *intersection2;
+	// *intersection1 = dist_compare(ray_start, *intersection1, *intersection2);
 	return 1;
 }
 
@@ -91,6 +93,7 @@ void cyl_cap_plane_initialize(t_plane *my_planes, t_cylinder *cylinder, int dir)
 {
 	my_planes->color = cylinder->color;
 	my_planes->normal_vector = (t_vec3){cylinder->axis_vector.x * dir, cylinder->axis_vector.y * dir, cylinder->axis_vector.z * dir};
+	my_planes->normal_vector = vec3_normalize(my_planes->normal_vector);
 	my_planes->point = (t_vec3){cylinder->pos.x + my_planes->normal_vector.x * (cylinder->height / 2),cylinder->pos.y + my_planes->normal_vector.y * (cylinder->height / 2),cylinder->pos.z + my_planes->normal_vector.z * (cylinder->height / 2)};
 }
 
