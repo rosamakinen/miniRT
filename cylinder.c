@@ -6,13 +6,14 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:39:31 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/17 12:46:06 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/17 13:35:20 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/parser.h"
 
-t_vec3 closest_point_to_line(t_vec3 start, t_vec3 end, t_vec3 point, t_cylinder *cylinder) {
+t_vec3 closest_point_to_line(t_vec3 start, t_vec3 end, t_vec3 point, t_cylinder *cylinder)
+{
 	t_vec3	line_ve;
 	t_vec3	point_to_point;
 	float	dist;
@@ -28,7 +29,7 @@ t_vec3 closest_point_to_line(t_vec3 start, t_vec3 end, t_vec3 point, t_cylinder 
 	start = (t_vec3){start.x + dist * line_ve.x,  start.y + dist * line_ve.y, start.z + dist * line_ve.z};
 	if (distance(vec3_sub(start, cylinder->pos)) > cylinder->height / 2)
 		return ((t_vec3){FLT_MAX, FLT_MAX, FLT_MAX});
-    return (start);
+	return (start);
 }
 
 int	check_hit(t_cylinder *cylinder, t_vec3 hitpoint)
@@ -60,8 +61,9 @@ t_vec3	dist_compare(t_vec3 start, t_vec3 one, t_vec3 two)
 	return (two);
 }
 
-int infinite_cylinder_hit(t_vec3 ray_start, t_vec3 ray_direction, t_cylinder *cylinder, t_vec3 *intersection1, t_vec3 *intersection2) {
-    t_vec3	one;
+int infinite_cylinder_hit(t_vec3 ray_start, t_vec3 ray_direction, t_cylinder *cylinder, t_vec3 *intersection1, t_vec3 *intersection2)
+{
+	t_vec3	one;
 	t_vec3	two;
 	float	a;
 	float	b;

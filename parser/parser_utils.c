@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:13:57 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/17 10:33:15 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/17 13:37:56 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	get_color(t_color *color, const char *str, int *index)
 	num[0] = ft_atouint8(str, index);
 	if (is_digit_mod(str[*index], 1, 1))
 		return (EXIT_FAILURE);
-	*index = skip_chars(" ,", *index, str);
+	*index = skip_chars(" ", *index, str);
 	return (EXIT_SUCCESS);
 }
 
