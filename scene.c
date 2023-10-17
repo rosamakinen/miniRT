@@ -6,7 +6,7 @@
 /*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:44:07 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/17 14:30:47 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/10/17 14:57:53 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,29 @@
 
 void	get_distance(t_scene *img, t_camera *cam, t_hit *hit, t_hit new, int id)
 {
+	static int old_id = 0;
 	float	old_distance;
 	t_vec3	old_subtracted;
 	float	new_distance;
 	t_vec3	new_subtracted;
-
-	old_subtracted = vec3_sub(cam->forward_dir, (*hit).pos);
+	
+	old_subtracted = vec3_sub(cam->pos, (*hit).pos);
 	old_distance = distance(old_subtracted);
-	new_subtracted = vec3_sub(cam->forward_dir, new.pos);
+	new_subtracted = vec3_sub(cam->pos, new.pos);
 	new_distance = distance(new_subtracted);
-
+	if (old_id == 0)
+		old_id = id;
 	if (new_distance < old_distance || hit->hit == 0)
 	{
+		// if (old_id == 3)
+		// {
+		// 	printf("old distance: %f, new_dist %f, and new_id: %i\n", old_distance, new_distance, id);
+		// }
 		(*hit) = new;
 		img->hit_data.closest_id = id;
 		img->hit_data.distance = new_distance;
 	}
+	old_id = id;
 }
 
 int	get_closest_hit(t_camera *cam, t_scene *img, t_hit *hit, int x, int y)

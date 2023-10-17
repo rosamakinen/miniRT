@@ -6,7 +6,7 @@
 /*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:39:31 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/17 14:31:39 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/10/17 15:05:30 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,8 +191,8 @@ t_hit	find_cylinder_hit(t_cylinder *cylinder, t_vec3 ray_direction, t_vec3 start
 	if (hit.hit < 2)
 	{
 		cylinder->my_hit.my_normal = my_planes[hit.hit].normal_vector;
-		hit.hit = 1;
 		hit.pos = hit_pos[hit.hit];
+		hit.hit = 1;	
 	}
 	else if (hit.hit == 2)
 	{
