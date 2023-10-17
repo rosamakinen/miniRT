@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ray_hit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 10:25:15 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/16 11:57:38 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/17 13:27:09 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minirt.h"
 
-//Honorable mention. The following function would not have been possible without the contributions
-//of Sheree and Dorian!
+//Honorable mention: The following function would not have been possible without
+//the contributions of Sheree and Dorian!
 t_vec3 find_ray_dir(t_camera *camera, float x, float y)
 {
 	float	offset[3];
