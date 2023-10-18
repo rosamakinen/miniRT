@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:44:07 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/18 12:36:15 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/18 18:42:40 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	get_distance(t_scene *img, t_camera *cam, t_hit *hit, t_hit new, int id)
 {
-	static int old_id = 0;
 	float	old_distance;
 	t_vec3	old_subtracted;
 	float	new_distance;
@@ -24,15 +23,12 @@ void	get_distance(t_scene *img, t_camera *cam, t_hit *hit, t_hit new, int id)
 	old_distance = distance(old_subtracted);
 	new_subtracted = vec3_sub(cam->pos, new.pos);
 	new_distance = distance(new_subtracted);
-	if (old_id == 0)
-		old_id = id;
 	if (new_distance < old_distance || hit->hit == 0)
 	{
 		(*hit) = new;
 		img->hit_data.closest_id = id;
 		img->hit_data.distance = new_distance;
 	}
-	old_id = id;
 }
 
 int	get_closest_hit(t_camera *cam, t_scene *img, t_hit *hit, int x, int y)

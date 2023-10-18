@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_hit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 10:25:15 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/18 16:34:00 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/10/18 18:35:37 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ t_hit	find_plane_hit(t_plane *plane, t_vec3 ray_direction, t_camera *camera)
 	return (hit);
 }
 
-//the function:
 static void	sanity_check(t_vec3 origin, t_vec3 direction, t_hit *hit)
 {
 	t_vec3	pos;

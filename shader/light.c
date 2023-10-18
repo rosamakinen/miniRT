@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:26:03 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/18 11:03:23 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/18 18:22:33 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ float	get_brightness(t_scene *img, t_hit *hit)
 	light_direction = vec3_normalize(light_direction);
 	result = (dot_vector3(img->hit_data.normal, light_direction) \
 	* img->light_sources.ratio);
-	if (result < 0)
+	if (result < TINY_VALUE)
 		result = 0.0;
 	return (result);
 }

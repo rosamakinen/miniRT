@@ -6,7 +6,7 @@
 #    By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:30:50 by rmakinen          #+#    #+#              #
-#    Updated: 2023/10/18 17:13:55 by rmakinen         ###   ########.fr        #
+#    Updated: 2023/10/18 18:32:51 by rmakinen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,7 @@ OBJ = main.o \
 		cylinder_utils2.o \
 		cylinder_utils3.o \
 
-FLAGS = -Wall -Wextra -Werror -O2 -g -fsanitize=address,undefined
+FLAGS = -Wall -Wextra -Werror -O3 -g -fsanitize=address,undefined
 
 all: $(NAME)
 
