@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:39:31 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/17 15:13:31 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/18 09:37:47 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,7 @@ t_hit	find_cylinder_hit(t_cylinder *cylinder, t_vec3 ray_direction, t_vec3 start
 	t_plane		my_planes[2];
 	float		dist[3];
 
+	hit.check = 0;
 	cyl_cap_plane_initialize(&my_planes[0], cylinder, 1);
 	cyl_cap_plane_initialize(&my_planes[1], cylinder, -1);
 	check[0] = plane_hit(start_pos, ray_direction, my_planes[0], &hit_pos[0]);
@@ -173,7 +174,11 @@ t_hit	find_cylinder_hit(t_cylinder *cylinder, t_vec3 ray_direction, t_vec3 start
 		if ((cylinder->diameter / 2) < dist[0])
 			dist[0] = FLT_MAX;
 		else
+		{
 			dist[0] = distance(vec3_sub(start_pos, hit_pos[0]));
+			if (hit.shadow)
+				printf("dist 0: %f\n", dist[0]);
+		}
 	}
 	check[1] = plane_hit(start_pos, ray_direction, my_planes[1], &hit_pos[1]);
 	dist[1] = FLT_MAX;
@@ -183,7 +188,11 @@ t_hit	find_cylinder_hit(t_cylinder *cylinder, t_vec3 ray_direction, t_vec3 start
 		if ((cylinder->diameter / 2) < dist[1])
 			dist[1] = FLT_MAX;
 		else
+		{
 			dist[1] = distance(vec3_sub(start_pos, hit_pos[1]));
+			if (hit.shadow)
+				printf("dist 1: %f\n", dist[0]);
+		}
 	}
 	check[2] = infinite_cylinder_hit(start_pos, ray_direction, cylinder, &hit_pos[2], &hit_pos[3]);
 	dist[2] = FLT_MAX;
@@ -195,12 +204,15 @@ t_hit	find_cylinder_hit(t_cylinder *cylinder, t_vec3 ray_direction, t_vec3 start
 		cylinder->my_hit.my_normal = my_planes[hit.hit].normal_vector;
 		hit.pos = hit_pos[hit.hit];
 		hit.hit = 1;
+		hit.check = 2;
+		//printf("hit pos: %f, %f, %f hit.hit: %i\n", hit.pos.x, hit.pos.y, hit.pos.z, hit.hit);
 	}
 	else if (hit.hit == 2)
 	{
 		cylinder->my_hit.my_normal = cylinder_normal(cylinder->pos, cylinder->axis_vector, hit_pos[2], cylinder->height / 2, cylinder);
 		hit.hit = 1;
 		hit.pos = hit_pos[2];
+		hit.check = 1;
 	}
 	else
 		hit.hit = 0;

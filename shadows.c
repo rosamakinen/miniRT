@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:13:11 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/17 13:41:26 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/18 09:53:42 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,19 @@ int	check_cylinder_shadow(t_hit *hit, t_object *object, t_vec3 shadow_direction,
 		t_hit		shadow_hit;
 
 		cylinder = (t_cylinder *)object->data;
+		hit->shadow = 1;
 		shadow_hit = find_cylinder_hit(cylinder, shadow_direction, hit->pos);
+		//printf("shadow_hit.check : %i, shadow_hit.hit : %i\n", shadow_hit.check, shadow_hit.hit);
 		if (shadow_hit.hit == 1)
 		{
+			if (hit->check == 2)
+			{
+				printf("out comes shadow_hit.pos %f, %f, %f, \n", shadow_hit.pos.x, shadow_hit.pos.y, shadow_hit.pos.z);
+			}
 			if (distance(vec3_sub(data.light, shadow_hit.pos)) >= data.dist)
 				return (0);
 		}
+		hit->shadow = 0;
 		return (shadow_hit.hit);
 }
 
@@ -65,7 +72,7 @@ int	check_for_shadow(t_scene *img, t_hit *hit, t_object *object)
 	t_vec3		shadow_direction;
 	t_float_vec3	data;
 
-	shadow_direction = vec3_sub(hit->pos, img->light_sources.pos);
+	shadow_direction = vec3_sub(img->light_sources.pos, hit->pos);
 	data.dist = distance(shadow_direction);
 	data.light = img->light_sources.pos;
 	shadow_direction = vec3_normalize(shadow_direction);
