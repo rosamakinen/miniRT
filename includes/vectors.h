@@ -6,16 +6,18 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 10:58:16 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/18 17:09:35 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/18 17:32:04 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTORS_H
 # define VECTORS_H
-# include "minirt.h"
 
-typedef struct s_vec3 t_vec3;
-typedef struct s_vec4 t_vec4;
+# include "minirt.h"
+# include "parser.h"
+
+typedef struct s_vec3	t_vec3;
+typedef struct s_vec4	t_vec4;
 
 typedef struct s_quadratic
 {

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cylinder.c                                         :+:      :+:    :+:   */
+/*   cylinder_utils2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:39:31 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/18 16:00:16 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/10/18 17:23:27 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ t_plane	find_cap_hit(t_cylinder *cylinder, t_vec3 ray_direction, \
 			cylinder->diameter / 2);
 	if (dist[0] == FLT_MAX && dist[1] == FLT_MAX)
 		*distance = FLT_MAX;
-	else 
+	else
 	{
 		my_planes[0] = my_planes[(dist[0] > dist[1])];
 		my_planes[0].point = hit_pos[(dist[0] > dist[1])];

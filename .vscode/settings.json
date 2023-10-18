@@ -33,6 +33,7 @@
 		"ios": "c",
 		"string": "c",
 		"string_view": "c",
-		"unordered_map": "c"
+		"unordered_map": "c",
+		"stdint.h": "c"
 	}
 }

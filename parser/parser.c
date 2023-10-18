@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 09:19:21 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/18 16:58:48 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/18 17:23:45 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ t_scene	scene_constractor(const char *file)
 	}
 	if (main_scene.error_catcher || check_required(&main_scene))
 	{
-		printf("parser\n");
 		free_all_objects(main_scene.objects);
 		main_scene.objects = NULL;
 	}
