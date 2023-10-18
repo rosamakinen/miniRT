@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 10:25:15 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/17 13:42:17 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/17 15:11:39 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 //Honorable mention. The following function would not have been possible without the contributions
 //of Sheree and Dorian!
-t_vec3	find_ray_dir(t_camera *camera, float x, float y)
+t_vec3 find_ray_dir(t_camera *camera, float x, float y)
 {
 	float	offset[3];
 	float	mini_ratio;

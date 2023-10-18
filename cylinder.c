@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:39:31 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/17 13:35:20 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/17 15:13:31 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,29 @@ t_vec3	dist_compare(t_vec3 start, t_vec3 one, t_vec3 two)
 	return (two);
 }
 
+int	find_best_hit(t_vec3 *intersection1, t_vec3 *intersection2, t_vec3 start, t_cylinder *cylinder)
+{
+	int check[2];
+
+	check[0] = check_hit(cylinder, *intersection1);
+	check[1] = check_hit(cylinder, *intersection2);
+	if (check[0] && !check[1])
+		return (1);
+	else if (!check[0] && check[1])
+	{
+		*intersection1 = *intersection2;
+		return (1);
+	}
+	else if (!check[0] && !check[1])
+		return (0);
+	else if (check[0] && check[1])
+	{
+		*intersection1 = dist_compare(start, *intersection1, *intersection2);
+		return (1);
+	}
+	return (0);
+}
+
 int infinite_cylinder_hit(t_vec3 ray_start, t_vec3 ray_direction, t_cylinder *cylinder, t_vec3 *intersection1, t_vec3 *intersection2)
 {
 	t_vec3	one;
@@ -86,9 +109,7 @@ int infinite_cylinder_hit(t_vec3 ray_start, t_vec3 ray_direction, t_cylinder *cy
                 + c * ray_direction.y, ray_start.z + c * ray_direction.z };
     *intersection2 = (t_vec3){ray_start.x + a * ray_direction.x, ray_start.y
                 + a * ray_direction.y, ray_start.z + a * ray_direction.z};
-	*intersection1 = *intersection2;
-	// *intersection1 = dist_compare(ray_start, *intersection1, *intersection2);
-	return 1;
+	return find_best_hit(intersection1, intersection2, ray_start, cylinder);
 }
 
 void cyl_cap_plane_initialize(t_plane *my_planes, t_cylinder *cylinder, int dir)
@@ -166,17 +187,14 @@ t_hit	find_cylinder_hit(t_cylinder *cylinder, t_vec3 ray_direction, t_vec3 start
 	}
 	check[2] = infinite_cylinder_hit(start_pos, ray_direction, cylinder, &hit_pos[2], &hit_pos[3]);
 	dist[2] = FLT_MAX;
-	if (check[2] && check_hit(cylinder, hit_pos[2]))
+	if (check[2])
 		dist[2] = distance(vec3_sub(start_pos, hit_pos[2]));
-
-	// if (dist[0] < 5.0)
-	// 	printf("%f, %f, %f\n", dist[0], dist[1], dist[2]);
 	hit.hit = find_min(&dist[0], 3);
 	if (hit.hit < 2)
 	{
 		cylinder->my_hit.my_normal = my_planes[hit.hit].normal_vector;
-		hit.hit = 1;
 		hit.pos = hit_pos[hit.hit];
+		hit.hit = 1;
 	}
 	else if (hit.hit == 2)
 	{
