@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/18 17:42:50 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/18 18:00:38 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ int			exit_button(t_scene *img);
 //scene.c
 int			raytrace(t_scene *img);
 int			get_closest_hit(t_camera *cam, t_scene *img, \
-				t_hit *hit, int x, int y);
-void		get_distance(t_scene *img, t_camera *cam, \
+				t_hit *hit, int *coords);
+void		get_distance(t_scene *img, \
 				t_hit *hit, t_hit new, int id);
 void		set_id(t_scene *img);
 
