@@ -6,11 +6,11 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 06:34:26 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/17 13:41:18 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/18 11:14:39 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/minirt.h"
+#include "../includes/minirt.h"
 
 float	distance(t_vec3 vector1)
 {
@@ -44,7 +44,7 @@ float	dot_vector3(t_vec3 vector1, t_vec3 vector2)
 	+ (vector1.z * vector2.z));
 }
 
-t_vec3 vec3_add(t_vec3 vec1, t_vec3 vec2)
+t_vec3	vec3_add(t_vec3 vec1, t_vec3 vec2)
 {
 	t_vec3	temp;
 

@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:44:07 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/17 15:12:20 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/18 12:36:15 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,6 @@ void	get_distance(t_scene *img, t_camera *cam, t_hit *hit, t_hit new, int id)
 		old_id = id;
 	if (new_distance < old_distance || hit->hit == 0)
 	{
-		// if (old_id == 3)
-		// {
-		// 	printf("old distance: %f, new_dist %f, and new_id: %i\n", old_distance, new_distance, id);
-		// }
 		(*hit) = new;
 		img->hit_data.closest_id = id;
 		img->hit_data.distance = new_distance;
@@ -90,7 +86,7 @@ int	per_pixel(t_camera *cam, t_scene *img, int x, int y)
 		get_shadow(img, &hit);
 		get_normal(img, &hit);
 		color = get_pixel_color(img, &hit);
-		int_col = normalized_vec4_to_int(color);
+		int_col = vec4_normalized_to_int(color);
 		return (int_col);
 	}
 	else

@@ -6,11 +6,11 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 10:23:39 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/14 15:05:51 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/18 10:43:30 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minirt.h"
+#include "../includes/minirt.h"
 
 t_vec4	int_to_vec4(int color)
 {
@@ -23,7 +23,7 @@ t_vec4	int_to_vec4(int color)
 	return (vec_color);
 }
 
-int	normalized_vec4_to_int(t_vec4 color)
+int	vec4_normalized_to_int(t_vec4 color)
 {
 	int32_t	red;
 	int32_t	green;
@@ -37,7 +37,7 @@ int	normalized_vec4_to_int(t_vec4 color)
 	return ((alpha << 24) | (red << 16) | (green << 8) | blue);
 }
 
-void	normalize_color_vec4(t_vec4 *color)
+void	vec4_normalize_color(t_vec4 *color)
 {
 	color->alpha = 1;
 	color->r = color->r / 255.0;
@@ -45,7 +45,7 @@ void	normalize_color_vec4(t_vec4 *color)
 	color->b = color->b / 255.0;
 }
 
-t_vec4	clamp_vec4(t_vec4 color)
+t_vec4	vec4_clamp(t_vec4 color)
 {
 	t_vec4	temp_color;
 

@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 09:19:26 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/18 09:36:36 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/18 12:40:37 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ typedef struct s_camera
 	t_vec3		up_dir;
 	t_vec3		right_dir;
 	t_vec3		norm_vector;
-	// t_vec3		norm_coord;
 	t_degrees	fov;
 }	t_camera;
 
@@ -123,8 +122,6 @@ typedef struct s_hit
 {
 	int		hit;
 	t_vec3	pos;
-	int		check;
-	int		shadow;
 }	t_hit;
 
 typedef struct s_float_vec3
@@ -184,8 +181,9 @@ int			get_vec3(t_vec3 *coordinate,
 				const char *str, int *index);
 int			get_color(t_color *color, const char *str, int *index);
 int			get_degrees(t_degrees *dst, const char *str, int *index);
-int			get_3d_normal_vector(t_vec3 *coordinate, const char *str,
+int			get_3d_normal_vector(t_vec3 *coordinate, const char *str, \
 				int *index);
+int			check_index_error(const char *str, int *index);
 
 //get_light_source.c
 short		get_light_source(t_scene *scene, const char *str);

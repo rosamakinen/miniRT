@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:08:48 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/09/14 10:59:02 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/18 17:02:02 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,13 @@
 
 void	free_all_objects(t_object *head)
 {
+	static int	i;
 	if (head->next != NULL)
 		free_all_objects(head->next);
+	if (i++ != 0)
+		free(head->data);
 	free(head);
+	head = NULL;
 	return ;
 }
 

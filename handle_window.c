@@ -6,21 +6,27 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 09:32:59 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/13 08:46:22 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/18 17:01:41 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/minirt.h"
 
-int	key_event(int keycode)
+int	key_event(int keycode, t_scene *img)
 {
 	if (keycode == 53)
+	{
+		free_all_objects(img->objects);
+		mlx_destroy_window(img->mlx, img->win);
 		exit (0);
+	}
 	return (0);
 }
 
-int	exit_button(void)
+int	exit_button(t_scene *img)
 {
+	free_all_objects(img->objects);
+	mlx_destroy_window(img->mlx, img->win);
 	exit (0);
 	return (0);
 }

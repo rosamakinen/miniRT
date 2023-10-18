@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 10:58:16 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/16 11:04:43 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/18 17:09:35 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,14 @@
 
 typedef struct s_vec3 t_vec3;
 typedef struct s_vec4 t_vec4;
+
+typedef struct s_quadratic
+{
+	float	a;
+	float	b;
+	float	c;
+	float	discriminant;
+}	t_quadratic;
 
 //vectors_math.c
 float		distance(t_vec3 vector1);
@@ -33,15 +41,15 @@ t_vec3		vec3_negative(t_vec3 vector);
 
 //color_math.c
 t_vec4		int_to_vec4(int color);
-t_vec4		multiply_vec4_float(t_vec4 color, float value);
-t_vec4		multiply_vec4(t_vec4 color, t_vec4 multiplier);
-t_vec4		add_vec4_float(t_vec4 color, float value);
-t_vec4		add_vec4(t_vec4 color, t_vec4 added);
+t_vec4		vec4_multiply_float(t_vec4 color, float value);
+t_vec4		vec4_multiply(t_vec4 color, t_vec4 multiplier);
+t_vec4		vec4_add_float(t_vec4 color, float value);
+t_vec4		vec4_add(t_vec4 color, t_vec4 added);
 
 //color_math2.c
-int			normalized_vec4_to_int(t_vec4 color);
-void		normalize_color_vec4(t_vec4 *color);
-t_vec4		clamp_vec4(t_vec4 color);
+int			vec4_normalized_to_int(t_vec4 color);
+void		vec4_normalize_color(t_vec4 *color);
+t_vec4		vec4_clamp(t_vec4 color);
 float		clamp_color(float vec_color);
 
 #endif
