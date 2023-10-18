@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:44:07 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/17 14:57:53 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/10/17 15:12:20 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	get_distance(t_scene *img, t_camera *cam, t_hit *hit, t_hit new, int id)
 	t_vec3	old_subtracted;
 	float	new_distance;
 	t_vec3	new_subtracted;
-	
+
 	old_subtracted = vec3_sub(cam->pos, (*hit).pos);
 	old_distance = distance(old_subtracted);
 	new_subtracted = vec3_sub(cam->pos, new.pos);
@@ -85,7 +85,6 @@ int	per_pixel(t_camera *cam, t_scene *img, int x, int y)
 	img->hit_data.distance = FLT_MAX;
 	int_col = 0;
 	get_closest_hit(cam, img, &hit, x, y);
-	// printf("light pos: %f, %f, %f\n", img->light_sources.pos.x, img->light_sources.pos.y, img->light_sources.pos.z);
 	if (hit.hit == 1)
 	{
 		get_shadow(img, &hit);

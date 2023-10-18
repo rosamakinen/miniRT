@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:36:10 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/16 11:02:37 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/17 13:41:09 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_vec3	cross_product(t_vec3 vector1, t_vec3 vector2)
 {
-	t_vec3 result;
+	t_vec3	result;
 
 	result.x = vector1.y * vector2.z - vector1.z * vector2.y;
 	result.y = vector1.z * vector2.x - vector1.x * vector2.z;

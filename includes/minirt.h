@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/17 10:27:36 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/18 08:00:53 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ typedef struct s_sphere	t_sphere;
 //window
 int			handle_window(t_scene *img);
 int			exit_button();
-
 
 //scene.c
 int			raytrace(t_scene *img);

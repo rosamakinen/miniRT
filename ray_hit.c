@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ray_hit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 10:25:15 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/17 13:27:09 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/10/18 10:01:48 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minirt.h"
 
-//Honorable mention: The following function would not have been possible without
-//the contributions of Sheree and Dorian!
+//Honorable mention. The following function would not have been possible without the contributions
+//of Sheree and Dorian!
 t_vec3 find_ray_dir(t_camera *camera, float x, float y)
 {
 	float	offset[3];
@@ -40,6 +40,7 @@ void	translate_t_vec3s(float *x, float *y, float aspect_ratio, float fov)
 		aspect_ratio * tanf(fov * (M_PI / 360));
 	*y = (1.0f - (2.0f * (*y + 0.5f) / WINDOW_HEIGHT)) * \
 		tanf(fov * (M_PI / 360));
+	*x = *x * -1.0f;
 }
 
 t_hit	find_sphere_hit(t_sphere *sphere, t_vec3 ray_direction, t_camera *camera)
@@ -66,13 +67,30 @@ t_hit	find_plane_hit(t_plane *plane, t_vec3 ray_direction, t_camera *camera)
 	t_vec3	point1;
 
 	ft_bzero(&hit, sizeof(t_hit));
-
 	if (plane_hit(camera->pos, ray_direction, *plane, &point1))
 	{
 		hit.pos = point1;
 		hit.hit = 1;
 	}
 	return (hit);
+}
+
+//the function:
+static void sanity_check(t_vec3 origin, t_vec3 direction, t_hit *hit)
+{
+    t_vec3    pos;
+    t_vec3    neg;
+    float    dist_pos;
+    float    dist_neg;
+
+    pos = (t_vec3){origin.x + direction.x, origin.y + direction.y,  origin.z + direction.z};
+    neg = (t_vec3){origin.x - direction.x, origin.y - direction.y,  origin.z - direction.z};
+    dist_pos = distance(vec3_sub(pos, hit->pos));
+    dist_neg = distance(vec3_sub(neg, hit->pos));
+    if (dist_pos <= dist_neg)
+        return ;
+    hit->hit = 0;
+    return ;
 }
 
 t_hit	get_hit(t_camera *cam, t_object *objects, float x, float y)
@@ -89,5 +107,6 @@ t_hit	get_hit(t_camera *cam, t_object *objects, float x, float y)
 		 hit = find_plane_hit((t_plane *)objects->data, test_dir, cam);
 	if (objects->type == OBJECT_CYLINDER)
 		 hit = find_cylinder_hit((t_cylinder *)objects->data, test_dir, cam->pos);
+	sanity_check(cam->pos, test_dir, &hit);
 	return (hit);
 }
