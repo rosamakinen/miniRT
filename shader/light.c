@@ -6,11 +6,11 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:26:03 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/16 17:45:27 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/18 11:03:23 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/minirt.h"
+#include "../includes/minirt.h"
 
 t_vec4	add_ambient_value(t_scene *img)
 {
@@ -18,8 +18,8 @@ t_vec4	add_ambient_value(t_scene *img)
 	t_vec4	ambient_color;
 
 	ambient_color = int_to_vec4(img->ambient_light.color);
-	normalize_color_vec4(&ambient_color);
-	ambient = multiply_vec4_float(ambient_color, img->ambient_light.ratio);
+	vec4_normalize_color(&ambient_color);
+	ambient = vec4_multiply_float(ambient_color, img->ambient_light.ratio);
 	return (ambient);
 }
 

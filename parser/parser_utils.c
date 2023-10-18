@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:13:57 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/17 13:37:56 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/18 12:39:36 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 int	get_vec3(t_vec3 *coordinate, const char *str, int *index)
 {
 	*index = skip_chars(" ", *index, str);
-	if (!str[*index] || str[*index] == '\n' || !is_digit_mod(str[*index], 1, 1))
+	if (check_index_error(str, index))
 		return (EXIT_FAILURE);
 	coordinate->x = ft_atof(str, index);
 	if (is_digit_mod(str[*index], 1, 1))
 		return (EXIT_FAILURE);
 	*index = skip_chars(" ,", *index, str);
-	if (!str[*index] || str[*index] == '\n' || !is_digit_mod(str[*index], 1, 1))
+	if (check_index_error(str, index))
 		return (EXIT_FAILURE);
 	coordinate->y = ft_atof(str, index);
 	if (is_digit_mod(str[*index], 1, 1))
 		return (EXIT_FAILURE);
 	*index = skip_chars(" ,", *index, str);
-	if (!str[*index] || str[*index] == '\n' || !is_digit_mod(str[*index], 1, 1))
+	if (check_index_error(str, index))
 		return (EXIT_FAILURE);
 	coordinate->z = ft_atof(str, index);
 	if (is_digit_mod(str[*index], 1, 1))
@@ -39,36 +39,9 @@ int	get_vec3(t_vec3 *coordinate, const char *str, int *index)
 int	get_float(float *dst, const char *str, int *index)
 {
 	*index = skip_chars(" ", *index, str);
-	if (!str[*index] || str[*index] == '\n' || !is_digit_mod(str[*index], 0, 1))
+	if (check_index_error(str, index))
 		return (EXIT_FAILURE);
 	*dst = ft_atof(str, index);
-	if (is_digit_mod(str[*index], 1, 1))
-		return (EXIT_FAILURE);
-	*index = skip_chars(" ", *index, str);
-	return (EXIT_SUCCESS);
-}
-
-int	get_color(t_color *color, const char *str, int *index)
-{
-	char	*num;
-
-	num = (char *)color;
-	*index = skip_chars(" ", *index, str);
-	if (!str[*index] || str[*index] == '\n' || !is_digit_mod(str[*index], 0, 1))
-		return (EXIT_FAILURE);
-	num[2] = ft_atouint8(str, index);
-	if (is_digit_mod(str[*index], 1, 1))
-		return (EXIT_FAILURE);
-	*index = skip_chars(" ,", *index, str);
-	if (!str[*index] || str[*index] == '\n' || !is_digit_mod(str[*index], 0, 1))
-		return (EXIT_FAILURE);
-	num[1] = ft_atouint8(str, index);
-	if (is_digit_mod(str[*index], 1, 1))
-		return (EXIT_FAILURE);
-	*index = skip_chars(" ,", *index, str);
-	if (!str[*index] || str[*index] == '\n' || !is_digit_mod(str[*index], 0, 1))
-		return (EXIT_FAILURE);
-	num[0] = ft_atouint8(str, index);
 	if (is_digit_mod(str[*index], 1, 1))
 		return (EXIT_FAILURE);
 	*index = skip_chars(" ", *index, str);
@@ -78,7 +51,7 @@ int	get_color(t_color *color, const char *str, int *index)
 int	get_degrees(t_degrees *dst, const char *str, int *index)
 {
 	*index = skip_chars(" ", *index, str);
-	if (!str[*index] || str[*index] == '\n' || !is_digit_mod(str[*index], 1, 1))
+	if (check_index_error(str, index))
 		return (EXIT_FAILURE);
 	*dst = ft_atoi_mod(str, index);
 	if (is_digit_mod(str[*index], 1, 1))
@@ -92,19 +65,19 @@ int	get_degrees(t_degrees *dst, const char *str, int *index)
 int	get_3d_normal_vector(t_vec3 *coordinate, const char *str, int *index)
 {
 	*index = skip_chars(" ", *index, str);
-	if (!str[*index] || str[*index] == '\n' || !is_digit_mod(str[*index], 1, 1))
+	if (check_index_error(str, index))
 		return (EXIT_FAILURE);
 	coordinate->x = ft_atof(str, index);
 	if (is_digit_mod(str[*index], 1, 1))
 		return (EXIT_FAILURE);
 	*index = skip_chars(" ,", *index, str);
-	if (!str[*index] || str[*index] == '\n' || !is_digit_mod(str[*index], 1, 1))
+	if (check_index_error(str, index))
 		return (EXIT_FAILURE);
 	coordinate->y = ft_atof(str, index);
 	if (is_digit_mod(str[*index], 1, 1))
 		return (EXIT_FAILURE);
 	*index = skip_chars(" ,", *index, str);
-	if (!str[*index] || str[*index] == '\n' || !is_digit_mod(str[*index], 1, 1))
+	if (check_index_error(str, index))
 		return (EXIT_FAILURE);
 	coordinate->z = ft_atof(str, index);
 	if (is_digit_mod(str[*index], 1, 1))

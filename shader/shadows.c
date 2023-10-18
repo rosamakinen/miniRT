@@ -6,36 +6,31 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:13:11 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/18 09:53:42 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/18 17:22:59 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/minirt.h"
+#include "../includes/minirt.h"
 
-int	check_cylinder_shadow(t_hit *hit, t_object *object, t_vec3 shadow_direction, t_float_vec3 data)
+int	check_cylinder_shadow(t_hit *hit, t_object *object, \
+t_vec3 shadow_direction, t_float_vec3 data)
 {
-		t_cylinder	*cylinder;
-		t_hit		shadow_hit;
+	t_cylinder	*cylinder;
+	t_hit		shadow_hit;
 
-		cylinder = (t_cylinder *)object->data;
-		hit->shadow = 1;
-		shadow_hit = find_cylinder_hit(cylinder, shadow_direction, hit->pos);
-		//printf("shadow_hit.check : %i, shadow_hit.hit : %i\n", shadow_hit.check, shadow_hit.hit);
-		if (shadow_hit.hit == 1)
-		{
-			if (hit->check == 2)
-			{
-				printf("out comes shadow_hit.pos %f, %f, %f, \n", shadow_hit.pos.x, shadow_hit.pos.y, shadow_hit.pos.z);
-			}
-			if (distance(vec3_sub(data.light, shadow_hit.pos)) >= data.dist)
-				return (0);
-		}
-		hit->shadow = 0;
+	cylinder = (t_cylinder *)object->data;
+	shadow_hit = find_cylinder_hit(cylinder, shadow_direction, hit->pos);
+	if (shadow_hit.hit == 1)
+	{
+		if (distance(vec3_sub(data.light, shadow_hit.pos)) >= data.dist)
+			return (0);
 		return (shadow_hit.hit);
+	}
+	return (0);
 }
 
-
-int	check_plane_shadow(t_hit *hit, t_object *object, t_vec3 shadow_direction, t_float_vec3 data)
+int	check_plane_shadow(t_hit *hit, t_object *object, t_vec3 shadow_direction, \
+t_float_vec3 data)
 {
 	t_plane	*plane;
 	t_vec3	point;
@@ -50,17 +45,17 @@ int	check_plane_shadow(t_hit *hit, t_object *object, t_vec3 shadow_direction, t_
 	return (0);
 }
 
-
-int	check_sphere_shadow(t_hit *hit, t_object *object, t_vec3 shadow_direction, t_float_vec3 data)
+int	check_sphere_shadow(t_hit *hit, t_object *object, t_vec3 shadow_direction, \
+t_float_vec3 data)
 {
 	t_sphere	*sphere;
-	t_vec3		point1;
-	t_vec3		point2;
+	t_vec3		points[2];
 
 	sphere = (t_sphere *)object->data;
-	if (sphere_hit(sphere, hit->pos, shadow_direction, &point1, &point2) == 1)
+	if (sphere_hit(sphere, hit->pos, shadow_direction, points) == 1)
 	{
-		if (distance(vec3_sub(data.light, point1)) >= data.dist && distance(vec3_sub(data.light, point2)) >= data.dist)
+		if (distance(vec3_sub(data.light, points[0])) >= data.dist && \
+		distance(vec3_sub(data.light, points[1])) >= data.dist)
 			return (0);
 		return (1);
 	}
@@ -69,7 +64,7 @@ int	check_sphere_shadow(t_hit *hit, t_object *object, t_vec3 shadow_direction, t
 
 int	check_for_shadow(t_scene *img, t_hit *hit, t_object *object)
 {
-	t_vec3		shadow_direction;
+	t_vec3			shadow_direction;
 	t_float_vec3	data;
 
 	shadow_direction = vec3_sub(img->light_sources.pos, hit->pos);
@@ -77,17 +72,11 @@ int	check_for_shadow(t_scene *img, t_hit *hit, t_object *object)
 	data.light = img->light_sources.pos;
 	shadow_direction = vec3_normalize(shadow_direction);
 	if (object->type == OBJECT_SPHERE)
-	{
 		return (check_sphere_shadow(hit, object, shadow_direction, data));
-	}
 	if (object->type == OBJECT_PLANE)
-	{
 		return (check_plane_shadow(hit, object, shadow_direction, data));
-	}
 	if (object->type == OBJECT_CYLINDER)
-	{
 		return (check_cylinder_shadow(hit, object, shadow_direction, data));
-	}
 	return (0);
 }
 
@@ -103,7 +92,6 @@ void	get_shadow(t_scene *img, t_hit *hit)
 		{
 			if (check_for_shadow(img, hit, temp_objects))
 			{
-				//printf("obj->id : %i, closest_id : %i \n", img->hit_data.closest_id, temp_objects->id);
 				img->hit_data.is_in_shadow = 1;
 				return ;
 			}

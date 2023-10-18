@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 14:50:20 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/17 15:19:05 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/18 17:25:40 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,20 @@
 
 static void	find_up_and_right_vecs(t_camera *camera)
 {
-	t_vec3 initialUp;
+	t_vec3	initial_up;
 
 	if (fabsf(camera->norm_vector.y) > (1.0f - TINY_VALUE))
 	{
-		initialUp = (t_vec3) {0.0, 0.0, (-1) * (camera->norm_vector.y < 0) \
+		initial_up = (t_vec3){0.0, 0.0, (-1) * (camera->norm_vector.y < 0) \
 		+ (1) * (camera->norm_vector.y > 0)};
 	}
 	else
-		initialUp = (t_vec3){0.0, 1.0, 0.0};
+		initial_up = (t_vec3){0.0, 1.0, 0.0};
 	camera->forward_dir = camera->norm_vector;
-	camera->right_dir = cross_product(camera->forward_dir, initialUp);
+	camera->right_dir = cross_product(camera->forward_dir, initial_up);
 	camera->right_dir = vec3_normalize(camera->right_dir);
 	camera->up_dir = cross_product(camera->right_dir, camera->forward_dir);
 	camera->up_dir = vec3_normalize(camera->up_dir);
-	printf("after we got right_dir %f, %f, %f\n and up_dir %f,%f, %f\n and forward_dir %f, %f, %f\n", camera->right_dir.x, camera->right_dir.y, camera->right_dir.z, camera->up_dir.x, camera->up_dir.y, camera->up_dir.z,camera->forward_dir.x, camera->forward_dir.y,camera->forward_dir.z);
 }
 
 short	get_camera(t_scene *scene, const char *str)
