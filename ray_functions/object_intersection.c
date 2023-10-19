@@ -6,7 +6,7 @@
 /*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:56:18 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/18 16:35:02 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:32:31 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int	plane_hit(t_vec3 origin, t_vec3 direction, t_plane plane, t_vec3 *point)
 	t_vec3	plane_to_cam;
 
 	angle = dot_vector3(plane.normal_vector, direction);
-	if (fabsf(angle) < 0.0001)
+	if (fabsf(angle) < TINY_VALUE)
 		return (0);
 	plane_to_cam = vec3_sub(plane.point, origin);
 	dist = dot_vector3(plane_to_cam, plane.normal_vector) / angle;
-	if (dist < 0.0000001)
+	if (dist < TINY_VALUE)
 		return (0);
 	*point = (t_vec3){origin.x + dist * direction.x, origin.y \
 		+ dist * direction.y, origin.z + dist * direction.z};
@@ -42,7 +42,7 @@ int	sphere_hit(const t_sphere *sphere, const t_vec3 ray_start, \
 	formula.c = dot_vector3(dist, dist) \
 		- ((sphere->diameter / 2.0) * (sphere->diameter / 2.0));
 	formula.discriminant = formula.b * formula.b - 4 * formula.a * formula.c;
-	if (formula.discriminant > 0)
+	if (formula.discriminant > TINY_VALUE)
 	{
 		formula.c = (-formula.b + sqrtf(formula.discriminant)) \
 			/ (2.0 * formula.a);
