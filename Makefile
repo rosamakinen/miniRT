@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+         #
+#    By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:30:50 by rmakinen          #+#    #+#              #
-#    Updated: 2023/10/18 17:13:55 by rmakinen         ###   ########.fr        #
+#    Updated: 2023/10/19 10:56:34 by mkaratzi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRC = main.c \
 		ray_functions/cylinder_utils1.c \
 		ray_functions/cylinder_utils2.c \
 		ray_functions/cylinder_utils3.c \
+		check_camera_pos.c \
 
 
 OBJ = main.o \
@@ -67,6 +68,7 @@ OBJ = main.o \
 		cylinder_utils1.o \
 		cylinder_utils2.o \
 		cylinder_utils3.o \
+		check_camera_pos.o \
 
 FLAGS = -Wall -Wextra -Werror -O2 -g -fsanitize=address,undefined
 

@@ -6,7 +6,7 @@
 /*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:29:32 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/19 09:06:54 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/10/19 11:00:15 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int argc, char **argv)
 		if (validate_filename(argv[1]))
 		{
 			scene = scene_constractor(argv[1]);
-			if (scene.error_catcher)
+			if (scene.error_catcher || check_camera(&scene))
 				return_parser_error(scene.error_catcher);
 			else
 			{

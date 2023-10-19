@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_error.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 10:15:38 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/18 16:32:52 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/19 10:59:26 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,7 @@ int	return_parser_error(short error)
 		ft_print_error("Error\nSorry, you forgot to add key elements!\n");
 	if (error == EXCESS_ELEMENTS)
 		ft_print_error("Error\nSorry, you added more elements than needed!\n");
+	if (error == INSIDE_OBJECT)
+		ft_print_error("Error\nSorry, camera should not be within an object\n");
 	return (1);
 }

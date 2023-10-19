@@ -6,7 +6,7 @@
 /*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/19 08:56:27 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/10/19 10:56:03 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ typedef struct s_object		t_object;
 typedef struct s_cylinder	t_cylinder;
 typedef struct s_plane		t_plane;
 typedef struct s_sphere		t_sphere;
+
+int			check_camera(t_scene *scene);
 
 //window
 int			handle_window(t_scene *img);

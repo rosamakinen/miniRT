@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 09:19:26 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/18 12:40:37 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/19 10:27:55 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define INVALID_INPUT 4
 # define MALLOC_FAILED 5
 # define EXCESS_ELEMENTS 6
+# define INSIDE_OBJECT 7
 # define LIGHT_SOURCE 0
 # define AMBIENT_LIGHT 1
 # define CAMERA 2
