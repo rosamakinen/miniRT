@@ -6,7 +6,7 @@
 /*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:29:50 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/19 11:20:09 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:07:00 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,10 @@ static int	closest_point_to_vector(t_vec3 start, t_vec3 end, t_vec3 point, \
 	dist = dot_vector3(point_to_point, line_ve) / dot;
 	start = (t_vec3){start.x + dist * line_ve.x, start.y + dist \
 		* line_ve.y, start.z + dist * line_ve.z};
-	if (distance(vec3_sub(start, cylinder->pos)) > cylinder->height / 2)
-		return (0);
-	return (1);
+	if (distance(vec3_sub(start, cylinder->pos)) < cylinder->height / 2 \
+		&& distance(vec3_sub(point, start)) < cylinder->diameter / 2)
+		return (1);
+	return (0);
 }
 
 static int	check_inside_cylinder(t_scene *scene, t_cylinder *cylinder)
