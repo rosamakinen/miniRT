@@ -6,7 +6,7 @@
 /*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 09:19:21 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/19 16:10:47 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:12:59 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,27 @@ int	skip_chars(const char *skippable, int index, const char *str)
 	int	i;
 	int	j;
 	int	found;
+	int	comma_found;
 
-	i = index;
-	while (str[i])
+	i = index - 1;
+	comma_found = 0;
+	while (str[++i])
 	{
 		j = 0;
 		found = 0;
+		if (str[i] == ',')
+			comma_found++;
 		while (skippable[j])
 		{
 			if (str[i] == skippable[j])
 				found = 1;
 			j++;
 		}
-		if (!found)
-			return (i);
-		i++;
+		if (!found || comma_found > 1)
+			break ;
 	}
+	if (comma_found > 1)
+		i = ft_strlen(str);
 	return (i);
 }
 
