@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:13:57 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/19 16:31:45 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:50:25 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	get_vec3(t_vec3 *coordinate, const char *str, int *index)
 	if (is_digit_mod(str[*index], 1, 1))
 		return (EXIT_FAILURE);
 	*index = skip_chars(" ", *index, str);
-	return (check_zero_vector(coordinate));
+	return (EXIT_SUCCESS);
 }
 
 int	get_float(float *dst, const char *str, int *index)
