@@ -6,7 +6,7 @@
 /*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/19 10:56:03 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/10/19 11:36:24 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int			sanity_check(t_vec3 origin, t_vec3 direction, t_vec3 hit);
 
 //normals.c
 void		get_normal(t_scene *img, t_hit *hit);
-void		get_plane_normal(t_object *data, t_scene *img);
+void		get_plane_normal(t_object *data, t_scene *img, t_hit hit);
 void		get_sphere_normal(t_object *data, t_scene *img, t_hit *hit);
 
 //light.c

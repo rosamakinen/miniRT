@@ -6,7 +6,7 @@
 /*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:29:50 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/19 11:16:33 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/10/19 11:20:09 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static int	check_inside_plane(t_scene *scene, t_plane *plane)
 	camera_to_plane = vec3_normalize(vec3_sub(plane->point, scene->camera.pos));
 	plane->normal_vector = vec3_normalize(plane->normal_vector);
 	if (fabsf(dot_vector3(camera_to_plane, plane->normal_vector)) <= TINY_VALUE)
-		return (1);
+		return (INSIDE_OBJECT);
 	return (0);
 }
 
