@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   get_new_object.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:08:48 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/18 17:24:29 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:36:14 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/parser.h"
 
-void	free_all_objects(t_object *head)
+void	free_all_objects(t_object *head, int instruction)
 {
 	static int	i = 0;
 
 	if (head->next != NULL)
-		free_all_objects(head->next);
-	if (i++ != 0)
+		free_all_objects(head->next, instruction);
+	if (i++ != instruction)
 		free(head->data);
 	free(head);
 	head = NULL;
@@ -38,7 +38,7 @@ static int	get_new_sphere(t_object *scene_object, const char *str, int *i)
 	new_sphere = (t_sphere *)scene_object->data;
 	if (get_vec3(&new_sphere->pos, str, i))
 		return (INVALID_INPUT);
-	if (get_float(&new_sphere->diameter, str, i))
+	if (get_float(&new_sphere->diameter, str, i) || new_sphere->diameter < 0)
 		return (INVALID_INPUT);
 	if (get_color(&new_sphere->color, str, i))
 		return (INVALID_INPUT);
@@ -88,9 +88,10 @@ static int	get_new_cylinder(t_object *scene_object, const char *str, int *i)
 		return (INVALID_INPUT);
 	if (get_3d_normal_vector(&new_cylinder->axis_vector, str, i))
 		return (INVALID_INPUT);
-	if (get_float(&new_cylinder->diameter, str, i))
+	if (get_float(&new_cylinder->diameter, str, i) \
+		|| new_cylinder->diameter < 0)
 		return (INVALID_INPUT);
-	if (get_float(&new_cylinder->height, str, i))
+	if (get_float(&new_cylinder->height, str, i) || new_cylinder->height < 0)
 		return (INVALID_INPUT);
 	if (get_color(&new_cylinder->color, str, i))
 		return (INVALID_INPUT);
@@ -111,11 +112,11 @@ short	get_new_object(t_object *scene_object, const char *str)
 	while (scene_object->next)
 		scene_object = scene_object->next;
 	if (str && str[0] == 's' && str[1] == 'p')
-		get_new_sphere(scene_object, str, &i);
+		return (get_new_sphere(scene_object, str, &i));
 	else if (str && str[0] == 'p' && str[1] == 'l')
-		get_new_plane(scene_object, str, &i);
+		return (get_new_plane(scene_object, str, &i));
 	else if (str && str[0] == 'c' && str[1] == 'y')
-		get_new_cylinder(scene_object, str, &i);
+		return (get_new_cylinder(scene_object, str, &i));
 	else
 		return (INVALID_INPUT);
 	if (str[i] && str[i] != '\n')
