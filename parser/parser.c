@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 09:19:21 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/19 17:12:59 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:41:58 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/parser.h"
-
-//ATTENTION: This parser relies that the file has been check to be of correct
-// format. Ideally there is a function that checks arg count and arg type in
-// main, before this function gets called
 
 int	skip_chars(const char *skippable, int index, const char *str)
 {
