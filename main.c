@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:29:32 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/18 16:57:54 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/19 05:56:49 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,6 @@ int	main(int argc, char **argv)
 	else
 		return (ft_print_error("Error\nOne map.rt expexted as argument\n"));
 	if (scene.objects != NULL)
-	{
-		printf("in main last\n");
 		free_all_objects(scene.objects);
-	}
-	return(0);
+	return (0);
 }
