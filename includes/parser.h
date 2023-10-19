@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 09:19:26 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/19 15:14:33 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:45:15 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "minirt.h"
 # include "../libft/includes/get_next_line.h"
-
+# define INVALID_INPUT 4
 # define OPEN_FAIL 1
 # define INVALID_OBJECTS 2
 # define MISSING_KEY_ELEMENTS 3
@@ -196,6 +196,6 @@ short		get_camera(t_scene *scene, const char *str);
 
 //get_new_object.c
 short		get_new_object(t_object *scene_object, const char *str);
-void		free_all_objects(t_object *head);
+void		free_all_objects(t_object *head, int instruction);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 09:32:59 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/18 17:01:41 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:59:15 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	key_event(int keycode, t_scene *img)
 {
 	if (keycode == 53)
 	{
-		free_all_objects(img->objects);
+		free_all_objects(img->objects, 0);
 		mlx_destroy_window(img->mlx, img->win);
 		exit (0);
 	}
@@ -25,7 +25,7 @@ int	key_event(int keycode, t_scene *img)
 
 int	exit_button(t_scene *img)
 {
-	free_all_objects(img->objects);
+	free_all_objects(img->objects, 0);
 	mlx_destroy_window(img->mlx, img->win);
 	exit (0);
 	return (0);

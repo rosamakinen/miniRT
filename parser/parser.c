@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 09:19:21 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/18 17:23:45 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:10:47 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	skip_chars(const char *skippable, int index, const char *str)
 	return (i);
 }
 
-static int	constractor_loop(t_scene *scene, const char *str)
+static int	constractor_loop(t_scene *scene, char *str)
 {
 	int	catcher;
 
@@ -59,6 +59,7 @@ static int	constractor_loop(t_scene *scene, const char *str)
 		catcher = get_camera(scene, str);
 	else if (catcher == VALID_OBJECT)
 		catcher = get_new_object(scene->objects, str);
+	free(str);
 	return (catcher);
 }
 
@@ -83,6 +84,7 @@ t_scene	scene_constractor(const char *file)
 	if (fd == -1)
 		main_scene.error_catcher = OPEN_FAIL;
 	main_scene.objects = (t_object *)malloc(sizeof(t_object));
+	ft_bzero(main_scene.objects, sizeof(t_object));
 	if (!main_scene.objects)
 		main_scene.error_catcher = MALLOC_FAILED;
 	main_scene.objects->next = NULL;
@@ -92,11 +94,10 @@ t_scene	scene_constractor(const char *file)
 		if (ft_strlen_int(new_line) <= 0 && !close(fd))
 			break ;
 		main_scene.error_catcher = constractor_loop(&main_scene, new_line);
-		free(new_line);
 	}
 	if (main_scene.error_catcher || check_required(&main_scene))
 	{
-		free_all_objects(main_scene.objects);
+		free_all_objects(main_scene.objects, -1);
 		main_scene.objects = NULL;
 	}
 	return (main_scene);
