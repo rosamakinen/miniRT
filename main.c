@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:29:32 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/19 05:56:49 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/19 09:06:54 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	main(int argc, char **argv)
 			return (ft_print_error("Error\nWrong filename\n"));
 	}
 	else
-		return (ft_print_error("Error\nOne map.rt expexted as argument\n"));
+		return (ft_print_error("Error\nOne map.rt expected as argument\n"));
 	if (scene.objects != NULL)
 		free_all_objects(scene.objects);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:44:07 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/18 18:00:23 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/10/19 09:05:51 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	get_closest_hit(t_camera *cam, t_scene *img, \
 				t_hit *hit, int *coords)
 {
 	t_object	*temp;
-	t_hit		new = {0};
+	t_hit		new;
 
 	temp = img->objects;
 	img->hit_data.distance = FLT_MAX;

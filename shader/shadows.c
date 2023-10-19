@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shadows.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:13:11 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/18 17:22:59 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/19 09:04:39 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ t_float_vec3 data)
 	plane = (t_plane *)object->data;
 	if (plane_hit(hit->pos, shadow_direction, *plane, &point) == 1)
 	{
+		if (sanity_check(data.light, shadow_direction, point))
+			return (0);
 		if (distance(vec3_sub(data.light, point)) >= data.dist)
 			return (0);
 		return (1);

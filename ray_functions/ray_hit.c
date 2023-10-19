@@ -6,7 +6,7 @@
 /*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 10:25:15 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/18 16:34:00 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/10/19 08:57:50 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,7 @@ t_hit	find_plane_hit(t_plane *plane, t_vec3 ray_direction, t_camera *camera)
 	return (hit);
 }
 
-//the function:
-static void	sanity_check(t_vec3 origin, t_vec3 direction, t_hit *hit)
+int	sanity_check(t_vec3 origin, t_vec3 direction, t_vec3 hit)
 {
 	t_vec3	pos;
 	t_vec3	neg;
@@ -79,12 +78,11 @@ static void	sanity_check(t_vec3 origin, t_vec3 direction, t_hit *hit)
 		origin.z + direction.z};
 	neg = (t_vec3){origin.x - direction.x, origin.y - direction.y, \
 		origin.z - direction.z};
-	dist_pos = distance(vec3_sub(pos, hit->pos));
-	dist_neg = distance(vec3_sub(neg, hit->pos));
+	dist_pos = distance(vec3_sub(pos, hit));
+	dist_neg = distance(vec3_sub(neg, hit));
 	if (dist_pos <= dist_neg)
-		return ;
-	hit->hit = 0;
-	return ;
+		return (1);
+	return (0);
 }
 
 t_hit	get_hit(t_camera *cam, t_object *objects, float x, float y)
@@ -107,6 +105,7 @@ t_hit	get_hit(t_camera *cam, t_object *objects, float x, float y)
 	if (objects->type == OBJECT_CYLINDER)
 		hit = find_cylinder_hit((t_cylinder *)objects->data, \
 		test_dir, cam->pos);
-	sanity_check(cam->pos, test_dir, &hit);
+	if (!sanity_check(cam->pos, test_dir, hit.pos))
+		hit.hit = 0;
 	return (hit);
 }

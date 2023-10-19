@@ -6,7 +6,7 @@
 /*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/18 18:00:38 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/10/19 08:56:27 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int			plane_hit(t_vec3 origin, t_vec3 direction, \
 				t_plane plane, t_vec3 *point);
 int			sphere_hit(const t_sphere *sphere, const t_vec3 ray_start, \
 				const t_vec3 direction, t_vec3 *intersection1);
+int			sanity_check(t_vec3 origin, t_vec3 direction, t_vec3 hit);
 
 //normals.c
 void		get_normal(t_scene *img, t_hit *hit);
