@@ -6,9 +6,11 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 15:28:26 by rmakinen          #+#    #+#             */
-/*   Updated: 2022/11/15 08:00:40 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:19:28 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/libft.h"
 
 int	ft_isalpha(int c)
 {

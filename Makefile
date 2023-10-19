@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+         #
+#    By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:30:50 by rmakinen          #+#    #+#              #
-#    Updated: 2023/10/19 10:56:34 by mkaratzi         ###   ########.fr        #
+#    Updated: 2023/10/19 16:07:36 by rmakinen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,6 @@ SRC = main.c \
 		ray_functions/cylinder_utils3.c \
 		check_camera_pos.c \
 
-
 OBJ = main.o \
 		handle_window.o \
 		scene.o \
@@ -70,14 +69,20 @@ OBJ = main.o \
 		cylinder_utils3.o \
 		check_camera_pos.o \
 
-FLAGS = -Wall -Wextra -Werror -O2 -g -fsanitize=address,undefined
+INCL = includes/minirt.h \
+		includes/parser.h \
+		includes/vectors.h \
+
+LIB_DIR = includes
+
+FLAGS = -Wall -Wextra -Werror -O2
 
 all: $(NAME)
 
-$(NAME): $(SRC)
+$(NAME): $(SRC) $(INCL)
 	@cd libft && $(MAKE)
 	@cc $(FLAGS) -c $(SRC)
-	@cc $(FLAGS) $(OBJ) libft/libft.a -L /usr/local/include -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	@cc $(FLAGS) $(OBJ) -I$(LIB_DIR) libft/libft.a -L /usr/local/include -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 clean:
 	@cd libft && make clean

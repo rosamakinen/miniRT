@@ -6,11 +6,11 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 07:53:29 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/01/05 14:04:43 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:21:08 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 int	check_specifier(const char *str, va_list args)
 {

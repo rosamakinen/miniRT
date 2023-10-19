@@ -6,11 +6,11 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 10:34:48 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/03 11:09:32 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:20:41 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {

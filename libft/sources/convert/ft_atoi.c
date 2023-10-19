@@ -6,11 +6,11 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 17:58:55 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/03 11:11:08 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:19:54 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 int	ft_atoi(const char *str)
 {

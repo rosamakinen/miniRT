@@ -6,11 +6,11 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 12:43:43 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/04/01 11:33:56 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:20:05 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 void	ft_swap(int *a, int *b)
 {

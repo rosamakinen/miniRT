@@ -6,16 +6,16 @@
 #    By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/31 15:09:16 by rmakinen          #+#    #+#              #
-#    Updated: 2023/09/14 06:30:33 by rmakinen         ###   ########.fr        #
+#    Updated: 2023/10/19 16:37:18 by rmakinen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-LIB_DIR = -I ./includes
+LIB_DIR = includes
 SRC_DIR = sources/
 OBJ_DIR = objects/
-HEADER = $(addprefix ./includes/, ft_printf.h libft.h get_next_line.h get_next_line_bonus.h)
-FLAGS = -Wall -Wextra -Werror $(LIB_DIR)
+INCLUDES = $(addprefix ./includes/, ft_printf.h libft.h get_next_line.h)
+FLAGS = -Wall -Wextra -Werror
 CC = cc
 AR = ar rcs
 
@@ -63,7 +63,7 @@ $(NAME): $(OBJ)
 	@ranlib $(NAME)
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJECTS)
-	@$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
+	@$(CC) $(FLAGS) -I$(LIB_DIR) -c $< -o $@
 
 $(OBJECTS):
 	@mkdir -p $(OBJ_DIR)
@@ -76,7 +76,7 @@ $(OBJECTS):
 	@mkdir -p $(OBJ_DIR)$(GNL_DIR)
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJECTS)
-	@cc $(FLAGS) $(INCLUDES) -c $< -o $@
+	@cc $(FLAGS) -I$(LIB_DIR) -c $< -o $@
 
 what:
 	echo $(OBJECTS)

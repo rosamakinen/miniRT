@@ -6,11 +6,11 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 11:27:18 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/03 11:10:38 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:20:23 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {

@@ -6,11 +6,11 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 10:00:16 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/01/05 10:39:36 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:21:17 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 int	print_percentage(void)
 {

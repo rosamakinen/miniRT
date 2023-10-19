@@ -6,9 +6,11 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 16:39:03 by rmakinen          #+#    #+#             */
-/*   Updated: 2022/11/15 08:00:54 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:19:43 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/libft.h"
 
 int	ft_isdigit(int c)
 {

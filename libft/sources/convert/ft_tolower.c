@@ -6,11 +6,11 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 11:29:21 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/03/06 12:47:31 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:20:08 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 int	ft_tolower(int c)
 {

@@ -6,11 +6,11 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 07:21:20 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/03 11:06:25 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:22:13 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {

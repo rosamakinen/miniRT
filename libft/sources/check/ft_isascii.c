@@ -6,9 +6,11 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 10:07:00 by rmakinen          #+#    #+#             */
-/*   Updated: 2022/11/15 08:00:47 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:19:38 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/libft.h"
 
 int	ft_isascii(int c)
 {

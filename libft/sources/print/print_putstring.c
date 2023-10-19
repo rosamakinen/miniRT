@@ -6,11 +6,11 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:17:40 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/01/04 16:02:43 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:21:36 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 int	print_putstring(const char *str)
 {

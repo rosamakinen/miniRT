@@ -6,11 +6,11 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 07:25:10 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/03 11:07:39 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:24:02 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 static int	ft_search(char const *set, char const c)
 {

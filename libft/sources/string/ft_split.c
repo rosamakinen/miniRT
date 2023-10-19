@@ -6,11 +6,11 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 07:44:15 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/03 11:06:36 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:22:22 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 static size_t	word_count(char const *s, char c)
 {

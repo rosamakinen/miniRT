@@ -6,9 +6,11 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 06:29:53 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/09/14 06:32:41 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:23:33 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/libft.h"
 
 int	ft_strlen_int(const char *str)
 {

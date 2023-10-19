@@ -6,11 +6,11 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 07:34:20 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/03 11:06:57 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:22:49 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {

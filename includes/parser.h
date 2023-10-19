@@ -3,17 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 09:19:26 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/19 10:27:55 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:14:33 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSER_H
 # define PARSER_H
+
 # include "minirt.h"
 # include "../libft/includes/get_next_line.h"
+
 # define OPEN_FAIL 1
 # define INVALID_OBJECTS 2
 # define MISSING_KEY_ELEMENTS 3
@@ -28,9 +30,6 @@
 # define OBJECT_SPHERE 4
 # define OBJECT_PLANE 5
 # define OBJECT_CYLINDER 6
-
-//TODO: Add the following structs to the main header file preferably
-//START
 
 typedef unsigned int	t_color;
 typedef short			t_degrees;
