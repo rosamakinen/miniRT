@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/20 12:34:15 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/10/20 15:42:14 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void		get_sphere_normal(t_object *data, t_scene *img, t_hit *hit);
 
 //light.c
 t_vec4		add_ambient_value(t_scene *img);
-t_vec4		get_white_light(void);
+float		get_specular(t_scene *img, t_hit *hit);
 float		get_brightness(t_scene *img, t_hit *hit);
 
 //shadows.c
