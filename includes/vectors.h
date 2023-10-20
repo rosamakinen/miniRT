@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 10:58:16 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/19 15:34:53 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/20 10:15:47 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define VECTORS_H
 
 # include "minirt.h"
-# include "parser.h"
 
 typedef struct s_vec3	t_vec3;
 typedef struct s_vec4	t_vec4;

@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 09:19:26 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/19 16:45:15 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/20 10:21:39 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,9 +135,7 @@ typedef struct s_hit_data
 	int		closest_id;
 	int		is_in_shadow;
 	float	distance;
-	float	specular;
 	float	brightness;
-	t_vec3	norm_pos;
 	t_vec3	normal;
 	t_vec4	color;
 }	t_hit_data;
@@ -156,12 +154,12 @@ typedef struct s_scene
 	t_check_once	check_once;
 	short			error_catcher;
 }	t_scene;
-//FINISH
 
 //parser.c
 int			skip_chars(const char *skippable, int index, const char *str);
 t_scene		scene_constractor(const char *file);
-// ft_print_error.c
+
+//ft_print_error.c
 int			ft_print_error(const char *str);
 int			return_parser_error(short error);
 
