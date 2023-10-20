@@ -6,7 +6,7 @@
 /*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:08:48 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/19 16:36:14 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/10/20 09:49:24 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	get_new_sphere(t_object *scene_object, const char *str, int *i)
 	new_sphere = (t_sphere *)scene_object->data;
 	if (get_vec3(&new_sphere->pos, str, i))
 		return (INVALID_INPUT);
-	if (get_float(&new_sphere->diameter, str, i) || new_sphere->diameter < 0)
+	if (get_float(&new_sphere->diameter, str, i) || new_sphere->diameter <= 0)
 		return (INVALID_INPUT);
 	if (get_color(&new_sphere->color, str, i))
 		return (INVALID_INPUT);
@@ -89,9 +89,9 @@ static int	get_new_cylinder(t_object *scene_object, const char *str, int *i)
 	if (get_3d_normal_vector(&new_cylinder->axis_vector, str, i))
 		return (INVALID_INPUT);
 	if (get_float(&new_cylinder->diameter, str, i) \
-		|| new_cylinder->diameter < 0)
+		|| new_cylinder->diameter <= 0)
 		return (INVALID_INPUT);
-	if (get_float(&new_cylinder->height, str, i) || new_cylinder->height < 0)
+	if (get_float(&new_cylinder->height, str, i) || new_cylinder->height <= 0)
 		return (INVALID_INPUT);
 	if (get_color(&new_cylinder->color, str, i))
 		return (INVALID_INPUT);
