@@ -6,7 +6,7 @@
 /*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:08:48 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/20 09:49:24 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/10/20 12:32:23 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,9 @@ static int	get_new_cylinder(t_object *scene_object, const char *str, int *i)
 	if (get_color(&new_cylinder->color, str, i))
 		return (INVALID_INPUT);
 	scene_object->next = (t_object *)malloc(sizeof(t_object));
+	ft_bzero(scene_object->next, sizeof(t_object));
 	if (!scene_object->next)
 		return (MALLOC_FAILED);
-	scene_object->next->next = NULL;
 	return (EXIT_SUCCESS);
 }
 

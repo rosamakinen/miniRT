@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+         #
+#    By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:30:50 by rmakinen          #+#    #+#              #
-#    Updated: 2023/10/19 16:45:10 by rmakinen         ###   ########.fr        #
+#    Updated: 2023/10/20 12:35:30 by mkaratzi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,6 +74,8 @@ INCL = includes/minirt.h \
 		includes/vectors.h \
 
 LIB_DIR = includes
+
+#DEBUG = -g -fsanitize=address,undefined
 
 FLAGS = -Wall -Wextra -Werror -O2
 

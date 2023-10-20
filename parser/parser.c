@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 09:19:21 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/19 17:41:58 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/20 12:19:30 by mkaratzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	skip_chars(const char *skippable, int index, const char *str)
 		if (!found || comma_found > 1)
 			break ;
 	}
-	if (comma_found > 1)
+	if (comma_found > 1 || (!comma_found && skippable[1] == ','))
 		i = ft_strlen(str);
 	return (i);
 }
@@ -49,6 +49,7 @@ static int	constractor_loop(t_scene *scene, char *str)
 	if (ft_strlen_int(str) == 1)
 	{
 		catcher = !(str[0] == '\n');
+		free(str);
 		return (catcher);
 	}
 	catcher = get_object_identifier(str);
