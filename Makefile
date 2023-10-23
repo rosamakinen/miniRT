@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mkaratzi <mkaratzi@student.42.fr>          +#+  +:+       +#+         #
+#    By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:30:50 by rmakinen          #+#    #+#              #
-#    Updated: 2023/10/20 12:35:30 by mkaratzi         ###   ########.fr        #
+#    Updated: 2023/10/23 08:23:55 by rmakinen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,11 +79,18 @@ LIB_DIR = includes
 
 FLAGS = -Wall -Wextra -Werror -O2
 
+SPECULAR = -D SPECULAR=1
+
 all: $(NAME)
 
 $(NAME): $(SRC) $(INCL)
 	@cd libft && $(MAKE)
 	@cc $(FLAGS) -c $(SRC)
+	@cc $(FLAGS) $(OBJ) -I$(LIB_DIR) libft/libft.a -L /usr/local/include -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+
+specular: $(SRC) $(INCL)
+	@cd libft && $(MAKE)
+	@cc $(FLAGS) $(SPECULAR) -c $(SRC)
 	@cc $(FLAGS) $(OBJ) -I$(LIB_DIR) libft/libft.a -L /usr/local/include -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 clean:

@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:26:03 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/20 15:33:46 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/23 06:40:49 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,24 @@ t_vec4	add_ambient_value(t_scene *img)
 
 float	get_specular(t_scene *img, t_hit *hit)
 {
-	t_vec3	light_direction;
+	t_vec3	reflect_direction;
 	t_vec3	half_direction;
 	float	specular;
 	float	specular_angle;
 
-	light_direction = vec3_sub(img->light_sources.pos, hit->pos);
-	light_direction = vec3_normalize(light_direction);
-
-	// this is blinn phong
-	half_direction = vec3_add(light_direction, vec3_negative(img->camera.norm_vector));
+	reflect_direction = vec3_sub(img->light_sources.pos, hit->pos);
+	reflect_direction = vec3_normalize(reflect_direction);
+	half_direction = vec3_add(reflect_direction, vec3_negative(img->camera.not_normalized_norm_vector));
 	half_direction = vec3_normalize(half_direction);
 	specular_angle = fmaxf(dot_vector3(half_direction, img->hit_data.normal), 0.0);
-	specular = powf(specular_angle, 40);
+	specular = powf(specular_angle, 80);
+	specular = specular / 1.5f;
 	return (specular);
 }
+
+    // vec3 halfDir = normalize(lightDir + viewDir);
+    // float specAngle = max(dot(halfDir, normal), 0.0);
+    // specular = pow(specAngle, shininess);
 
 float	get_brightness(t_scene *img, t_hit *hit)
 {

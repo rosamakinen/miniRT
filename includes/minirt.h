@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/20 15:42:14 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/23 08:27:03 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@
 # define WINDOW_HEIGHT 680
 # define TINY_VALUE 0.00001
 # define FLT_MAX 3.402823466e+38F
+
+#ifndef SPECULAR
+# define SPECULAR 0
+#endif
 
 typedef struct s_vec3		t_vec3;
 typedef struct s_vec4		t_vec4;
