@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 10:32:54 by rmakinen          #+#    #+#             */
-/*   Updated: 2023/10/23 08:27:03 by rmakinen         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:13:52 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <math.h>
 # include <mlx.h>
 # include <stdlib.h>
+# include <stdio.h>
 # include <limits.h>
 # include "parser.h"
 # include "vectors.h"
