@@ -84,7 +84,8 @@ all: $(NAME)
 $(NAME): $(SRC) $(INCL)
 	@cd libft && $(MAKE)
 	@cc $(FLAGS) -c $(SRC)
-	@cc $(FLAGS) $(OBJ) -I$(LIB_DIR) libft/libft.a -L /usr/local/include -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	#@cc $(FLAGS) $(OBJ) -I$(LIB_DIR) libft/libft.a -L /usr/local/include -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	@cc $(FLAGS) $(OBJ) libft/libft.a mlx/libmlx.a -framework OpenGL -framework AppKit -o $(NAME)
 
 clean:
 	@cd libft && make clean
