@@ -6,7 +6,7 @@
 /*   By: rmakinen <rmakinen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 09:19:26 by mkaratzi          #+#    #+#             */
-/*   Updated: 2023/10/20 10:21:39 by mkaratzi         ###   ########.fr       */
+/*   Updated: 2023/10/23 06:36:12 by rmakinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ typedef struct s_camera
 	t_vec3		up_dir;
 	t_vec3		right_dir;
 	t_vec3		norm_vector;
+	t_vec3		not_normalized_norm_vector;
 	t_degrees	fov;
 }	t_camera;
 
@@ -136,6 +137,7 @@ typedef struct s_hit_data
 	int		is_in_shadow;
 	float	distance;
 	float	brightness;
+	float	specular;
 	t_vec3	normal;
 	t_vec4	color;
 }	t_hit_data;
