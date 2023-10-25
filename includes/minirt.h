@@ -16,13 +16,14 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <math.h>
-# include <mlx.h>
+//# include <mlx.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <limits.h>
 # include "parser.h"
 # include "vectors.h"
 # include "../libft/includes/libft.h"
+# include "../mlx/mlx.h"
 
 # define WINDOW_WIDTH 1080
 # define WINDOW_HEIGHT 680
