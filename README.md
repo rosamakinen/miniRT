@@ -21,7 +21,16 @@ This raytracer project is a simple but educational implementation designed to he
 - [x] :first_quarter_moon: Shadows
 - [x] :sparkles: Specular hilights using Blinn-Phong reflection model
 
+<img width="1080" alt="Screen Shot 2023-10-26 at 7 13 36 AM" src="https://github.com/rosamakinen/miniRT/assets/112611789/48f5212c-1061-4969-9bdb-6292da62ef3a">
+scene with a cylinder and a plane with only ambient light (scenes/cylinder.rt)
+
+
+
+<img width="1078" alt="rt_cylinder" src="https://github.com/rosamakinen/miniRT/assets/112611789/16d30227-c1c5-49df-80fa-b6b8227e1af6">
+scene with a cylinder and a plane with ambient light, diffused lighting using one point light and shadows (scene/cylinder.rt)
+
 ## :point_right: Getting Started
+** this version has been tested with clang version 15.0.0 (clang-1500.1.0.2.5) and MacOS Ventura 13.5 ** 
 
 To get started with the raytracer:
 
@@ -40,19 +49,12 @@ To get started with the raytracer:
    To run the program
    ```bash
    make
-   ./miniRT scenes/mapname.rt
+   ./miniRT scenes/cylinder.rt
    ```
 
     To run the program with specular hilights run:
      ```bash
      make specular
-     ./miniRT scenes/mapname.rt
+     ./miniRT scenes/cylinder.rt
      ```
-<img width="1080" alt="Screen Shot 2023-10-26 at 7 13 36 AM" src="https://github.com/rosamakinen/miniRT/assets/112611789/48f5212c-1061-4969-9bdb-6292da62ef3a">
-scene with a cylinder and a plane with only ambient light (scenes/cylinder.rt)
-
-
-
-<img width="1078" alt="rt_cylinder" src="https://github.com/rosamakinen/miniRT/assets/112611789/16d30227-c1c5-49df-80fa-b6b8227e1af6">
-scene with a cylinder and a plane with ambient light, diffused lighting using one point light and shadows (scene/cylinder.rt)
-
+more scenes can be found from the scenes folder
